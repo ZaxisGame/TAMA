@@ -1,0 +1,612 @@
+fileFormatVersion: 2
+guid: d232349b4c2a54ab7b5fd97bdce988f5
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: aiSkyDomeLight1
+    100002: Arm
+    100004: arm_1
+    100006: arm_2
+    100008: arm_3
+    100010: Binder
+    100012: binder
+    100014: body
+    100016: conntenna
+    100018: contenna_1
+    100020: contenna_2
+    100022: contenna_3
+    100024: contenna_4
+    100026: curve1
+    100028: group1
+    100030: group1 1
+    100032: group1 2
+    100034: group1 3
+    100036: group2
+    100038: group2 1
+    100040: group2 2
+    100042: group2 3
+    100044: group3
+    100046: gun
+    100048: gun_2
+    100050: Head
+    100052: pCube1
+    100054: pCube10
+    100056: pCube10 1
+    100058: pCube10 2
+    100060: pCube10 3
+    100062: pCube10 4
+    100064: pCube10 5
+    100066: pCube10 6
+    100068: pCube10 7
+    100070: pCube12
+    100072: pCube2
+    100074: pCube4
+    100076: pCube4 1
+    100078: pCube4 2
+    100080: pCube4 3
+    100082: pCube4 4
+    100084: pCube4 5
+    100086: pCube4 6
+    100088: pCube4 7
+    100090: pCube5
+    100092: pCube5 1
+    100094: pCube5 2
+    100096: pCube5 3
+    100098: pCube5 4
+    100100: pCube5 5
+    100102: pCube5 6
+    100104: pCube5 7
+    100106: pCube6
+    100108: pCube6 1
+    100110: pCube6 2
+    100112: pCube6 3
+    100114: pCube6 4
+    100116: pCube6 5
+    100118: pCube6 6
+    100120: pCube6 7
+    100122: pCube7
+    100124: pCube7 1
+    100126: pCube7 2
+    100128: pCube7 3
+    100130: pCube7 4
+    100132: pCube7 5
+    100134: pCube7 6
+    100136: pCube7 7
+    100138: pCube8
+    100140: pCube8 1
+    100142: pCube8 2
+    100144: pCube8 3
+    100146: pCube8 4
+    100148: pCube8 5
+    100150: pCube8 6
+    100152: pCube8 7
+    100154: pCube9
+    100156: pCube9 1
+    100158: pCube9 2
+    100160: pCube9 3
+    100162: pCube9 4
+    100164: pCube9 5
+    100166: pCube9 6
+    100168: pCube9 7
+    100170: pCylinder10
+    100172: pCylinder10 1
+    100174: pCylinder10 2
+    100176: pCylinder10 3
+    100178: pCylinder10 4
+    100180: pCylinder10 5
+    100182: pCylinder10 6
+    100184: pCylinder10 7
+    100186: pCylinder11
+    100188: pCylinder11 1
+    100190: pCylinder11 2
+    100192: pCylinder11 3
+    100194: pCylinder11 4
+    100196: pCylinder11 5
+    100198: pCylinder11 6
+    100200: pCylinder11 7
+    100202: pCylinder12
+    100204: pCylinder7
+    100206: pCylinder8
+    100208: pCylinder9
+    100210: polySurface1
+    100212: polySurface2
+    100214: polySurface3
+    100216: pPlane1
+    100218: pPlane10
+    100220: pPlane11
+    100222: pPlane12
+    100224: pPlane13
+    100226: pSphere1
+    100228: pSphere2
+    100230: pSphere3
+    100232: pSphere3_geometryConstraint1
+    100234: RigArm1
+    100236: RigArm2
+    100238: RigArm3
+    100240: RigGun
+    100242: Rigroot
+    100244: root
+    100246: TAKO
+    100248: //RootNode
+    400000: aiSkyDomeLight1
+    400002: Arm
+    400004: arm_1
+    400006: arm_2
+    400008: arm_3
+    400010: Binder
+    400012: binder
+    400014: body
+    400016: conntenna
+    400018: contenna_1
+    400020: contenna_2
+    400022: contenna_3
+    400024: contenna_4
+    400026: curve1
+    400028: group1
+    400030: group1 1
+    400032: group1 2
+    400034: group1 3
+    400036: group2
+    400038: group2 1
+    400040: group2 2
+    400042: group2 3
+    400044: group3
+    400046: gun
+    400048: gun_2
+    400050: Head
+    400052: pCube1
+    400054: pCube10
+    400056: pCube10 1
+    400058: pCube10 2
+    400060: pCube10 3
+    400062: pCube10 4
+    400064: pCube10 5
+    400066: pCube10 6
+    400068: pCube10 7
+    400070: pCube12
+    400072: pCube2
+    400074: pCube4
+    400076: pCube4 1
+    400078: pCube4 2
+    400080: pCube4 3
+    400082: pCube4 4
+    400084: pCube4 5
+    400086: pCube4 6
+    400088: pCube4 7
+    400090: pCube5
+    400092: pCube5 1
+    400094: pCube5 2
+    400096: pCube5 3
+    400098: pCube5 4
+    400100: pCube5 5
+    400102: pCube5 6
+    400104: pCube5 7
+    400106: pCube6
+    400108: pCube6 1
+    400110: pCube6 2
+    400112: pCube6 3
+    400114: pCube6 4
+    400116: pCube6 5
+    400118: pCube6 6
+    400120: pCube6 7
+    400122: pCube7
+    400124: pCube7 1
+    400126: pCube7 2
+    400128: pCube7 3
+    400130: pCube7 4
+    400132: pCube7 5
+    400134: pCube7 6
+    400136: pCube7 7
+    400138: pCube8
+    400140: pCube8 1
+    400142: pCube8 2
+    400144: pCube8 3
+    400146: pCube8 4
+    400148: pCube8 5
+    400150: pCube8 6
+    400152: pCube8 7
+    400154: pCube9
+    400156: pCube9 1
+    400158: pCube9 2
+    400160: pCube9 3
+    400162: pCube9 4
+    400164: pCube9 5
+    400166: pCube9 6
+    400168: pCube9 7
+    400170: pCylinder10
+    400172: pCylinder10 1
+    400174: pCylinder10 2
+    400176: pCylinder10 3
+    400178: pCylinder10 4
+    400180: pCylinder10 5
+    400182: pCylinder10 6
+    400184: pCylinder10 7
+    400186: pCylinder11
+    400188: pCylinder11 1
+    400190: pCylinder11 2
+    400192: pCylinder11 3
+    400194: pCylinder11 4
+    400196: pCylinder11 5
+    400198: pCylinder11 6
+    400200: pCylinder11 7
+    400202: pCylinder12
+    400204: pCylinder7
+    400206: pCylinder8
+    400208: pCylinder9
+    400210: polySurface1
+    400212: polySurface2
+    400214: polySurface3
+    400216: pPlane1
+    400218: pPlane10
+    400220: pPlane11
+    400222: pPlane12
+    400224: pPlane13
+    400226: pSphere1
+    400228: pSphere2
+    400230: pSphere3
+    400232: pSphere3_geometryConstraint1
+    400234: RigArm1
+    400236: RigArm2
+    400238: RigArm3
+    400240: RigGun
+    400242: Rigroot
+    400244: root
+    400246: TAKO
+    400248: //RootNode
+    2100000: lambert2
+    2100002: lambert1
+    2300000: pCube1
+    2300002: pCube10
+    2300004: pCube10 1
+    2300006: pCube10 2
+    2300008: pCube10 3
+    2300010: pCube10 4
+    2300012: pCube10 5
+    2300014: pCube10 6
+    2300016: pCube10 7
+    2300018: pCube2
+    2300020: pCube4
+    2300022: pCube4 1
+    2300024: pCube4 2
+    2300026: pCube4 3
+    2300028: pCube4 4
+    2300030: pCube4 5
+    2300032: pCube4 6
+    2300034: pCube4 7
+    2300036: pCube5
+    2300038: pCube5 1
+    2300040: pCube5 2
+    2300042: pCube5 3
+    2300044: pCube5 4
+    2300046: pCube5 5
+    2300048: pCube5 6
+    2300050: pCube5 7
+    2300052: pCube6
+    2300054: pCube6 1
+    2300056: pCube6 2
+    2300058: pCube6 3
+    2300060: pCube6 4
+    2300062: pCube6 5
+    2300064: pCube6 6
+    2300066: pCube6 7
+    2300068: pCube7
+    2300070: pCube7 1
+    2300072: pCube7 2
+    2300074: pCube7 3
+    2300076: pCube7 4
+    2300078: pCube7 5
+    2300080: pCube7 6
+    2300082: pCube7 7
+    2300084: pCube8
+    2300086: pCube8 1
+    2300088: pCube8 2
+    2300090: pCube8 3
+    2300092: pCube8 4
+    2300094: pCube8 5
+    2300096: pCube8 6
+    2300098: pCube8 7
+    2300100: pCube9
+    2300102: pCube9 1
+    2300104: pCube9 2
+    2300106: pCube9 3
+    2300108: pCube9 4
+    2300110: pCube9 5
+    2300112: pCube9 6
+    2300114: pCube9 7
+    2300116: pCylinder10
+    2300118: pCylinder10 1
+    2300120: pCylinder10 2
+    2300122: pCylinder10 3
+    2300124: pCylinder10 4
+    2300126: pCylinder10 5
+    2300128: pCylinder10 6
+    2300130: pCylinder10 7
+    2300132: pCylinder11
+    2300134: pCylinder11 1
+    2300136: pCylinder11 2
+    2300138: pCylinder11 3
+    2300140: pCylinder11 4
+    2300142: pCylinder11 5
+    2300144: pCylinder11 6
+    2300146: pCylinder11 7
+    2300148: pCylinder12
+    2300150: pCylinder7
+    2300152: pCylinder8
+    2300154: pCylinder9
+    2300156: polySurface1
+    2300158: polySurface2
+    2300160: polySurface3
+    2300162: pPlane1
+    2300164: pPlane10
+    2300166: pPlane11
+    2300168: pPlane12
+    2300170: pPlane13
+    2300172: pSphere1
+    2300174: pSphere2
+    2300176: pSphere3
+    3300000: pCube1
+    3300002: pCube10
+    3300004: pCube10 1
+    3300006: pCube10 2
+    3300008: pCube10 3
+    3300010: pCube10 4
+    3300012: pCube10 5
+    3300014: pCube10 6
+    3300016: pCube10 7
+    3300018: pCube2
+    3300020: pCube4
+    3300022: pCube4 1
+    3300024: pCube4 2
+    3300026: pCube4 3
+    3300028: pCube4 4
+    3300030: pCube4 5
+    3300032: pCube4 6
+    3300034: pCube4 7
+    3300036: pCube5
+    3300038: pCube5 1
+    3300040: pCube5 2
+    3300042: pCube5 3
+    3300044: pCube5 4
+    3300046: pCube5 5
+    3300048: pCube5 6
+    3300050: pCube5 7
+    3300052: pCube6
+    3300054: pCube6 1
+    3300056: pCube6 2
+    3300058: pCube6 3
+    3300060: pCube6 4
+    3300062: pCube6 5
+    3300064: pCube6 6
+    3300066: pCube6 7
+    3300068: pCube7
+    3300070: pCube7 1
+    3300072: pCube7 2
+    3300074: pCube7 3
+    3300076: pCube7 4
+    3300078: pCube7 5
+    3300080: pCube7 6
+    3300082: pCube7 7
+    3300084: pCube8
+    3300086: pCube8 1
+    3300088: pCube8 2
+    3300090: pCube8 3
+    3300092: pCube8 4
+    3300094: pCube8 5
+    3300096: pCube8 6
+    3300098: pCube8 7
+    3300100: pCube9
+    3300102: pCube9 1
+    3300104: pCube9 2
+    3300106: pCube9 3
+    3300108: pCube9 4
+    3300110: pCube9 5
+    3300112: pCube9 6
+    3300114: pCube9 7
+    3300116: pCylinder10
+    3300118: pCylinder10 1
+    3300120: pCylinder10 2
+    3300122: pCylinder10 3
+    3300124: pCylinder10 4
+    3300126: pCylinder10 5
+    3300128: pCylinder10 6
+    3300130: pCylinder10 7
+    3300132: pCylinder11
+    3300134: pCylinder11 1
+    3300136: pCylinder11 2
+    3300138: pCylinder11 3
+    3300140: pCylinder11 4
+    3300142: pCylinder11 5
+    3300144: pCylinder11 6
+    3300146: pCylinder11 7
+    3300148: pCylinder12
+    3300150: pCylinder7
+    3300152: pCylinder8
+    3300154: pCylinder9
+    3300156: polySurface1
+    3300158: polySurface2
+    3300160: polySurface3
+    3300162: pPlane1
+    3300164: pPlane10
+    3300166: pPlane11
+    3300168: pPlane12
+    3300170: pPlane13
+    3300172: pSphere1
+    3300174: pSphere2
+    3300176: pSphere3
+    4300000: pCylinder9
+    4300002: pCylinder8
+    4300004: pPlane11
+    4300006: pCube4
+    4300008: pCube10
+    4300010: pCube9
+    4300012: pCylinder11
+    4300014: pCube8
+    4300016: pCube6
+    4300018: pCube7
+    4300020: pCylinder10
+    4300022: pCube5
+    4300024: pCube4
+    4300026: pCube10
+    4300028: pCube9
+    4300030: pCylinder11
+    4300032: pCube8
+    4300034: pCube6
+    4300036: pCube7
+    4300038: pCylinder10
+    4300040: pCube5
+    4300042: pPlane12
+    4300044: pCube4
+    4300046: pCube10
+    4300048: pCube9
+    4300050: pCylinder11
+    4300052: pCube8
+    4300054: pCube6
+    4300056: pCube7
+    4300058: pCylinder10
+    4300060: pCube5
+    4300062: pCube4
+    4300064: pCube10
+    4300066: pCube9
+    4300068: pCylinder11
+    4300070: pCube8
+    4300072: pCube6
+    4300074: pCube7
+    4300076: pCylinder10
+    4300078: pCube5
+    4300080: pPlane13
+    4300082: pCube4
+    4300084: pCube10
+    4300086: pCube9
+    4300088: pCylinder11
+    4300090: pCube8
+    4300092: pCube6
+    4300094: pCube7
+    4300096: pCylinder10
+    4300098: pCube5
+    4300100: pCube4
+    4300102: pCube10
+    4300104: pCube9
+    4300106: pCylinder11
+    4300108: pCube8
+    4300110: pCube6
+    4300112: pCube7
+    4300114: pCylinder10
+    4300116: pCube5
+    4300118: pPlane1
+    4300120: pCube4
+    4300122: pCube10
+    4300124: pCube9
+    4300126: pCylinder11
+    4300128: pCube8
+    4300130: pCube6
+    4300132: pCube7
+    4300134: pCylinder10
+    4300136: pCube5
+    4300138: pCube4
+    4300140: pCube10
+    4300142: pCube9
+    4300144: pCylinder11
+    4300146: pCube8
+    4300148: pCube6
+    4300150: pCube7
+    4300152: pCylinder10
+    4300154: pCube5
+    4300156: pSphere1
+    4300158: pSphere2
+    4300160: pCylinder7
+    4300162: pCube1
+    4300164: pCube2
+    4300166: pCylinder12
+    4300168: polySurface1
+    4300170: polySurface2
+    4300172: polySurface3
+    4300174: pPlane10
+    4300176: pSphere3
+    7400000: Take 001
+    9500000: //RootNode
+  externalObjects:
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: "Mech_tako_texture\uFF14"
+    second: {fileID: 2800000, guid: 13a40794239734e35b85414a006c6bf1, type: 3}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
