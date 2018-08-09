@@ -85,17 +85,4 @@ public class CameraManager_M : MonoBehaviour
     void Jumping(){
         
     }
-
-
-
-	//void FixedUpdate () {
-	//	float hor = Input.GetAxis ("Horizontal");
-	//	float ver= Input.GetAxis ("Vertical");
-
-	//	Rigidbody rig = player.GetComponent<Rigidbody> ();
-	//	if(camera.GetComponent<Camera> ().orthographic)
-	//		rig.AddForce (hor*force,ver*force, 0);
-	//	else
-	//		rig.AddForce ( ver*force, 0,-hor*force);
-	//}
 }

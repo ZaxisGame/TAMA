@@ -41,13 +41,15 @@ public class Timer_3D_M : MonoBehaviour {
 	void Update () {
         if (Cam_M.CamState == 1)
             Timer_on();
-        else if (Cam_M.CamState == 0 && currentTimer < 10)
+        else if (Cam_M.CamState == 0)
             Timer_cure();
         Debug.Log(currentTimer);
 	}
 
     void Timer_on(){
         time1 += Time.deltaTime;
+        if (currentTimer == 11)
+            currentTimer = 10;
         if(time1>1){
             currentTimer--;
             time1 = 0;
@@ -62,11 +64,19 @@ public class Timer_3D_M : MonoBehaviour {
 
     void Timer_cure(){
         time0 += Time.deltaTime;
-        if(time0>1){
-            currentTimer++;
-            time0 = 0;
+        if (currentTimer < 11)
+        {
+            if (time0 > 1)
+            {
+                currentTimer++;
+                time0 = 0;
+            }
+            DrawTime();
+        }else{
+            for (int i = 0; i < FullTimer;i++){
+                Timer3D[i].GetComponent<Image>().enabled = false;
+            }
         }
-        DrawTime();
     }
 
     void DrawTime(){
