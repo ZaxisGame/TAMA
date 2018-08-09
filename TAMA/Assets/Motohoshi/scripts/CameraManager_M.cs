@@ -25,8 +25,7 @@ public class CameraManager_M : MonoBehaviour
 	// Use this for initialization
 	void Start ()
 	{
-		offset = swing.GetComponent<Transform> ().position - target.position;
-		pos = target.position;
+		
 		camera.GetComponent<Camera> ().orthographic = true;
 		r = 10f;
 		speed = 2.5f;
@@ -40,7 +39,7 @@ public class CameraManager_M : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
-		swing.GetComponent<Transform> ().position = target.position + offset;
+		
 		if (Input.GetKeyDown (KeyCode.A)) {
             camState = -1;
 			if (camera.GetComponent<Camera> ().orthographic && state != 1) {
