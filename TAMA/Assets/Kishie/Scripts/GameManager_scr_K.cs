@@ -6,7 +6,7 @@ public class GameManager_scr_K : MonoBehaviour {
 
     public GameObject camera, swing, player;
     public Transform target;
-    private Vector3 offset, pos;
+    private Vector3 offset, pos , moveDirection;
     float r, x, y, z, y_angle, t;
     public float force = 10f, speed = 2.5f;
     private int state, camState;
@@ -22,13 +22,11 @@ public class GameManager_scr_K : MonoBehaviour {
         }
     }
 
-
-
-    // Use this for initialization
     void Start()
     {
-        offset = swing.GetComponent<Transform>().position - target.position;
-        pos = target.position;
+        moveDirection = swing.GetComponent<Transform>().position - target.position;
+
+
         camera.GetComponent<Camera>().orthographic = true;
         r = 10f;
         speed = 2.5f;
@@ -39,7 +37,6 @@ public class GameManager_scr_K : MonoBehaviour {
         force = 10;
     }
 
-    // Update is called once per frame
     void Update()
     {
         swing.GetComponent<Transform>().position = target.position + offset;
@@ -95,21 +92,4 @@ public class GameManager_scr_K : MonoBehaviour {
 
     }
 
-    void Jumping()
-    {
-
-    }
-
-
-
-    //void FixedUpdate () {
-    //  float hor = Input.GetAxis ("Horizontal");
-    //  float ver= Input.GetAxis ("Vertical");
-
-    //  Rigidbody rig = player.GetComponent<Rigidbody> ();
-    //  if(camera.GetComponent<Camera> ().orthographic)
-    //      rig.AddForce (hor*force,ver*force, 0);
-    //  else
-    //      rig.AddForce ( ver*force, 0,-hor*force);
-    //}
 }
