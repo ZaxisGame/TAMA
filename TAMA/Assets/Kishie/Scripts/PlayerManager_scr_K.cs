@@ -3,8 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerManager_scr_K : MonoBehaviour {
-    
+
+
+    LifeManager_scr_K Life_M;
+    private GameObject gm;
+
 	void Start () {
+        gm = GameObject.Find("Canvas");
+        Life_M = gm.GetComponent<LifeManager_scr_K>();
 		
 	}
 	
@@ -36,6 +42,8 @@ public class PlayerManager_scr_K : MonoBehaviour {
         else if (col.CompareTag("Enemy") && EnemyController_scr_K.isAlive == true )
         {
             Debug.Log("ダメージ！");
+            Life_M.Damage();
+
             Destroy(col.gameObject);
            
             //プレイヤーにダメージ判定

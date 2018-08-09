@@ -18,6 +18,8 @@ public class PlayerMove_scr_K : MonoBehaviour
     private Vector3 mousePos;
     CharacterController controller;
     private Vector3 pos;
+    private GameObject gm;
+    GameManager_scr_K CamM;
 
 
 
@@ -26,6 +28,9 @@ public class PlayerMove_scr_K : MonoBehaviour
     {
         pos = this.transform.position;//初期座標の取得
         controller = GetComponent<CharacterController>();
+        gm = GameObject.Find("GameManeger");
+        CamM = gm.GetComponent<GameManager_scr_K>();
+
         rg = gameObject.GetComponent<Rigidbody>();
 
     }
@@ -37,7 +42,7 @@ public class PlayerMove_scr_K : MonoBehaviour
         pos = this.transform.position;
         //Debug.Log(pos);
 
-        if (is2D)
+        if (CamM.CamState == 0)//camstate=0に
         {
             //Debug.Log("2D");
 
@@ -74,7 +79,7 @@ public class PlayerMove_scr_K : MonoBehaviour
             moveDirection2D.y -= gravity * Time.deltaTime;
             controller.Move(moveDirection2D * Time.deltaTime);
         }
-        else
+        else if(CamM.CamState == 1)
         {
             Debug.Log("3D");
 

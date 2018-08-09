@@ -11,18 +11,21 @@ public class EnemyController_scr_K : MonoBehaviour
     public static float dis;
     Vector3 Epos, Ppos;
     public static bool isAlive = true;
+    public float manbouDis = 15f;
 
 
-    void Start(){
+    void Start()
+    {
         Epos = this.transform.position;//初期座標の取得
 
-       
+
     }
 
 
-    void Update(){
-        
-       
+    void Update()
+    {
+
+
 
 
         Move();
@@ -30,37 +33,45 @@ public class EnemyController_scr_K : MonoBehaviour
 
     }
 
-    public void Move(){
+    public void Move()
+    {
 
-        if(state == 0){//ビームなど
+        if (state == 0)
+        {//ビームなど
             return;
         }
 
-        else if (state == 1){//アジ
-            this.transform.position = Epos;      
-            Epos.x += enemySpeed* -0.01f;
+        else if (state == 1)
+        {//アジ
+            this.transform.position = Epos;
+            Epos.x += enemySpeed * -0.01f;
         }
 
-        else if(state == 2 ){//マンボウ
+        else if (state == 2)
+        {//マンボウ
             this.transform.position = Epos;
             //プレイヤーとの距離を取得
             Ppos = player.transform.position;
             dis = Vector3.Distance(Epos, Ppos);
 
             //近ずくと止まって、、
-            if(dis<=10){
-                Debug.Log("マンボウ接近");
+            if (dis <= manbouDis)
+            {
+                //Debug.Log("マンボウ接近");
                 //ビーム
             }
-            else if(dis>10){
+            else if (dis > manbouDis){
                 Epos.x += enemySpeed * -0.01f;
             }
-            else{
+            else
+            {
                 Debug.Log("ERROR");
                 return;
             }
 
-        }else{
+        }
+        else
+        {
             Debug.Log("ERROR");
             state = 0;
         }
