@@ -64,6 +64,9 @@ public class PlayerMove_scr_K : MonoBehaviour
                 z2D = 0;
             }
 
+
+
+
             if (controller.isGrounded)
             {
                 isJump = false;
@@ -75,13 +78,21 @@ public class PlayerMove_scr_K : MonoBehaviour
                 {
                     Jump();
                 }
+            }else{//空中でもx軸移動可能にする
+                moveDirection2D.x = Input.GetAxis("Horizontal");
+                moveDirection2D.z = 0;
+                moveDirection2D.x *= speed;
+                
             }
             moveDirection2D.y -= gravity * Time.deltaTime;
             controller.Move(moveDirection2D * Time.deltaTime);
         }
+
+
+
         else if(CamM.CamState == 1)
         {
-            Debug.Log("3D");
+          //  Debug.Log("3D");
 
             if (controller.isGrounded)
             {
@@ -94,6 +105,11 @@ public class PlayerMove_scr_K : MonoBehaviour
                     Jump();
 
                 }
+            }else{//空中でもx、z軸移動可能にする
+                moveDirection3D.x = Input.GetAxis("Vertical");
+                moveDirection3D.z = Input.GetAxis("Horizontal") * -1;
+                moveDirection3D.x *= speed;
+                moveDirection3D.z *= speed;
             }
 
             moveDirection3D.y -= gravity * Time.deltaTime;
