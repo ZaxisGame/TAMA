@@ -9,10 +9,13 @@ public class LifeManager_scr_K : MonoBehaviour {
     private int firstLife = 3;
 
     private GameObject[] lifesObj;
+    public GameObject player;
+    PlayerMove_scr_K pMove;
 
     // Use this for initialization
     void Start()
     {
+        pMove = player.GetComponent<PlayerMove_scr_K>();
         lifesObj = new GameObject[firstLife];
         for (int i = 0; i < firstLife; i++)
         {
@@ -41,7 +44,8 @@ public class LifeManager_scr_K : MonoBehaviour {
         DrawLife(currentLife);
         if (currentLife == 0)
         {
-            SceneManager.LoadScene("GameOver");
+            pMove.Die();
+            //SceneManager.LoadScene("GameOver");
         }
     }
 
