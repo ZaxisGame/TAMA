@@ -41,7 +41,7 @@ public class PlayerManager_scr_K : MonoBehaviour {
         //敵に当たると
         else if (col.CompareTag("Enemy") && EnemyController_scr_K.isAlive == true )
         {
-            Debug.Log("ダメージ！");
+           // Debug.Log("ダメージ！");
             Life_M.Damage();
 
             Destroy(col.gameObject);

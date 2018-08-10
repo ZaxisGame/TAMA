@@ -7,7 +7,8 @@ public class GameManager_scr_K : MonoBehaviour {
     public GameObject camera, swing, player;
     private Vector3 offset, pos , moveDirection;
     float y_angle, t;
-    public float force = 10f, speed = 2.5f;
+    float force = 10f, speed = 2.5f;
+    public int HP = 3;
     private int state;
     private int camState;//(0 : 2D , 1 : 3D , -1 : 回転中)
     public int CamState
@@ -26,17 +27,18 @@ public class GameManager_scr_K : MonoBehaviour {
     {
         //カメラとプレイヤーの距離
         offset = swing.GetComponent<Transform>().position - player.GetComponent<Transform>().position;
-   
         camera.GetComponent<Camera>().orthographic = true;
-
-
         speed = 2.5f;
-      
         force = 10;
     }
 
     void Update()
     {
+        CameraManager();
+
+    }
+
+    void CameraManager(){
         //ジャンプ中でない時にスペースキーを押すと
         if (PlayerMove_scr_K.isJump == false && Input.GetKeyDown(KeyCode.Return))
         {
@@ -72,12 +74,13 @@ public class GameManager_scr_K : MonoBehaviour {
 
         else if (state == 2)
         {
-            if (y_angle > 0f) {
+            if (y_angle > 0f)
+            {
                 //Debug.Log (Time.time);
                 y_angle -= (Mathf.Rad2Deg * Time.deltaTime * speed);
-                var rot = Quaternion.Euler (0, y_angle, 0);
+                var rot = Quaternion.Euler(0, y_angle, 0);
                 swing.transform.rotation = rot;
-            } 
+            }
             else
             {
                 swing.transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -89,7 +92,8 @@ public class GameManager_scr_K : MonoBehaviour {
 
 
         //2D
-        if(camState == 0){
+        if (camState == 0)
+        {
             //カメラ追尾（y軸固定）
             swing.GetComponent<Transform>().position = new Vector3(player.transform.position.x + offset.x, offset.y, player.transform.position.z + offset.z);
         }

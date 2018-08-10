@@ -5,19 +5,25 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LifeManager_scr_K : MonoBehaviour {
-    private int currentLife = 3;
-    private int firstLife = 3;
+    //private int currentLife = 3;
+    int HP = 3;
 
     private GameObject[] lifesObj;
     public GameObject player;
     PlayerMove_scr_K pMove;
-
+    private GameObject gm;
+    GameManager_scr_K GameManager;
     // Use this for initialization
     void Start()
     {
+        gm = GameObject.Find("GameManeger");
+        GameManager = gm.GetComponent<GameManager_scr_K>();
+
+        HP = GameManager.HP;
+
         pMove = player.GetComponent<PlayerMove_scr_K>();
-        lifesObj = new GameObject[firstLife];
-        for (int i = 0; i < firstLife; i++)
+        lifesObj = new GameObject[HP];
+        for (int i = 0; i < HP; i++)
         {
             lifesObj[i] = new GameObject("cat" + i);
             lifesObj[i].transform.parent = gameObject.transform;
@@ -40,9 +46,10 @@ public class LifeManager_scr_K : MonoBehaviour {
 
     public void Damage()
     {
-        currentLife--;
-        DrawLife(currentLife);
-        if (currentLife == 0)
+        HP--;
+        DrawLife(HP);
+        pMove.Damage();
+        if (HP == 0)
         {
             pMove.Die();
             //SceneManager.LoadScene("GameOver");
@@ -53,7 +60,7 @@ public class LifeManager_scr_K : MonoBehaviour {
 
     void DrawLife(int n)
     {
-        for (int i = 0; i < firstLife; i++)
+        for (int i = 0; i < HP; i++)
         {
             if (i < n)
                 lifesObj[i].GetComponent<Image>().enabled = true;

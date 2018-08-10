@@ -22,8 +22,6 @@ public class PlayerMove_scr_K : MonoBehaviour
     GameManager_scr_K CamM;
 
 
-
-
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -49,9 +47,6 @@ public class PlayerMove_scr_K : MonoBehaviour
         {
             Walk_3D();
         }
-        else{
-            animator.SetBool("is_Walk", false);
-        }
     }
 
 
@@ -60,9 +55,6 @@ public class PlayerMove_scr_K : MonoBehaviour
     public void Walk_2D(){
         float dz;
         int z2D = 0;
-
-
-
 
         //z軸補正
         dz = pos.z;
@@ -101,25 +93,24 @@ public class PlayerMove_scr_K : MonoBehaviour
         }
         moveDirection2D.y -= gravity * Time.deltaTime;
 
-        if(moveDirection2D.x == 0){
+        if(moveDirection2D.x == 0){//止まっている時
             animator.SetBool("is_Walk", false);
             animator.SetBool("is_Back", false);
         }
-        else if (moveDirection2D.x < 0)
+        else if (moveDirection2D.x < 0)//後退
         {
             Back();
         }
-        else{
-            animator.SetBool("is_Walk", true);
+        else{//前進
             animator.SetBool("is_Back", false);
+            animator.SetBool("is_Walk", true);
         }
 
         controller.Move(moveDirection2D * Time.deltaTime);
     }
 
     public void Walk_3D(){
-        animator.SetBool("is_Walk", true);
-        
+       
         if (controller.isGrounded)
         {
             isJump = false;
@@ -141,9 +132,20 @@ public class PlayerMove_scr_K : MonoBehaviour
 
         moveDirection3D.y -= gravity * Time.deltaTime;
 
-        if (moveDirection3D.x < 0)
+        if (moveDirection3D.x == 0 && moveDirection3D.z == 0)
+        {
+            //止まっている時
+            animator.SetBool("is_Walk", false);
+            animator.SetBool("is_Back", false);
+        }
+        else if (moveDirection3D.x < 0 )
         {
             Back();
+        }
+        else if(moveDirection3D.x > 0 || moveDirection3D.z > 0)
+        {//前進
+            animator.SetBool("is_Back", false);
+            animator.SetBool("is_Walk", true);
         }
         controller.Move(moveDirection3D * Time.deltaTime);
     }
