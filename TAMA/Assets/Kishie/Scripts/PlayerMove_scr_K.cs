@@ -7,7 +7,7 @@ public class PlayerMove_scr_K : MonoBehaviour
 
     public GameObject cam, swing, player;
     private Rigidbody rg;
-
+    private Animator TamaAnimator;
     public float speed = 6.0F;
     public float jumpSpeed = 8.0F;
     public float gravity = 20.0F;
@@ -26,6 +26,8 @@ public class PlayerMove_scr_K : MonoBehaviour
 
     void Start()
     {
+        TamaAnimator = GetComponent<Animator>();
+
         pos = this.transform.position;//初期座標の取得
         controller = GetComponent<CharacterController>();
         gm = GameObject.Find("GameManeger");
@@ -119,13 +121,29 @@ public class PlayerMove_scr_K : MonoBehaviour
 
 
     public void Jump(){
+        Debug.Log("ジャンプ");
+        isJump = true;
+
         moveDirection2D.z = 0;
         moveDirection2D.y = jumpSpeed;
 
         moveDirection3D.y = jumpSpeed;
+    }
 
-        Debug.Log("ジャンプ");
-        isJump = true;
-        
+    public void Damage(){
+        Debug.Log("ダメージ");
+        //TamaAnimator.SetBool("isDamage");
+    }
+
+    public void Back(){
+        Debug.Log("後退");
+    }
+
+    public void Run(){
+        Debug.Log("走る");
+    }
+
+    public void Die(){
+        Debug.Log("ゲームオーバー");
     }
 }
