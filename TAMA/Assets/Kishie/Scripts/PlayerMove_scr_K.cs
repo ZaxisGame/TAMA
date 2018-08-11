@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerMove_scr_K : MonoBehaviour
 {
-
-    public GameObject cam, swing, player;
     private Rigidbody rg;
     Animator animator;
     public float speed = 6.0F;
@@ -186,11 +184,6 @@ public class PlayerMove_scr_K : MonoBehaviour
         moveDirection3D.x *= 0.5f;
         moveDirection3D.z *= 0.5f;
         animator.SetBool("is_Back", true);
-    }
-
-    public void Run()
-    {
-        Debug.Log("走る");
     }
 
     public void Die()
