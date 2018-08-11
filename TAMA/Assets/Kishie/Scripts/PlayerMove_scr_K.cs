@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerMove_scr_K : MonoBehaviour
 {
-
-    public GameObject cam, swing, player;
     private Rigidbody rg;
     Animator animator;
     public float speed = 6.0F;
@@ -77,6 +75,8 @@ public class PlayerMove_scr_K : MonoBehaviour
         if (controller.isGrounded)
         {
             isJump = false;
+            animator.SetBool("is_Jump", false);
+            animator.SetBool("is_Idle", true);
             moveDirection2D = new Vector3(Input.GetAxis("Horizontal"), 0, z2D);
             moveDirection2D *= speed;
 
@@ -96,6 +96,7 @@ public class PlayerMove_scr_K : MonoBehaviour
         if(moveDirection2D.x == 0){//止まっている時
             animator.SetBool("is_Walk", false);
             animator.SetBool("is_Back", false);
+            animator.SetBool("is_Idle", true);
         }
         else if (moveDirection2D.x < 0)//後退
         {
@@ -104,6 +105,7 @@ public class PlayerMove_scr_K : MonoBehaviour
         else{//前進
             animator.SetBool("is_Back", false);
             animator.SetBool("is_Walk", true);
+           
         }
 
         controller.Move(moveDirection2D * Time.deltaTime);
@@ -114,6 +116,8 @@ public class PlayerMove_scr_K : MonoBehaviour
         if (controller.isGrounded)
         {
             isJump = false;
+            animator.SetBool("is_Jump", false);
+            animator.SetBool("is_Idle", true);
             moveDirection3D = new Vector3(Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal") * -1);
             moveDirection3D *= speed;
 
@@ -137,6 +141,8 @@ public class PlayerMove_scr_K : MonoBehaviour
             //止まっている時
             animator.SetBool("is_Walk", false);
             animator.SetBool("is_Back", false);
+            animator.SetBool("is_Idle", true);
+
         }
         else if (moveDirection3D.x < 0 )
         {
@@ -154,6 +160,10 @@ public class PlayerMove_scr_K : MonoBehaviour
     {
         Debug.Log("ジャンプ");
         isJump = true;
+        if (isJump)
+        {
+            animator.SetBool("is_Jump", true);
+        }
 
         moveDirection2D.z = 0;
         moveDirection2D.y = jumpSpeed;
@@ -174,11 +184,6 @@ public class PlayerMove_scr_K : MonoBehaviour
         moveDirection3D.x *= 0.5f;
         moveDirection3D.z *= 0.5f;
         animator.SetBool("is_Back", true);
-    }
-
-    public void Run()
-    {
-        Debug.Log("走る");
     }
 
     public void Die()

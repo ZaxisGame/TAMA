@@ -13,14 +13,15 @@ public class LifeManager_scr_K : MonoBehaviour {
     PlayerMove_scr_K pMove;
     private GameObject gm;
     GameManager_scr_K GameManager;
-    // Use this for initialization
+    private int currentLife = 3;
+  
     void Start()
     {
         gm = GameObject.Find("GameManeger");
         GameManager = gm.GetComponent<GameManager_scr_K>();
 
         HP = GameManager.HP;
-
+        currentLife = HP;
         pMove = player.GetComponent<PlayerMove_scr_K>();
         lifesObj = new GameObject[HP];
         for (int i = 0; i < HP; i++)
@@ -46,10 +47,10 @@ public class LifeManager_scr_K : MonoBehaviour {
 
     public void Damage()
     {
-        HP--;
-        DrawLife(HP);
+        currentLife--;
+        DrawLife(currentLife);
         pMove.Damage();
-        if (HP == 0)
+        if (currentLife == 0)
         {
             pMove.Die();
             //SceneManager.LoadScene("GameOver");

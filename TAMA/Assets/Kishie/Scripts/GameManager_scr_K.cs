@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager_scr_K : MonoBehaviour {
 
     public GameObject camera, swing, player;
-    private Vector3 offset, pos , moveDirection;
+    private Vector3 offset,swingPos;
     float y_angle, t;
     float force = 10f, speed = 2.5f;
     public int HP = 3;
@@ -25,8 +25,12 @@ public class GameManager_scr_K : MonoBehaviour {
 
     void Start()
     {
+        //カメラの位置
+        swingPos = swing.GetComponent<Transform>().position;
         //カメラとプレイヤーの距離
-        offset = swing.GetComponent<Transform>().position - player.GetComponent<Transform>().position;
+        offset = swingPos - player.GetComponent<Transform>().position;
+     
+
         camera.GetComponent<Camera>().orthographic = true;
         speed = 2.5f;
         force = 10;
@@ -95,7 +99,7 @@ public class GameManager_scr_K : MonoBehaviour {
         if (camState == 0)
         {
             //カメラ追尾（y軸固定）
-            swing.GetComponent<Transform>().position = new Vector3(player.transform.position.x + offset.x, offset.y, player.transform.position.z + offset.z);
+            swing.GetComponent<Transform>().position = new Vector3(player.transform.position.x + offset.x, swingPos.y, player.transform.position.z + offset.z);
         }
         //3D
         else if (camState == 1)
