@@ -43,7 +43,7 @@ public class Timer_3D_M : MonoBehaviour {
             Timer_on();
         else if (Cam_M.CamState == 0)
             Timer_cure();
-        Debug.Log(currentTimer);
+        //Debug.Log(currentTimer);
 	}
 
     void Timer_on(){
@@ -55,7 +55,7 @@ public class Timer_3D_M : MonoBehaviour {
             time1 = 0;
         }
         DrawTime();
-        Debug.Log(time1);
+        //Debug.Log(time1);
         if(currentTimer==0){
             Life_M.Damage();
             currentTimer = 3;
