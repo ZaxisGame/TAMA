@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d87c1f052d75d464d853497c4f794d34
+guid: baf743d51b0bb45f1a65a096f62e289d
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -10,36 +10,53 @@ ModelImporter:
     100008: eye
     100010: Head
     100012: Hip
-    100014: joint10
-    100016: joint7
-    100018: joint8
-    100020: joint9
-    100022: Left_Front_foot
-    100024: Left_Front_foot 1
-    100026: Left_Front_leg
-    100028: Left_Front_leg 1
-    100030: Left_Front_toebase
-    100032: Left_Front_toebase 1
-    100034: Left_Front_up_leg
-    100036: Left_Front_up_leg 1
-    100038: Left_Leg
-    100040: Left_Shoulder
-    100042: //RootNode
-    100044: pSphere1
-    100046: pSphere2
-    100048: Right_Front_foot
-    100050: Right_Front_foot 1
-    100052: Right_Front_leg
-    100054: Right_Front_leg 1
-    100056: Right_Front_toebase
-    100058: Right_Front_toebase 1
-    100060: Right_Front_up_leg
-    100062: Right_Front_up_leg 1
-    100064: Right_Leg
-    100066: Right_Shoulder
-    100068: Root
-    100070: Stomach
-    100072: Tale
+    100014: IKGP
+    100016: ikHandle3
+    100018: ikHandle4
+    100020: ikHandle5
+    100022: ikHandle6
+    100024: ikHandle7
+    100026: joint10
+    100028: joint7
+    100030: joint8
+    100032: joint9
+    100034: Left_Front_foot
+    100036: Left_Front_foot 1
+    100038: Left_Front_leg
+    100040: Left_Front_leg 1
+    100042: Left_Front_toebase
+    100044: Left_Front_toebase 1
+    100046: Left_Front_up_leg
+    100048: Left_Front_up_leg 1
+    100050: Left_Leg
+    100052: Left_Shoulder
+    100054: pSphere1
+    100056: pSphere2
+    100058: RigChest
+    100060: RigHead
+    100062: RigHips
+    100064: Right_Front_foot
+    100066: Right_Front_foot 1
+    100068: Right_Front_leg
+    100070: Right_Front_leg 1
+    100072: Right_Front_toebase
+    100074: Right_Front_toebase 1
+    100076: Right_Front_up_leg
+    100078: Right_Front_up_leg 1
+    100080: Right_Leg
+    100082: Right_Shoulder
+    100084: RigLeft_Front_Foot
+    100086: RigLeft_Lear_Foot
+    100088: RigRight_Front_Foot
+    100090: RigRight_Lear_Foot
+    100092: Rigroot
+    100094: RigStomach
+    100096: RigTale1
+    100098: RigTale2
+    100100: Root
+    100102: Stomach
+    100104: Tale
+    100106: //RootNode
     400000: Cat
     400002: cat
     400004: Chest
@@ -47,38 +64,54 @@ ModelImporter:
     400008: eye
     400010: Head
     400012: Hip
-    400014: joint10
-    400016: joint7
-    400018: joint8
-    400020: joint9
-    400022: Left_Front_foot
-    400024: Left_Front_foot 1
-    400026: Left_Front_leg
-    400028: Left_Front_leg 1
-    400030: Left_Front_toebase
-    400032: Left_Front_toebase 1
-    400034: Left_Front_up_leg
-    400036: Left_Front_up_leg 1
-    400038: Left_Leg
-    400040: Left_Shoulder
-    400042: //RootNode
-    400044: pSphere1
-    400046: pSphere2
-    400048: Right_Front_foot
-    400050: Right_Front_foot 1
-    400052: Right_Front_leg
-    400054: Right_Front_leg 1
-    400056: Right_Front_toebase
-    400058: Right_Front_toebase 1
-    400060: Right_Front_up_leg
-    400062: Right_Front_up_leg 1
-    400064: Right_Leg
-    400066: Right_Shoulder
-    400068: Root
-    400070: Stomach
-    400072: Tale
-    2100000: blinn1
-    2100002: aiStandardSurface2
+    400014: IKGP
+    400016: ikHandle3
+    400018: ikHandle4
+    400020: ikHandle5
+    400022: ikHandle6
+    400024: ikHandle7
+    400026: joint10
+    400028: joint7
+    400030: joint8
+    400032: joint9
+    400034: Left_Front_foot
+    400036: Left_Front_foot 1
+    400038: Left_Front_leg
+    400040: Left_Front_leg 1
+    400042: Left_Front_toebase
+    400044: Left_Front_toebase 1
+    400046: Left_Front_up_leg
+    400048: Left_Front_up_leg 1
+    400050: Left_Leg
+    400052: Left_Shoulder
+    400054: pSphere1
+    400056: pSphere2
+    400058: RigChest
+    400060: RigHead
+    400062: RigHips
+    400064: Right_Front_foot
+    400066: Right_Front_foot 1
+    400068: Right_Front_leg
+    400070: Right_Front_leg 1
+    400072: Right_Front_toebase
+    400074: Right_Front_toebase 1
+    400076: Right_Front_up_leg
+    400078: Right_Front_up_leg 1
+    400080: Right_Leg
+    400082: Right_Shoulder
+    400084: RigLeft_Front_Foot
+    400086: RigLeft_Lear_Foot
+    400088: RigRight_Front_Foot
+    400090: RigRight_Lear_Foot
+    400092: Rigroot
+    400094: RigStomach
+    400096: RigTale1
+    400098: RigTale2
+    400100: Root
+    400102: Stomach
+    400104: Tale
+    400106: //RootNode
+    2100000: aiStandardSurface8
     4300000: cat
     4300002: pSphere1
     4300004: pSphere2
@@ -118,16 +151,16 @@ ModelImporter:
     - serializedVersion: 16
       name: Take 001
       takeName: Take 001
-      firstFrame: 2
-      lastFrame: 29
+      firstFrame: 43
+      lastFrame: 65
       wrapMode: 0
       orientationOffsetY: 0
       level: 0
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
-      loopBlend: 1
+      loopTime: 0
+      loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
       loopBlendPositionXZ: 0
