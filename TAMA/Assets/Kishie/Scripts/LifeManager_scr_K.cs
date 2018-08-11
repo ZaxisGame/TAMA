@@ -5,15 +5,14 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LifeManager_scr_K : MonoBehaviour {
-    //private int currentLife = 3;
-    int HP = 3;
+    int HP = 3;//最大値
 
     private GameObject[] lifesObj;
     public GameObject player;
     PlayerMove_scr_K pMove;
     private GameObject gm;
     GameManager_scr_K GameManager;
-    private int currentLife = 3;
+    private int currentLife;
   
     void Start()
     {

@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4291189387961222}
   - component: {fileID: 198026000839113560}
   - component: {fileID: 199284031648262600}
+  - component: {fileID: 114706099730598194}
   m_Layer: 0
   m_Name: Fireball
   m_TagString: Untagged
@@ -218,6 +219,17 @@ MonoBehaviour:
   effectWidth: 2
   effectDistance: 32
   force: 140
+--- !u!114 &114706099730598194
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1214465478723536}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d0d0ad3e61974c2ab054b092a7e5ae6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135931088458308948
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -237,9 +249,9 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1214465478723536}
   serializedVersion: 5
-  lengthInSec: 3
+  lengthInSec: 0.5
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 3
   looping: 0
   prewarm: 0
   playOnAwake: 1

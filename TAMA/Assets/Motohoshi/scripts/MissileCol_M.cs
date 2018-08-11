@@ -6,6 +6,15 @@ public class MissileCol_M : MonoBehaviour {
     //ParticleSystem bomb;
     MissileManager_M missileManager;
     ParticleSystem bomb,afterbruner;
+    bool bombed;
+    public bool Bombed{
+        set{
+            this.bombed = value;
+        }
+        get{
+            return this.bombed;
+        }
+    } 
 	// Use this for initialization
 	void Start () {
         //bomb = this.GetComponent<ParticleSystem>();
@@ -16,19 +25,22 @@ public class MissileCol_M : MonoBehaviour {
         afterbruner = transform.FindChild("Afterburner").GetComponent<ParticleSystem>();
         afterbruner.Play();
         bomb.Stop();
+        bombed = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if(Input.GetKeyDown(KeyCode.A)){
-            bomb.Play();
-        }
+        //if(Input.GetKeyDown(KeyCode.A)){
+        //    bomb.Play();
+        //}
 	}
 
 	private void OnCollisionEnter(Collision collision)
 	{
+        GetComponent<MeshRenderer>().enabled = false;
+        GetComponent<BoxCollider>().enabled = false;
         afterbruner.Stop();
         bomb.Play();
-        Destroy(gameObject);
+        bombed = true;
 	}
 }
