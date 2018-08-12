@@ -7,7 +7,8 @@ TagManager:
   - Fire
   - Missile
   - Enemy
-  - EnemyToy
+  - EnemyTop
+  - Wall
   layers:
   - Default
   - TransparentFX

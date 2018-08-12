@@ -24,14 +24,14 @@ public class MissileManager_M : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space)){
+        if(Input.GetKeyDown(KeyCode.Alpha1)){
             
             createMissiles();
         }
-        if(Input.GetKey(KeyCode.A)){
+        if(Input.GetKey(KeyCode.Alpha2)){
             TargetLockOn(target, missiles);
         }
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.Alpha3))
         {
             Shot(missiles);
         }
