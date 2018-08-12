@@ -60,9 +60,10 @@ GameObject:
   - component: {fileID: 23240345336081894}
   - component: {fileID: 65633332561863948}
   - component: {fileID: 114016902973457378}
+  - component: {fileID: 135420145094594488}
   m_Layer: 0
   m_Name: Missile
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -188,7 +189,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1452284781862240}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -230,6 +231,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d0d0ad3e61974c2ab054b092a7e5ae6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &135420145094594488
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1452284781862240}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Radius: 3
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!135 &135931088458308948
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -238,7 +251,7 @@ SphereCollider:
   m_GameObject: {fileID: 1310630669129442}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 16
   m_Center: {x: 0, y: 0, z: 16}
@@ -312,7 +325,7 @@ ParticleSystem:
       m_PostInfinity: 2
       m_RotationOrder: 4
   moveWithTransform: 1
-  moveWithCustomTransform: {fileID: 0}
+  moveWithCustomTransform: {fileID: 4637173009100600}
   scalingMode: 1
   randomSeed: 0
   InitialModule:

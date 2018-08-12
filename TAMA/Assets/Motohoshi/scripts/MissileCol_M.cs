@@ -6,6 +6,7 @@ public class MissileCol_M : MonoBehaviour {
     //ParticleSystem bomb;
     MissileManager_M missileManager;
     ParticleSystem bomb,afterbruner;
+    GameObject bombCol,ab;
     bool bombed;
     public bool Bombed{
         set{
@@ -19,6 +20,8 @@ public class MissileCol_M : MonoBehaviour {
 	void Start () {
         bomb = transform.FindChild("Fireball").GetComponent<ParticleSystem>();
         afterbruner = transform.FindChild("Afterburner").GetComponent<ParticleSystem>();
+        ab = transform.FindChild("Afterburner").GetComponent<GameObject>();
+
         afterbruner.Play();
         bomb.Stop();
         bombed = false;
@@ -29,11 +32,16 @@ public class MissileCol_M : MonoBehaviour {
         
 	}
 
-	private void OnCollisionEnter(Collision collision)
+	private void OnTriggerEnter(Collider collision)
 	{
-        GetComponent<MeshRenderer>().enabled = false;
-        GetComponent<BoxCollider>().enabled = false;
+        //bombCol.AddComponent<SphereCollider>();
+        //bombCol.GetComponent<SphereCollider>().radius = 3;
         afterbruner.Stop();
+        GetComponent<BoxCollider>().enabled = false;
+        GetComponent<SphereCollider>().enabled = true;
+        GetComponent<MeshRenderer>().enabled = false;
+        Destroy(GetComponent<Rigidbody>());
+        Destroy(ab);
         bomb.Play();
         bombed = true;
 	}
