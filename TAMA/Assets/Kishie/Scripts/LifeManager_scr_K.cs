@@ -54,9 +54,12 @@ public class LifeManager_scr_K : MonoBehaviour {
 
     public void Damage()
     {
+        //現在の体力を減らす
         currentLife--;
+        //今の体力を引数にする
         DrawLife(currentLife);
-        pMove.Damage();
+        ///////////プレイヤーにダメージ////////////
+        StartCoroutine(pMove.Damage());
 
         if (currentLife == 0)
         {
@@ -67,7 +70,7 @@ public class LifeManager_scr_K : MonoBehaviour {
 
 
 
-    void DrawLife(int n)
+    void DrawLife(int n)//nは今の体力
     {
         for (int i = 0; i < HP; i++)
         {

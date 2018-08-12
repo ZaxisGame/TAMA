@@ -30,6 +30,7 @@ public class PlayerMove_scr_K : MonoBehaviour
         controller = GetComponent<CharacterController>();
         //アニメーター宣言２
         animator = GetComponent<Animator>();
+
     }
 
     void Update()
@@ -176,13 +177,15 @@ public class PlayerMove_scr_K : MonoBehaviour
     }
 
 
-    public void Damage()
+    public IEnumerator Damage()
     {
-        Debug.Log("ダメージ");
-        //animator.SetBool("is_Damage", true);
-        //animator.SetBool("is_Idle", true);
-    }
+       Debug.Log("ダメージ");
+        animator.SetBool("is_Damage", true);
 
+        yield return new WaitForSeconds(1.0f);
+        //animator.SetBool("is_Idle", true);
+        animator.SetBool("is_Damage", false);
+    }
 
     public void Back()
     {
@@ -199,4 +202,5 @@ public class PlayerMove_scr_K : MonoBehaviour
         Debug.Log("ゲームオーバー");
         animator.SetBool("is_Die", true);
     }
+
 }

@@ -36,23 +36,23 @@ public class PlayerManager_scr_K : MonoBehaviour {
 
 
         //ジャンプ中に頭をふむと
-        if (col.CompareTag("EnemyTop") && PlayerMove_scr_K.isJump && EnemyController_scr_K.isAlive == true)
-        {
-            Debug.Log("敵を倒した！");
-            //プレイヤーにダメージが入らないようにする
-            EnemyController_scr_K.isAlive = false;
-            //ジャンプする
-            gameObject.GetComponent<PlayerMove_scr_K>().Jump();
-            //敵を消去
-            Destroy(col.gameObject.transform.parent.gameObject);
-        }
+        //if (col.CompareTag("EnemyTop") && PlayerMove_scr_K.isJump && EnemyController_scr_K.isAlive == true)
+        //{
+        //    Debug.Log("敵を倒した！");
+        //    //プレイヤーにダメージが入らないようにする
+        //    EnemyController_scr_K.isAlive = false;
+        //    //ジャンプする
+        //    gameObject.GetComponent<PlayerMove_scr_K>().Jump();
+        //    //敵を消去
+        //    Destroy(col.gameObject.transform.parent.gameObject);
+        //}
 
-        //敵に当たると
-        else if (col.CompareTag("Enemy") && EnemyController_scr_K.isAlive == true )
-        {
-            Life_M.Damage();
-            Destroy(col.gameObject);   
+        ////敵に当たると
+        //else if (col.CompareTag("Enemy") && EnemyController_scr_K.isAlive == true )
+        //{
+        //    Life_M.Damage();
+        //    Destroy(col.gameObject);   
            
-        }
+        //}
     }
 }
