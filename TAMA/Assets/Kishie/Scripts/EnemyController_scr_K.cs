@@ -12,8 +12,7 @@ public class EnemyController_scr_K : MonoBehaviour
 
     private float enemySpeed;
     public static float dis;
-    public static bool isAlive = true;//これ消す予定
-    public bool is_Alive = true;
+    public bool isAlive = true;
     private GameObject player;
     Vector3 Epos, Ppos;
 

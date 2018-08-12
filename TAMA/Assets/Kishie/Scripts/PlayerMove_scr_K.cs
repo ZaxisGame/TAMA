@@ -11,6 +11,7 @@ public class PlayerMove_scr_K : MonoBehaviour
     private float speed , jumpSpeed , gravity , dz;
     public static bool is2D = true;
     public static bool isJump = false;
+    public static bool isBack = false;
     private Vector3 moveDirection2D , moveDirection3D , pos , mousePos;
     CharacterController controller;
     //アニメーター宣言１
@@ -73,8 +74,10 @@ public class PlayerMove_scr_K : MonoBehaviour
 
         if (controller.isGrounded)
         {
+            //ジャンプしていない
             isJump = false;
             animator.SetBool("is_Jump", false);
+            animator.SetBool("is_BackJump", false);
             animator.SetBool("is_Idle", true);
             moveDirection2D = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
             moveDirection2D *= speed;
@@ -96,12 +99,14 @@ public class PlayerMove_scr_K : MonoBehaviour
             animator.SetBool("is_Walk", false);
             animator.SetBool("is_Back", false);
             animator.SetBool("is_Idle", true);
+            isBack = false;
         }
         else if (moveDirection2D.x < 0)//後退
         {
             Back();
         }
         else{//前進
+            isBack = false;
             animator.SetBool("is_Back", false);
             animator.SetBool("is_Walk", true);
            
@@ -118,6 +123,7 @@ public class PlayerMove_scr_K : MonoBehaviour
             //ジャンプしていない
             isJump = false;
             animator.SetBool("is_Jump", false);
+            animator.SetBool("is_BackJump", false);
             animator.SetBool("is_Idle", true);
 
             moveDirection3D = new Vector3(Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal") * -1);
@@ -142,9 +148,10 @@ public class PlayerMove_scr_K : MonoBehaviour
         if (moveDirection3D.x == 0 && moveDirection3D.z == 0)
         {
             //止まっている時
+            isBack = false;
             animator.SetBool("is_Walk", false);
             animator.SetBool("is_Back", false);
-            animator.SetBool("is_Idle", true);
+            //animator.SetBool("is_Idle", true);
         }
 
         else if (moveDirection3D.x < 0 )
@@ -155,6 +162,7 @@ public class PlayerMove_scr_K : MonoBehaviour
         else if(moveDirection3D.x > 0 || moveDirection3D.z > 0 || moveDirection3D.z < 0)
         {
             //前進
+            isBack = false;
             animator.SetBool("is_Back", false);
             animator.SetBool("is_Walk", true);
         }
@@ -168,9 +176,12 @@ public class PlayerMove_scr_K : MonoBehaviour
         Debug.Log("ジャンプ");
         isJump = true;
 
-        if (isJump)
+        if (isJump && isBack == false)
         {
             animator.SetBool("is_Jump", true);
+        }
+        else if(isJump && isBack){
+            animator.SetBool("is_BackJump", true);
         }
         moveDirection2D.y = jumpSpeed;
         moveDirection3D.y = jumpSpeed;
@@ -182,19 +193,22 @@ public class PlayerMove_scr_K : MonoBehaviour
        Debug.Log("ダメージ");
         animator.SetBool("is_Damage", true);
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.25f);
         //animator.SetBool("is_Idle", true);
         animator.SetBool("is_Damage", false);
     }
 
     public void Back()
     {
+        isBack = true;
+    
         Debug.Log("後退");
         moveDirection2D.x *= 0.5f;
         moveDirection3D.x *= 0.5f;
         moveDirection3D.z *= 0.5f;
         animator.SetBool("is_Back", true);
     }
+
 
 
     public void Die()

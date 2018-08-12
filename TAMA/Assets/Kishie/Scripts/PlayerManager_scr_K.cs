@@ -10,7 +10,7 @@ public class PlayerManager_scr_K : MonoBehaviour {
     //ライフマネージャー取得
     private GameObject canbas;
     LifeManager_scr_K Life_M;
-    //EnemyController_scr_K enemyController = null;
+    EnemyController_scr_K enemyController;
 	void Start () 
     {
         //ゲームマネージャー取得
@@ -28,31 +28,30 @@ public class PlayerManager_scr_K : MonoBehaviour {
 
     private void OnTriggerEnter(Collider col)
     {
-        //当たった敵のスクリプトを取得
-        //enemyController = col.gameObject.GetComponent<EnemyController_scr_K>();
 
-        //当たった敵は生きている
-        EnemyController_scr_K.isAlive = true;
+       // ジャンプ中に頭をふむと
+        if (col.CompareTag("EnemyTop") && PlayerMove_scr_K.isJump)
+        {
+            //当たった敵のスクリプトを取得
+            enemyController = col.gameObject.GetComponent<EnemyController_scr_K>();
+            //プレイヤーにダメージが入らないようにする
+            enemyController.isAlive = false;
+                           
+            Debug.Log("敵を倒した！");
 
+            //ジャンプする
+            gameObject.GetComponent<PlayerMove_scr_K>().Jump();
+            //敵を消去
+            Destroy(col.gameObject.transform.parent.gameObject);
+        }
 
-        //ジャンプ中に頭をふむと
-        //if (col.CompareTag("EnemyTop") && PlayerMove_scr_K.isJump && EnemyController_scr_K.isAlive == true)
-        //{
-        //    Debug.Log("敵を倒した！");
-        //    //プレイヤーにダメージが入らないようにする
-        //    EnemyController_scr_K.isAlive = false;
-        //    //ジャンプする
-        //    gameObject.GetComponent<PlayerMove_scr_K>().Jump();
-        //    //敵を消去
-        //    Destroy(col.gameObject.transform.parent.gameObject);
-        //}
-
-        ////敵に当たると
-        //else if (col.CompareTag("Enemy") && EnemyController_scr_K.isAlive == true )
-        //{
-        //    Life_M.Damage();
-        //    Destroy(col.gameObject);   
+        //敵に当たると
+        else if (col.CompareTag("Enemy") && col.gameObject.GetComponent<EnemyController_scr_K>().isAlive )
+        {
+            
+            Life_M.Damage();
+            Destroy(col.gameObject);   
            
-        //}
+        }
     }
 }
