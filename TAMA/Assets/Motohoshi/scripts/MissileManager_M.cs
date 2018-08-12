@@ -19,21 +19,11 @@ public class MissileManager_M : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         missiles = new GameObject[8];
-        //To = this.transform;
-        //From = target.transform;
-
-        //bomb.Stop();
 	}
 
     // Update is called once per frame
     void Update()
     {
-        
-        //TargetLockOn(target);
-        //Vector3 ToTargetVec = target.transform.position - transform.position;
-        //Quaternion ToTargetAngle = Quaternion.LookRotation(ToTargetVec);
-        //Quaternion.Slerp(transform.rotation, ToTargetAngle, Time.deltaTime * 10);
-
         if(Input.GetKeyDown(KeyCode.Space)){
             
             createMissiles();
@@ -57,15 +47,6 @@ public class MissileManager_M : MonoBehaviour {
         }
     }
 
-	//private void OnCollisionEnter(Collision collision)
-	//{
- //       //if(collision.gameObject.tag=="Missile"){
- //       //    Destroy(collision.gameObject);
- //       //}
- //       Debug.Log(collision.gameObject.name);
- //       //bomb.Play();
- //       Destroy(gameObject);
-	//}
     void Shot(GameObject[] bullet){
         for (int i = 0; i < 8;i++){
             bullet[i].GetComponent<Rigidbody>().velocity = bullet[i].transform.forward * shotSpeed;

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Fire
   - Missile
+  - Enemy
+  - EnemyToy
   layers:
   - Default
   - TransparentFX
