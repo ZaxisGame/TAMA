@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class GameManager_scr_K : MonoBehaviour {
 
-    public GameObject camera, swing, player;
-    private Vector3 offset,swingPos;
+    public GameObject swing, player;
+    public GameObject cam;
+    public float TAMAspeed = 6.0F;
+    public float TAMAJumpSpeed = 8.0F;
+    public float TAMAGravity = 20.0F;
+    public int TAMA_HP = 3;
+    public float camSpeed = 2.5f;
+    public float enemyDefaultSpeed = 3f;
+
     float y_angle, t;
-    float force = 10f, speed = 2.5f;
-    public int HP = 3;
+    private Vector3 offset, swingPos;
     private int state;
     private int camState;//(0 : 2D , 1 : 3D , -1 : 回転中)
     public int CamState
@@ -27,43 +33,41 @@ public class GameManager_scr_K : MonoBehaviour {
     {
         //カメラの位置
         swingPos = swing.GetComponent<Transform>().position;
-        //カメラとプレイヤーの距離
+        //カメラとプレイヤーの距離を取得
         offset = swingPos - player.GetComponent<Transform>().position;
-     
-
-        camera.GetComponent<Camera>().orthographic = true;
-        speed = 2.5f;
-        force = 10;
+        //カメラを２Dにしておく
+        cam.GetComponent<Camera>().orthographic = true;
     }
 
     void Update()
     {
         CameraManager();
-
     }
 
     void CameraManager(){
         //ジャンプ中でない時にスペースキーを押すと
         if (PlayerMove_scr_K.isJump == false && Input.GetKeyDown(KeyCode.Return))
         {
-            camState = -1;
-            if (camera.GetComponent<Camera>().orthographic && state != 1)
+            camState = -1;//回転中
+
+            if (cam.GetComponent<Camera>().orthographic && state != 1)
             {
-                camera.GetComponent<Camera>().orthographic = false;
+                cam.GetComponent<Camera>().orthographic = false;
                 state = 1;
             }
-            else if (!camera.GetComponent<Camera>().orthographic && state != 2)
+            else if (!cam.GetComponent<Camera>().orthographic && state != 2)
             {
                 state = 2;
             }
         }
+
         if (state == 1)
         {
             t = 0;
             if (y_angle < 90f)
             {
                 t += Time.deltaTime;
-                y_angle += Mathf.Rad2Deg * Time.deltaTime * speed;
+                y_angle += Mathf.Rad2Deg * Time.deltaTime * camSpeed;
                 var rot = Quaternion.Euler(0, y_angle, 0);
                 swing.transform.rotation = rot;
             }
@@ -80,15 +84,14 @@ public class GameManager_scr_K : MonoBehaviour {
         {
             if (y_angle > 0f)
             {
-                //Debug.Log (Time.time);
-                y_angle -= (Mathf.Rad2Deg * Time.deltaTime * speed);
+                y_angle -= (Mathf.Rad2Deg * Time.deltaTime * camSpeed);
                 var rot = Quaternion.Euler(0, y_angle, 0);
                 swing.transform.rotation = rot;
             }
             else
             {
                 swing.transform.rotation = Quaternion.Euler(0, 0, 0);
-                camera.GetComponent<Camera>().orthographic = true;
+                cam.GetComponent<Camera>().orthographic = true;
                 camState = 0;//2D
                 state = 0;
             }

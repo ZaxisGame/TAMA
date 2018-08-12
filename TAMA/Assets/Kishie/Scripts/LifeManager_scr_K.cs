@@ -5,25 +5,32 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LifeManager_scr_K : MonoBehaviour {
-    //private int currentLife = 3;
-    int HP = 3;
+    
+    //ゲームマネージャー取得
+    private GameObject gamemanager;
+    GameManager_scr_K Game_M;
 
+    private int HP;
     private GameObject[] lifesObj;
-    public GameObject player;
+    private GameObject player;
     PlayerMove_scr_K pMove;
-    private GameObject gm;
-    GameManager_scr_K GameManager;
-    private int currentLife = 3;
+
+
+    private int currentLife;
   
     void Start()
     {
-        gm = GameObject.Find("GameManeger");
-        GameManager = gm.GetComponent<GameManager_scr_K>();
+        //ゲームマネージャー取得
+        gamemanager = GameObject.Find("GameManager");
+        Game_M = gamemanager.GetComponent<GameManager_scr_K>();
+        player = Game_M.player;
+        HP = Game_M.TAMA_HP;
+        currentLife = HP;//最初の体力はmax
 
-        HP = GameManager.HP;
-        currentLife = HP;
         pMove = player.GetComponent<PlayerMove_scr_K>();
+
         lifesObj = new GameObject[HP];
+
         for (int i = 0; i < HP; i++)
         {
             lifesObj[i] = new GameObject("cat" + i);
@@ -36,7 +43,7 @@ public class LifeManager_scr_K : MonoBehaviour {
         }
     }
 
-    // Update is called once per frame
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.B))
@@ -50,6 +57,7 @@ public class LifeManager_scr_K : MonoBehaviour {
         currentLife--;
         DrawLife(currentLife);
         pMove.Damage();
+
         if (currentLife == 0)
         {
             pMove.Die();

@@ -4,33 +4,36 @@ using UnityEngine;
 
 public class EnemyController_scr_K : MonoBehaviour
 {
+    private GameObject gamemanager;
+    GameManager_scr_K Game_M;
 
     public int state;
-    public float enemySpeed = 1f;
-    public GameObject player;
-    public static float dis;
-    Vector3 Epos, Ppos;
-    public static bool isAlive = true;
     public float manbouDis = 15f;
+
+    private float enemySpeed;
+    public static float dis;
+    public static bool isAlive = true;//これ消す予定
+    public bool is_Alive = true;
+    private GameObject player;
+    Vector3 Epos, Ppos;
+
 
 
     void Start()
     {
+        //ゲームマネージャー取得
+        gamemanager = GameObject.Find("GameManager");
+        Game_M = gamemanager.GetComponent<GameManager_scr_K>();
+        enemySpeed = Game_M.enemyDefaultSpeed;
+        player = Game_M.player;
+                           
         Epos = this.transform.position;//初期座標の取得
-
-
     }
 
 
     void Update()
     {
-
-
-
-
         Move();
-
-
     }
 
     public void Move()

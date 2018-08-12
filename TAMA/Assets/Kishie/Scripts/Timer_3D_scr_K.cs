@@ -5,22 +5,28 @@ using UnityEngine.UI;
 
 public class Timer_3D_scr_K : MonoBehaviour
 {
+
+    private GameObject gamemanager;
+    GameManager_scr_K Game_M;
+
+    LifeManager_scr_K Life_M;
+
     int FullTimer = 10;
     int currentTimer = 10;
     float time1, time0;
 
-    GameManager_scr_K Cam_M;
-    LifeManager_scr_K Life_M;
     private GameObject[] Timer3D;
-    private GameObject Maincamera, gm;
+    private GameObject MainCamera;
     bool is3D;
 
-    // Use this for initialization
+
     void Start()
     {
-        Maincamera = GameObject.Find("Main Camera");
-        gm = GameObject.Find("GameManeger");
-        Cam_M = gm.GetComponent<GameManager_scr_K>();
+        //ゲームマネージャー取得
+        gamemanager = GameObject.Find("GameManager");
+        Game_M = gamemanager.GetComponent<GameManager_scr_K>();
+
+        MainCamera = GameObject.Find("Main Camera");
         Life_M = GetComponent<LifeManager_scr_K>();
         //is3D = Maincamera.GetComponent<Camera>().orthographic;
         Timer3D = new GameObject[FullTimer];
@@ -42,9 +48,9 @@ public class Timer_3D_scr_K : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Cam_M.CamState == 1)
+        if (Game_M.CamState == 1)
             Timer_on();
-        else if (Cam_M.CamState == 0)
+        else if (Game_M.CamState == 0)
             Timer_cure();
     }
 
