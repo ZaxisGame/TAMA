@@ -12,6 +12,7 @@ public class PlayerMove_scr_K : MonoBehaviour
     public static bool is2D = true;
     public static bool isJump = false;
     public static bool isBack = false;
+    public static bool isStop = false;
     private Vector3 moveDirection2D , moveDirection3D , pos , mousePos;
     CharacterController controller;
     //アニメーター宣言１
@@ -32,27 +33,34 @@ public class PlayerMove_scr_K : MonoBehaviour
         //アニメーター宣言２
         animator = GetComponent<Animator>();
 
+        isStop = false;
+
     }
 
     void Update()
     {
-        pos = this.transform.position;
+       
+            pos = this.transform.position;
 
-        if (Game_M.CamState == 0)//camstate=0に
-        {
-            Walk_2D();
-        }
+            if (Game_M.CamState == 0)//camstate=0に
+            {
+            
+           
+                Walk_2D();
+            }
 
-        else if(Game_M.CamState == 1)
-        {
-            Walk_3D();
-        }
+            else if (Game_M.CamState == 1)
+            {
+                Walk_3D();
+            }
+
     }
 
 
 
 
     public void Walk_2D(){
+      
 
         //z軸修正
         dz = this.transform.position.z;
@@ -74,45 +82,53 @@ public class PlayerMove_scr_K : MonoBehaviour
 
         if (controller.isGrounded)
         {
-            //ジャンプしていない
-            isJump = false;
-            animator.SetBool("is_Jump", false);
-            animator.SetBool("is_BackJump", false);
-            animator.SetBool("is_Idle", true);
-            moveDirection2D = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
-            moveDirection2D *= speed;
+                //ジャンプしていない
+                isJump = false;
+                animator.SetBool("is_Jump", false);
+                animator.SetBool("is_BackJump", false);
+                animator.SetBool("is_Idle", true);
+                moveDirection2D = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+                moveDirection2D *= speed;
 
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Jump();
-            }
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    Jump();
+                }
         }
         else
-        {//空中でもx軸移動可能にする
-            moveDirection2D.x = Input.GetAxis("Horizontal");
-            moveDirection2D.z = 0;
-            moveDirection2D.x *= speed;
+        {     //空中でもx軸移動可能にする
+                moveDirection2D.x = Input.GetAxis("Horizontal");
+                moveDirection2D.z = 0;
+                moveDirection2D.x *= speed;
         }
-        moveDirection2D.y -= gravity * Time.deltaTime;
-
-        if(moveDirection2D.x == 0){//止まっている時
+      
+        //アニメーション
+        if(moveDirection2D.x == 0)
+        {   //止まっている時
             animator.SetBool("is_Walk", false);
             animator.SetBool("is_Back", false);
             animator.SetBool("is_Idle", true);
             isBack = false;
         }
-        else if (moveDirection2D.x < 0)//後退
-        {
+        else if (moveDirection2D.x < 0 && isStop == false)
+        {   //後退
             Back();
         }
-        else{//前進
+        else if(moveDirection2D.x > 0 && isStop == false)
+        {   //前進
             isBack = false;
             animator.SetBool("is_Back", false);
             animator.SetBool("is_Walk", true);
-           
         }
 
+        if(isStop){
+            moveDirection2D.x = 0;
+            moveDirection2D.z = 0;
+        }
+
+        moveDirection2D.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection2D * Time.deltaTime);
+
     }
 
 
@@ -142,8 +158,7 @@ public class PlayerMove_scr_K : MonoBehaviour
             moveDirection3D.x *= speed;
             moveDirection3D.z *= speed;
         }
-        //重力換算
-        moveDirection3D.y -= gravity * Time.deltaTime;
+       
 
         if (moveDirection3D.x == 0 && moveDirection3D.z == 0)
         {
@@ -166,7 +181,14 @@ public class PlayerMove_scr_K : MonoBehaviour
             animator.SetBool("is_Back", false);
             animator.SetBool("is_Walk", true);
         }
+        if (isStop)
+        {
+            moveDirection3D.x = 0;
+            moveDirection3D.z = 0;
+        }
 
+        //重力換算
+        moveDirection3D.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection3D * Time.deltaTime);
     }
 
@@ -190,12 +212,15 @@ public class PlayerMove_scr_K : MonoBehaviour
 
     public IEnumerator Damage()
     {
-       Debug.Log("ダメージ");
+        isStop = true;
+        Debug.Log("ダメージ");
         animator.SetBool("is_Damage", true);
 
         yield return new WaitForSeconds(0.25f);
         //animator.SetBool("is_Idle", true);
         animator.SetBool("is_Damage", false);
+        yield return new WaitForSeconds(0.5f);
+        isStop = false;
     }
 
     public void Back()
@@ -215,6 +240,7 @@ public class PlayerMove_scr_K : MonoBehaviour
     {
         Debug.Log("ゲームオーバー");
         animator.SetBool("is_Die", true);
+        isStop = true;
     }
 
 }

@@ -33,7 +33,7 @@ public class PlayerManager_scr_K : MonoBehaviour {
         if (col.CompareTag("EnemyTop") && PlayerMove_scr_K.isJump)
         {
             //当たった敵のスクリプトを取得
-            enemyController = col.gameObject.GetComponent<EnemyController_scr_K>();
+            enemyController = col.gameObject.transform.parent.gameObject.GetComponent<EnemyController_scr_K>();
             //プレイヤーにダメージが入らないようにする
             enemyController.isAlive = false;
                            
