@@ -13,6 +13,7 @@ public class PlayerMove_scr_K : MonoBehaviour
     public static bool isJump = false;
     public static bool isBack = false;
     public static bool isStop = false;
+    public bool force_z = true;
     private Vector3 jumpSpeed;
 
     //public static bool isDrive = false;
@@ -63,24 +64,31 @@ public class PlayerMove_scr_K : MonoBehaviour
 
 
     public void Walk_2D(){
-      
+
 
         //z軸修正
-        dz = this.transform.position.z;
-        if(dz > 0f){
-            dz -= 0.1f;
-            if(dz <= 0f){
-                dz = 0f;
+        if (force_z)
+        {
+            dz = this.transform.position.z;
+            if (dz > 0f)
+            {
+                dz -= 0.1f;
+                if (dz <= 0f)
+                {
+                    dz = 0f;
+                }
             }
-        }
-        else if(dz < 0f){
-            dz += 0.1f;
-            if(dz >= 0f){
+            else if (dz < 0f)
+            {
+                dz += 0.1f;
+                if (dz >= 0f)
+                {
 
-                dz = 0f;
+                    dz = 0f;
+                }
             }
+            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, dz);
         }
-        this.transform.position = new Vector3(this.transform.position.x , this.transform.position.y , dz);
 
 
         if (controller.isGrounded)

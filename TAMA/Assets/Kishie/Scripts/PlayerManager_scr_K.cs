@@ -64,5 +64,24 @@ public class PlayerManager_scr_K : MonoBehaviour {
             Destroy(col.gameObject);   
            
         }
+
+
+        if (col.CompareTag("Wall"))
+        {
+            Debug.Log("enter");
+            playerMove.force_z = false;
+        }
+
+
+    }
+
+   
+    private void  OnTriggerExit(Collider col)
+    {
+        if (col.CompareTag("Wall"))
+        {
+            Debug.Log("exit");
+            playerMove.force_z = true;
+        }
     }
 }
