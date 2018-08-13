@@ -54,6 +54,10 @@ public class MissileManager_M : MonoBehaviour {
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * shotSpeed;
     }
 
+    public void ShotStop(GameObject bullet){
+        bullet.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+    }
+
     void createMissiles(){
 
         for (int i = 0; i < 8; i++)
