@@ -10,7 +10,10 @@ public class PlayerManager_scr_K : MonoBehaviour {
     //ライフマネージャー取得
     private GameObject canbas;
     LifeManager_scr_K Life_M;
+
     EnemyController_scr_K enemyController;
+
+    PlayerMove_scr_K playerMove;
 	void Start () 
     {
         //ゲームマネージャー取得
@@ -19,6 +22,8 @@ public class PlayerManager_scr_K : MonoBehaviour {
          //ライフマネージャー取得
         canbas = GameObject.Find("Canvas");
         Life_M = canbas.GetComponent<LifeManager_scr_K>();
+
+        playerMove = gameObject.GetComponent<PlayerMove_scr_K>();
 
     }
 
@@ -37,10 +42,13 @@ public class PlayerManager_scr_K : MonoBehaviour {
             //プレイヤーにダメージが入らないようにする
             enemyController.isAlive = false;
                            
-            Debug.Log("敵を倒した！");
+           
+            playerMove.Kill();
 
             //ジャンプする
-            gameObject.GetComponent<PlayerMove_scr_K>().Jump();
+            playerMove.Jump();
+
+
             //敵を消去
             Destroy(col.gameObject.transform.parent.gameObject);
         }

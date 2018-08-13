@@ -42,6 +42,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1354908244238954
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4982706866223622}
+  - component: {fileID: 108905992180151540}
+  m_Layer: 0
+  m_Name: EyeLight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1447975721391846
 GameObject:
   m_ObjectHideFlags: 1
@@ -70,7 +86,7 @@ GameObject:
   - component: {fileID: 33211165942218592}
   - component: {fileID: 23507001737419092}
   m_Layer: 0
-  m_Name: pSphere1
+  m_Name: Eye
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,7 +193,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1851685744326850}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 7.05, y: 11, z: 0}
+  m_LocalPosition: {x: 7.7, y: 11, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4959607671964650}
@@ -262,7 +278,8 @@ Transform:
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: -0.0009927555, z: 0.016166238}
   m_LocalScale: {x: 0.09474539, y: 0.09474539, z: 0.09474539}
-  m_Children: []
+  m_Children:
+  - {fileID: 4982706866223622}
   m_Father: {fileID: 4959607671964650}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -282,6 +299,19 @@ Transform:
   m_Father: {fileID: 4268687800908944}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!4 &4982706866223622
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1354908244238954}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.10554573, y: 0.10554605, z: 0.10554573}
+  m_Children: []
+  m_Father: {fileID: 4955130482067774}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &23273667670822762
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -332,7 +362,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 027e8f7fddae44cfb98ec2abc25f6d2f, type: 2}
+  - {fileID: 2100000, guid: 5005c220e5213412b97e4479cef7b020, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -402,7 +432,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: 027e8f7fddae44cfb98ec2abc25f6d2f, type: 2}
+  - {fileID: 2100000, guid: 48f3f6544f5014a21b8db009c907bbea, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -460,8 +490,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.7, y: 0.100000024, z: 1}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 1.2199876, y: 0.100000024, z: 0.695179}
+  m_Center: {x: -0.06275737, y: 0.5, z: 0.026896}
 --- !u!65 &65458617001330884
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -474,6 +504,42 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!108 &108905992180151540
+Light:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1354908244238954}
+  m_Enabled: 1
+  serializedVersion: 8
+  m_Type: 2
+  m_Color: {r: 1, g: 0, b: 0.315, a: 1}
+  m_Intensity: 20
+  m_Range: 2
+  m_SpotAngle: 30
+  m_CookieSize: 10
+  m_Shadows:
+    m_Type: 0
+    m_Resolution: -1
+    m_CustomResolution: -1
+    m_Strength: 1
+    m_Bias: 0.05
+    m_NormalBias: 0.4
+    m_NearPlane: 0.2
+  m_Cookie: {fileID: 0}
+  m_DrawHalo: 0
+  m_Flare: {fileID: 0}
+  m_RenderMode: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_Lightmapping: 4
+  m_AreaSize: {x: 1, y: 1}
+  m_BounceIntensity: 1
+  m_ColorTemperature: 6570
+  m_UseColorTemperature: 0
+  m_ShadowRadius: 0
+  m_ShadowAngle: 0
 --- !u!114 &114939502208222930
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -485,6 +551,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b4ae057443a3455885a9d4f205bc30a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  state: 1
+  state: 2
   manbouDis: 15
   isAlive: 1

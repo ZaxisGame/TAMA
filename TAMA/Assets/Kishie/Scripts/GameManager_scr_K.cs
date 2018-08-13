@@ -7,7 +7,7 @@ public class GameManager_scr_K : MonoBehaviour {
     public GameObject swing, player;
     public GameObject cam;
     public float TAMAspeed = 6.0F;
-    public float TAMAJumpSpeed = 8.0F;
+    public Vector3 TAMAJumpSpeed = new Vector3(1, 8, 1);
     public float TAMAGravity = 20.0F;
     public int TAMA_HP = 3;
     public float camSpeed = 2.5f;
