@@ -54,5 +54,8 @@ public class PlayerManager_M: MonoBehaviour {
             Destroy(col.gameObject);
 
         }
+        else if(col.CompareTag("Missile")){
+            Life_M.Damage();
+        }
     }
 }
