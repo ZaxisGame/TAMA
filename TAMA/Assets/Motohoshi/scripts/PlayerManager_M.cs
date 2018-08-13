@@ -2,23 +2,32 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerManager_M: MonoBehaviour {
+public class PlayerManager_M : MonoBehaviour
+{
 
     //ゲームマネージャー取得
     private GameObject gamemanager;
-    GameManager_scr_K Game_M;
+    GameManager_M Game_M;
     //ライフマネージャー取得
     private GameObject canbas;
     LifeManager_scr_K Life_M;
+    //
+    private GameObject tama;
+    PlayerMove_M playerMove;
+
     EnemyController_scr_K enemyController;
+
     void Start()
     {
         //ゲームマネージャー取得
         gamemanager = GameObject.Find("GameManager");
-        Game_M = gamemanager.GetComponent<GameManager_scr_K>();
+        Game_M = gamemanager.GetComponent<GameManager_M>();
         //ライフマネージャー取得
         canbas = GameObject.Find("Canvas");
         Life_M = canbas.GetComponent<LifeManager_scr_K>();
+
+        tama = GameObject.Find("TAMA");
+        playerMove = tama.GetComponent<PlayerMove_M>();
 
     }
 
@@ -34,14 +43,17 @@ public class PlayerManager_M: MonoBehaviour {
         if (col.CompareTag("EnemyTop") && PlayerMove_scr_K.isJump)
         {
             //当たった敵のスクリプトを取得
-            enemyController = col.gameObject.GetComponent<EnemyController_scr_K>();
+            enemyController = col.gameObject.transform.parent.gameObject.GetComponent<EnemyController_scr_K>();
             //プレイヤーにダメージが入らないようにする
             enemyController.isAlive = false;
 
-            Debug.Log("敵を倒した！");
+
+            playerMove.Kill();
 
             //ジャンプする
-            gameObject.GetComponent<PlayerMove_scr_K>().Jump();
+            playerMove.Jump();
+
+
             //敵を消去
             Destroy(col.gameObject.transform.parent.gameObject);
         }
@@ -53,9 +65,6 @@ public class PlayerManager_M: MonoBehaviour {
             Life_M.Damage();
             Destroy(col.gameObject);
 
-        }
-        else if(col.CompareTag("Missile")){
-            Life_M.Damage();
         }
     }
 }

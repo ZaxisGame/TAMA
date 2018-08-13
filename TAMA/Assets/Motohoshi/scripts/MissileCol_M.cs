@@ -22,7 +22,6 @@ public class MissileCol_M : MonoBehaviour {
         afterbruner = transform.FindChild("Afterburner").GetComponent<ParticleSystem>();
         ab = transform.GetChild(2).gameObject;
         tentacle = transform.GetChild(0).gameObject;
-        Debug.Log(tentacle);
         afterbruner.Play();
         bomb.Stop();
         bombed = false;
