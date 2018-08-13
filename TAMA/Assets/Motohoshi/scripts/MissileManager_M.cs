@@ -8,7 +8,7 @@ public class MissileManager_M : MonoBehaviour {
     public GameObject target;
     public GameObject missile;
     private GameObject[] missiles;
-    public GameObject bomb;
+
     //Transform To;
     //Transform From;
     //Quaternion rotation;
@@ -29,28 +29,29 @@ public class MissileManager_M : MonoBehaviour {
             createMissiles();
         }
         if(Input.GetKey(KeyCode.Alpha2)){
-            TargetLockOn(target, missiles);
+            for (int i = 0; i < 8; i++)
+            {
+                TargetLockOn(target, missiles[i]);
+            }
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            Shot(missiles);
+            for (int i = 0; i < 8;i++){
+                Shot(missiles[i]);
+            }
+
         }
 
 	}
 
-    void TargetLockOn(GameObject tar, GameObject[] missile){
-        //this.transform.LookAt(unko.transform);
-        for (int i = 0; i < 8; i++)
-        {
-            Vector3 targetvec = tar.transform.position - missile[i].transform.position;
-            missile[i].transform.rotation = Quaternion.Slerp(missile[i].transform.rotation, Quaternion.LookRotation(targetvec), Time.deltaTime * rotateSpeed);
-        }
+    public void TargetLockOn(GameObject tar, GameObject bullet){        
+        Vector3 targetvec = tar.transform.position - bullet.transform.position;
+        bullet.transform.rotation = Quaternion.Slerp(bullet.transform.rotation, Quaternion.LookRotation(targetvec), Time.deltaTime * rotateSpeed);
+        
     }
 
-    void Shot(GameObject[] bullet){
-        for (int i = 0; i < 8;i++){
-            bullet[i].GetComponent<Rigidbody>().velocity = bullet[i].transform.forward * shotSpeed;
-        }
+    public void Shot(GameObject bullet){
+        bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * shotSpeed;
     }
 
     void createMissiles(){
@@ -77,11 +78,8 @@ public class MissileManager_M : MonoBehaviour {
                 case 7:
                     missiles[i] = Instantiate(missile, new Vector3(20, -5, 0), Quaternion.Euler(0, -90, 0)); break;
             }
-            //missiles[i] = Instantiate(missile, new Vector3(-20,10-i*2.5f,0), Quaternion.identity);
             missiles[i].name = "missile" + (i + 1);
             missiles[i].tag = "Missile";
-            missiles[i].AddComponent<Rigidbody>();
-            missiles[i].GetComponent<Rigidbody>().useGravity = false;
         }
     }
 }

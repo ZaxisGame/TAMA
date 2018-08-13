@@ -202,7 +202,7 @@ public class PlayerMove_scr_K : MonoBehaviour
     {
         isBack = true;
     
-        Debug.Log("後退");
+        //Debug.Log("後退");
         moveDirection2D.x *= 0.5f;
         moveDirection3D.x *= 0.5f;
         moveDirection3D.z *= 0.5f;
