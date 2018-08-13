@@ -251,7 +251,7 @@ public class PlayerMove_scr_K : MonoBehaviour
     {
         isBack = true;
     
-        //Debug.Log("後退");
+        Debug.Log("後退");
         moveDirection2D.x *= 0.5f;
         moveDirection3D.x *= 0.5f;
         moveDirection3D.z *= 0.5f;
@@ -271,8 +271,6 @@ public class PlayerMove_scr_K : MonoBehaviour
     public void Kill(){
         Debug.Log("敵を倒した！");
         animator.Play("TAMA_jump", 0, 0.0f);
-
-       
     }
 
 }
