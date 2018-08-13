@@ -35,7 +35,7 @@ public class MissileBB_M : MonoBehaviour {
         yield return new WaitForSeconds(0.5f);
         MissileManager.ShotStop(gameObject);
         shotState++;
-        yield return new WaitForSeconds(2.0f);
+        yield return new WaitForSeconds(0.5f);
         shotState++;
         MissileManager.Shot(gameObject);
     }

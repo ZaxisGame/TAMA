@@ -8,12 +8,12 @@ public class LifeManager_scr_K : MonoBehaviour {
     
     //ゲームマネージャー取得
     private GameObject gamemanager;
-    GameManager_scr_K Game_M;
+    GameManager_M Game_M;
 
     private int HP;
     private GameObject[] lifesObj;
     private GameObject player;
-    PlayerMove_scr_K pMove;
+    PlayerMove_M pMove;
 
 
     private int currentLife;
@@ -22,12 +22,12 @@ public class LifeManager_scr_K : MonoBehaviour {
     {
         //ゲームマネージャー取得
         gamemanager = GameObject.Find("GameManager");
-        Game_M = gamemanager.GetComponent<GameManager_scr_K>();
+        Game_M = gamemanager.GetComponent<GameManager_M>();
         player = Game_M.player;
         HP = Game_M.TAMA_HP;
         currentLife = HP;//最初の体力はmax
 
-        pMove = player.GetComponent<PlayerMove_scr_K>();
+        pMove = player.GetComponent<PlayerMove_M>();
 
         lifesObj = new GameObject[HP];
 

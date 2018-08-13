@@ -7,7 +7,7 @@ public class Timer_3D_scr_K : MonoBehaviour
 {
 
     private GameObject gamemanager;
-    GameManager_scr_K Game_M;
+    GameManager_M Game_M;
 
     LifeManager_scr_K Life_M;
 
@@ -24,7 +24,7 @@ public class Timer_3D_scr_K : MonoBehaviour
     {
         //ゲームマネージャー取得
         gamemanager = GameObject.Find("GameManager");
-        Game_M = gamemanager.GetComponent<GameManager_scr_K>();
+        Game_M = gamemanager.GetComponent<GameManager_M>();
 
         MainCamera = GameObject.Find("Main Camera");
         Life_M = GetComponent<LifeManager_scr_K>();
