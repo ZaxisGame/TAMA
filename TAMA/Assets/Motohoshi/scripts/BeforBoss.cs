@@ -7,31 +7,32 @@ public class BeforBoss : MonoBehaviour {
     public GameObject player;
     public GameObject missile;
     GameObject[] missiles;
-    MissileManager_M MissileManager;
+
     GameObject gm;
-    bool[] shooted;
+    int[] shotState;
 	// Use this for initialization
 	void Start () {
-        shooted = new bool[6];
-        missiles = new GameObject[6];
-        MissileManager = GetComponent<MissileManager_M>();
-        for (int i = 0; i < 6;i++){
-            shooted[i] = false;
+        shotState = new int[8];
+        missiles = new GameObject[8];
+        for (int i = 0; i < 8;i++){
+            shotState[i] = 0;
+
+            switch(i){
+                case 0: missiles[i] = Instantiate(missile, new Vector3((i + 1.5f) * 10, 20, 20), Quaternion.Euler(90, 0, 0));break;
+                case 1: missiles[i] = Instantiate(missile, new Vector3((i + 1.5f) * 10, -10, 20), Quaternion.Euler(-90, 0, 0)); break;
+                case 2: missiles[i] = Instantiate(missile, new Vector3((i + 1.5f) * 10, 20, 20), Quaternion.Euler(90, 0, 0)); break;
+                case 3: missiles[i] = Instantiate(missile, new Vector3((i + 1.5f) * 10, -10, 20), Quaternion.Euler(-90, 0, 0)); break;
+                case 4: missiles[i] = Instantiate(missile, new Vector3((i + 1.5f) * 10, 20, 20), Quaternion.Euler(135, 90, 90)); break;
+                case 5: missiles[i] = Instantiate(missile, new Vector3((i + 1.5f) * 10, 20, 20), Quaternion.Euler(135, 90, 90)); break;
+                case 6: missiles[i] = Instantiate(missile, new Vector3((i + 1.5f) * 10, 20, 20), Quaternion.Euler(45, 90, 90)); break;
+                case 7: missiles[i] = Instantiate(missile, new Vector3((i + 1.5f) * 10, 20, 20), Quaternion.Euler(45, 90, 90)); break;
+            }
+
+            missiles[i].AddComponent<MissileBB_M>();
         }
 	}
 	
 	// Update is called once per frame
-	void Update () {
-        for (int i = 0; i < 6; i++)
-        {
-            if (player.transform.position.x > (i+1) * 10&&!shooted[i])
-            {
-                shooted[i] = true;
-                missiles[i] = Instantiate(missile, new Vector3((i + 2) * 10, 10, 0),Quaternion.Euler(90,0,0));
-                Debug.Log("文化先進国である韓国で猫が人気なのは知ってたけど");
-                MissileManager.Shot(missiles[i]);
-                Debug.Log("日本みたいな後進国でも人気あるのか。へー");
-            }
-        }
-	}
+    void Update () {
+    }
 }
