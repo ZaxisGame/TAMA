@@ -10,10 +10,12 @@ public class PlayerManager_scr_K : MonoBehaviour {
     //ライフマネージャー取得
     private GameObject canbas;
     LifeManager_scr_K Life_M;
+    //
+    private GameObject tama;
+    PlayerMove_scr_K playerMove;
 
     EnemyController_scr_K enemyController;
 
-    PlayerMove_scr_K playerMove;
 	void Start () 
     {
         //ゲームマネージャー取得
@@ -23,7 +25,8 @@ public class PlayerManager_scr_K : MonoBehaviour {
         canbas = GameObject.Find("Canvas");
         Life_M = canbas.GetComponent<LifeManager_scr_K>();
 
-        playerMove = gameObject.GetComponent<PlayerMove_scr_K>();
+        tama = GameObject.Find("TAMA");
+        playerMove = tama.GetComponent<PlayerMove_scr_K>();
 
     }
 
@@ -56,7 +59,7 @@ public class PlayerManager_scr_K : MonoBehaviour {
         //敵に当たると
         else if (col.CompareTag("Enemy") && col.gameObject.GetComponent<EnemyController_scr_K>().isAlive )
         {
-            
+           
             Life_M.Damage();
             Destroy(col.gameObject);   
            
