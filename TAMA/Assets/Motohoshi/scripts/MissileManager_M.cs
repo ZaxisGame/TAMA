@@ -31,7 +31,7 @@ public class MissileManager_M : MonoBehaviour {
         if(Input.GetKey(KeyCode.Alpha2)){
             for (int i = 0; i < 8; i++)
             {
-                TargetLockOn(target, missiles[i]);
+                TargetLockOn(target.transform.position, missiles[i]);
             }
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
@@ -44,8 +44,8 @@ public class MissileManager_M : MonoBehaviour {
 
 	}
 
-    public void TargetLockOn(GameObject tar, GameObject bullet){        
-        Vector3 targetvec = tar.transform.position - bullet.transform.position;
+    public void TargetLockOn(Vector3 tar, GameObject bullet){        
+        Vector3 targetvec = tar - bullet.transform.position;
         bullet.transform.rotation = Quaternion.Slerp(bullet.transform.rotation, Quaternion.LookRotation(targetvec), Time.deltaTime * rotateSpeed);
         
     }

@@ -3,31 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Timer_3D_scr_K : MonoBehaviour
-{
-
-    private GameObject gamemanager;
-    GameManager_scr_K Game_M;
-
-    LifeManager_scr_K Life_M;
-
+public class Timer_3D_master_M : MonoBehaviour {
     int FullTimer = 10;
     int currentTimer = 10;
-    float time1, time0;
+    float time1,time0;
 
+    CameraManager_M Cam_M;
+    LifeManager_M Life_M;
     private GameObject[] Timer3D;
-    private GameObject MainCamera;
+    private GameObject Maincamera,gm;
     bool is3D;
 
-
-    void Start()
-    {
-        //ゲームマネージャー取得
-        gamemanager = GameObject.Find("GameManager");
-        Game_M = gamemanager.GetComponent<GameManager_scr_K>();
-
-        MainCamera = GameObject.Find("Main Camera");
-        Life_M = GetComponent<LifeManager_scr_K>();
+	// Use this for initialization
+	void Start () {
+        Maincamera = GameObject.Find("Main Camera");
+        gm = GameObject.Find("GameManager");
+        Cam_M = gm.GetComponent<CameraManager_M>();
+        Life_M = GetComponent<LifeManager_M>();
         //is3D = Maincamera.GetComponent<Camera>().orthographic;
         Timer3D = new GameObject[FullTimer];
         for (int i = 0; i < FullTimer; i++)
@@ -43,38 +35,34 @@ public class Timer_3D_scr_K : MonoBehaviour
         }
         time1 = 0;
         time0 = 0;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Game_M.CamState == 1)
+	}
+	
+	// Update is called once per frame
+	void Update () {
+        if (Cam_M.CamState == 1)
             Timer_on();
-        else if (Game_M.CamState == 0)
+        else if (Cam_M.CamState == 0)
             Timer_cure();
-    }
+        //Debug.Log(currentTimer);
+	}
 
-    void Timer_on()
-    {
-        if(currentTimer==11){
-            currentTimer = 10;
-        }
+    void Timer_on(){
         time1 += Time.deltaTime;
-        if (time1 > 1)
-        {
+        if (currentTimer == 11)
+            currentTimer = 10;
+        if(time1>1){
             currentTimer--;
             time1 = 0;
         }
         DrawTime();
-        if (currentTimer == 0)
-        {
+        //Debug.Log(time1);
+        if(currentTimer==0){
             Life_M.Damage();
             currentTimer = 3;
         }
     }
 
-    void Timer_cure()
-    {
+    void Timer_cure(){
         time0 += Time.deltaTime;
         if (currentTimer < 11)
         {
@@ -91,10 +79,8 @@ public class Timer_3D_scr_K : MonoBehaviour
         }
     }
 
-    void DrawTime()
-    {
-        for (int i = 0; i < FullTimer; i++)
-        {
+    void DrawTime(){
+        for (int i = 0; i < FullTimer;i++){
             if (i < currentTimer)
                 Timer3D[i].GetComponent<Image>().enabled = true;
             else

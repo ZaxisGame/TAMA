@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager_M : MonoBehaviour
-{
+public class GameManager_M: MonoBehaviour {
 
     public GameObject swing, player;
     public GameObject cam;
@@ -45,10 +44,9 @@ public class GameManager_M : MonoBehaviour
         CameraManager();
     }
 
-    void CameraManager()
-    {
+    void CameraManager(){
         //ジャンプ中でない時にスペースキーを押すと
-        if (PlayerMove_scr_K.isJump == false && Input.GetKeyDown(KeyCode.Return))
+        if (PlayerMove_M.isJump == false && Input.GetKeyDown(KeyCode.Return))
         {
             camState = -1;//回転中
 
@@ -104,13 +102,13 @@ public class GameManager_M : MonoBehaviour
         if (camState == 0)
         {
             //カメラ追尾（y軸固定）
-            swing.GetComponent<Transform>().position = new Vector3(player.transform.position.x + offset.x, swingPos.y, player.transform.position.z + offset.z);
+            swing.GetComponent<Transform>().position = new Vector3(player.transform.position.x, swingPos.y, player.transform.position.z);
         }
         //3D
         else if (camState == 1)
         {
             //カメラの追尾(fps)
-            swing.GetComponent<Transform>().position = player.GetComponent<Transform>().position + offset;
+            swing.GetComponent<Transform>().position = new Vector3(player.transform.position.x, swingPos.y, player.transform.position.z);
         }
     }
-}
+}        

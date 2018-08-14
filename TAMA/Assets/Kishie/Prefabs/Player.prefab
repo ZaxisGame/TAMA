@@ -541,7 +541,7 @@ GameObject:
   - component: {fileID: 114004399538757578}
   m_Layer: 0
   m_Name: TAMA
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1260,6 +1260,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09e48a992360d469b97fc7e435db3083, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  force_z: 1
 --- !u!114 &114971045212012460
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -4,19 +4,20 @@ using UnityEngine;
 
 public class PlayerMove_M : MonoBehaviour
 {
-
+    
     private GameObject gamemanager;
     GameManager_M Game_M;
 
-    private float speed, gravity, dz;
+    private float speed , gravity , dz;
     public static bool is2D = true;
     public static bool isJump = false;
     public static bool isBack = false;
     public static bool isStop = false;
+    public bool force_z = true;
     private Vector3 jumpSpeed;
 
     //public static bool isDrive = false;
-    private Vector3 moveDirection2D, moveDirection3D, pos, mousePos;
+    private Vector3 moveDirection2D , moveDirection3D , pos , mousePos;
     CharacterController controller;
     //アニメーター宣言１
     Animator animator;
@@ -42,101 +43,102 @@ public class PlayerMove_M : MonoBehaviour
 
     void Update()
     {
+       
+            pos = this.transform.position;
 
-        pos = this.transform.position;
+            if (Game_M.CamState == 0)//camstate=0に
+            {
+            
+           
+                Walk_2D();
+            }
 
-        if (Game_M.CamState == 0)//camstate=0に
-        {
-
-
-            Walk_2D();
-        }
-
-        else if (Game_M.CamState == 1)
-        {
-            Walk_3D();
-        }
+            else if (Game_M.CamState == 1)
+            {
+                Walk_3D();
+            }
 
     }
 
 
 
 
-    public void Walk_2D()
-    {
+    public void Walk_2D(){
 
 
         //z軸修正
-        dz = this.transform.position.z;
-        if (dz > 0f)
+        if (force_z)
         {
-            dz -= 0.1f;
-            if (dz <= 0f)
+            dz = this.transform.position.z;
+            if (dz > 0f)
             {
-                dz = 0f;
+                dz -= 0.1f;
+                if (dz <= 0f)
+                {
+                    dz = 0f;
+                }
             }
-        }
-        else if (dz < 0f)
-        {
-            dz += 0.1f;
-            if (dz >= 0f)
+            else if (dz < 0f)
             {
+                dz += 0.1f;
+                if (dz >= 0f)
+                {
 
-                dz = 0f;
+                    dz = 0f;
+                }
             }
+            this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, dz);
         }
-        this.transform.position = new Vector3(this.transform.position.x, this.transform.position.y, dz);
 
 
         if (controller.isGrounded)
         {
-            //ジャンプしていない
-            isJump = false;
+                //ジャンプしていない
+                isJump = false;
 
-            animator.SetBool("is_Jump", false);
-            animator.SetBool("is_BackJump", false);
-            animator.SetBool("is_UpJump", false);
-            //animator.SetBool("is_Idle", true);
-            moveDirection2D = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
-            moveDirection2D *= speed;
+                animator.SetBool("is_Jump", false);
+                animator.SetBool("is_BackJump", false);
+                animator.SetBool("is_UpJump", false);
+                //animator.SetBool("is_Idle", true);
+                moveDirection2D = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+                moveDirection2D *= speed;
 
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Jump();
-            }
+                if (Input.GetKeyDown(KeyCode.Space))
+                {
+                    Jump();
+                }
         }
         else
         {     //空中でもx軸移動可能にする
-            moveDirection2D.x = Input.GetAxis("Horizontal");
-            moveDirection2D.z = 0;
-            moveDirection2D.x = moveDirection2D.x * speed * jumpSpeed.x;
+                moveDirection2D.x = Input.GetAxis("Horizontal");
+                moveDirection2D.z = 0;
+                moveDirection2D.x = moveDirection2D.x * speed * jumpSpeed.x;
         }
-
+      
         //アニメーション
-        if (moveDirection2D.x == 0)
+        if(moveDirection2D.x == 0)
         {   //止まっている時
-
+            
             animator.SetBool("is_Walk", false);
             animator.SetBool("is_Back", false);
             animator.SetBool("is_Idle", true);
             isBack = false;
         }
-        else if (moveDirection2D.x < 0)
+        else if (moveDirection2D.x < 0 )
         {   //後退
             Back();
-
+        
         }
-        else if (moveDirection2D.x > 0)
+        else if(moveDirection2D.x > 0)
         {   //前進
-
+            
             isBack = false;
             animator.SetBool("is_Back", false);
             animator.SetBool("is_Walk", true);
         }
 
-        if (isStop)
-        {
-
+        if(isStop){
+            
             moveDirection2D.x = 0;
             moveDirection2D.z = 0;
         }
@@ -147,9 +149,8 @@ public class PlayerMove_M : MonoBehaviour
     }
 
 
-    public void Walk_3D()
-    {
-
+    public void Walk_3D(){
+       
         if (controller.isGrounded)//地面についている時
         {
             //ジャンプしていない
@@ -175,7 +176,7 @@ public class PlayerMove_M : MonoBehaviour
             moveDirection3D.x = moveDirection3D.x * speed * jumpSpeed.x;
             moveDirection3D.z = moveDirection3D.z * speed * jumpSpeed.z;
         }
-
+       
 
         if (moveDirection3D.x == 0 && moveDirection3D.z == 0)
         {
@@ -183,15 +184,15 @@ public class PlayerMove_M : MonoBehaviour
             isBack = false;
             animator.SetBool("is_Walk", false);
             animator.SetBool("is_Back", false);
-
+           
         }
 
-        else if (moveDirection3D.x < 0)
+        else if (moveDirection3D.x < 0 )
         {
             Back();
         }
 
-        else if (moveDirection3D.x > 0 || moveDirection3D.z > 0 || moveDirection3D.z < 0)
+        else if(moveDirection3D.x > 0 || moveDirection3D.z > 0 || moveDirection3D.z < 0)
         {
             //前進
             isBack = false;
@@ -215,27 +216,26 @@ public class PlayerMove_M : MonoBehaviour
         Debug.Log("ジャンプ");
         isJump = true;
 
-        if (isJump && ((is2D && moveDirection2D.x == 0) || (is2D == false && (moveDirection3D.x == 0 || moveDirection3D.z == 0))))
-        {
+        if(isJump && ((is2D && moveDirection2D.x == 0) || (is2D == false &&(moveDirection3D.x == 0 || moveDirection3D.z == 0)))){
             animator.SetBool("is_UpJump", true);
             jumpSpeed.x = 0.5f;
             jumpSpeed.z = 0.5f;
 
         }
-        else if (isJump && isBack == false)
+        else if (isJump && isBack == false )
         {
             animator.SetBool("is_Jump", true);
             jumpSpeed.x = 1f;
             jumpSpeed.z = 1f;
 
         }
-        else if (isJump && isBack)
+        else if(isJump && isBack )
         {
             animator.SetBool("is_BackJump", true);
             jumpSpeed.x = 1f;
             jumpSpeed.z = 1f;
         }
-
+       
         moveDirection2D.y = jumpSpeed.y;
         moveDirection3D.y = jumpSpeed.y;
 
@@ -258,6 +258,7 @@ public class PlayerMove_M : MonoBehaviour
     public void Back()
     {
         isBack = true;
+    
 
         moveDirection2D.x *= 0.5f;
         moveDirection3D.x *= 0.5f;
@@ -275,8 +276,7 @@ public class PlayerMove_M : MonoBehaviour
     }
 
 
-    public void Kill()
-    {
+    public void Kill(){
         Debug.Log("敵を倒した！");
         animator.Play("TAMA_jump", 0, 0.0f);
     }
