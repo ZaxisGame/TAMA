@@ -27,7 +27,7 @@ public class PlayerMove_scr_K : MonoBehaviour
         //ゲームマネージャー取得
         gamemanager = GameObject.Find("GameManager");
         Game_M = gamemanager.GetComponent<GameManager_scr_K>();
-        speed = Game_M.TAMAspeed;
+        speed = Game_M.TAMASpeed;
         jumpSpeed = Game_M.TAMAJumpSpeed;
         gravity = Game_M.TAMAGravity;
         //初期座標の取得

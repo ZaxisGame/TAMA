@@ -2,19 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager_scr_K : MonoBehaviour {
+public class GameManager_scr_K : MonoBehaviour
+{
 
     public GameObject swing, player;
     public GameObject cam;
-    public float TAMAspeed = 6.0F;
-    public Vector3 TAMAJumpSpeed = new Vector3(1, 8, 1);
-    public float TAMAGravity = 20.0F;
+
+    public float TAMASpeed = 6.0F;
+    public Vector3 TAMAJumpSpeed;
     public int TAMA_HP = 3;
+    public float TAMAGravity = 20.0F;
     public float camSpeed = 2.5f;
+
+    public Vector3 Edelta;
     public float enemyDefaultSpeed = 3f;
+    public float enemyDespawnDis = 10f;
+
+    public float IwashiActiveDis = 20f;
+
+
+    public float AjiActiveDis = 20f;
+    public float ajiAttackDis = 5f;
+
+    public float ManbouActiveDis = 20f;
+    public float manbouAttackDis = 5f;
+
+
 
     float y_angle, t;
-    private Vector3 offset, swingPos;
+    private Vector3 offset, Ppos, swingPos;
     private int state;
     private int camState;//(0 : 2D , 1 : 3D , -1 : 回転中)
     public int CamState
@@ -31,12 +47,17 @@ public class GameManager_scr_K : MonoBehaviour {
 
     void Start()
     {
-        //カメラの位置
-        swingPos = swing.GetComponent<Transform>().position;
+
+        Ppos = player.GetComponent<Transform>().position;
+        //カメラの初期位置
+        //swingPos = swing.GetComponent<Transform>().position;
+        swingPos = new Vector3(Ppos.x + 7.8f, Ppos.y + 1.9f, 0.0f);
         //カメラとプレイヤーの距離を取得
-        offset = swingPos - player.GetComponent<Transform>().position;
+        offset = swingPos - Ppos;
         //カメラを２Dにしておく
         cam.GetComponent<Camera>().orthographic = true;
+        //ずらす
+        // enemys.GetComponent<Transform>().position = Edelta;
     }
 
     void Update()
@@ -44,7 +65,8 @@ public class GameManager_scr_K : MonoBehaviour {
         CameraManager();
     }
 
-    void CameraManager(){
+    void CameraManager()
+    {
         //ジャンプ中でない時にスペースキーを押すと
         if (PlayerMove_scr_K.isJump == false && Input.GetKeyDown(KeyCode.Return))
         {
@@ -111,4 +133,4 @@ public class GameManager_scr_K : MonoBehaviour {
             swing.GetComponent<Transform>().position = player.GetComponent<Transform>().position + offset;
         }
     }
-}        
+}
