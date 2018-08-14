@@ -15,13 +15,14 @@ public class PlayerMove_scr_K : MonoBehaviour
     public static bool isStop = false;
     public bool force_z = true;
     private Vector3 jumpSpeed;
+    private bool InputKey = true;
 
     //public static bool isDrive = false;
     private Vector3 moveDirection2D , moveDirection3D , pos , mousePos;
     CharacterController controller;
     //アニメーター宣言１
     Animator animator;
-
+    int t;
     void Start()
     {
         //ゲームマネージャー取得
@@ -43,7 +44,6 @@ public class PlayerMove_scr_K : MonoBehaviour
 
     void Update()
     {
-       
             pos = this.transform.position;
 
             if (Game_M.CamState == 0)//camstate=0に
@@ -103,10 +103,16 @@ public class PlayerMove_scr_K : MonoBehaviour
                 moveDirection2D = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
                 moveDirection2D *= speed;
 
-                if (Input.GetKeyDown(KeyCode.Space))
+                if (Input.GetKeyDown(KeyCode.Space) && InputKey)
                 {
                     Jump();
+                    InputKey = false;
+                    Invoke("JumpInterval", 1.0f);
+              
                 }
+
+
+
         }
         else
         {     //空中でもx軸移動可能にする
@@ -163,9 +169,12 @@ public class PlayerMove_scr_K : MonoBehaviour
             moveDirection3D = new Vector3(Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal") * -1);
             moveDirection3D *= speed;
 
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (Input.GetKeyDown(KeyCode.Space) && InputKey)
             {
                 Jump();
+                InputKey = false;
+                Invoke("JumpInterval", 1.0f);
+
             }
         }
         else//空中にいる時
@@ -241,6 +250,10 @@ public class PlayerMove_scr_K : MonoBehaviour
 
     }
 
+    public void JumpInterval(){
+        InputKey = true;
+    }
+
 
     public IEnumerator Damage()
     {
@@ -280,5 +293,7 @@ public class PlayerMove_scr_K : MonoBehaviour
         Debug.Log("敵を倒した！");
         animator.Play("TAMA_jump", 0, 0.0f);
     }
+
+
 
 }

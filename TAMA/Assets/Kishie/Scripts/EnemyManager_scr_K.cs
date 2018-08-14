@@ -2,20 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager_scr_K : MonoBehaviour 
-    {
+public class EnemyManager_scr_K : MonoBehaviour
+{
     private GameObject gamemanager;
     GameManager_scr_K Game_M;
+
+    private GameObject AjiMuzzle;
+    Bullet_scr_K bullet;
 
     public int state;
     public bool isAlive = true;
 
     private GameObject player;
     private Vector3 Epos, firstEpos, Ppos;
-    private float dis, AbsDis, AjiSpeed, ManbouSpeed, enemySpeed, IwashiActiveDis, AjiActiveDis, ManbouActiveDis, enemyDespawnDis, manbouAttackDis, ajiAttackDis;
+    private float dis, AbsDis, AjiSpeed, ManbouSpeed, enemySpeed, IwashiActiveDis, AjiActiveDis, ManbouActiveDis, enemyDespawnDis, manbouAttackDis, ajiAttackDis ,AjiAttackTime;
     float cosx, angle, r = 0.4f;
-    float Spawn_delta = 1f;
+    float Spawn_delta = 10f;
     private Vector3 Edelta;
+    private int AjiTimer;
 
 
     void Start()
@@ -24,7 +28,12 @@ public class EnemyManager_scr_K : MonoBehaviour
         gamemanager = GameObject.Find("GameManager");
         Game_M = gamemanager.GetComponent<GameManager_scr_K>();
 
+        AjiMuzzle = Game_M.ajiMuzzle;
+        bullet = AjiMuzzle.GetComponent<Bullet_scr_K>();
+
         Edelta = Game_M.Edelta;
+
+        AjiAttackTime = Game_M.AjiAttackTime;
 
         //動き出す距離,デスポーン距離
         IwashiActiveDis = Game_M.IwashiActiveDis;
@@ -35,6 +44,7 @@ public class EnemyManager_scr_K : MonoBehaviour
 
         manbouAttackDis = Game_M.manbouAttackDis;
         ajiAttackDis = Game_M.ajiAttackDis;
+
         //スピード
         enemySpeed = Game_M.enemyDefaultSpeed * 0.01f;
         AjiSpeed = enemySpeed * 10;
@@ -42,6 +52,7 @@ public class EnemyManager_scr_K : MonoBehaviour
 
         //プレイヤー取得
         player = Game_M.player;
+
         //初期座標を取得                   
         Epos = this.transform.position;
         firstEpos = Epos;
@@ -51,6 +62,7 @@ public class EnemyManager_scr_K : MonoBehaviour
 
 
     void Update()
+
     {
         //プレイヤーとの距離を取得する。　disは　正：近ずく　負：遠ざかる
         Ppos = player.transform.position;
@@ -84,9 +96,9 @@ public class EnemyManager_scr_K : MonoBehaviour
         else if (state == 1 && dis <= IwashiActiveDis && dis >= enemyDespawnDis && isAlive)//イワシ
         {
             Epos.z += Spawn_delta;
-            Epos.y -= Spawn_delta;
-            if (Epos.z - firstEpos.z >= Edelta.z || firstEpos.y - Epos.y <= Edelta.y)
-            {
+            //.SetActive(true);
+            if (Epos.z - firstEpos.z >= 0)
+            {//元の位置に戻ったら
                 Spawn_delta = 0;
                 Iwashi();
             }
@@ -97,22 +109,20 @@ public class EnemyManager_scr_K : MonoBehaviour
         else if (state == 2 && dis <= AjiActiveDis && dis >= enemyDespawnDis && isAlive)//アジ
         {
             Epos.z += Spawn_delta;
-            Epos.y -= Spawn_delta;
-            if (Epos.z - firstEpos.z >= Edelta.z || firstEpos.y - Epos.y <= Edelta.y)
-            {
+            //.SetActive(true);
+            if(Epos.z - firstEpos.z >= 0){//元の位置に戻ったら
                 Spawn_delta = 0;
                 Aji();
             }
-
         }
 
 
         else if (state == 3 && dis <= ManbouActiveDis && dis >= enemyDespawnDis && isAlive)
         {//マンボウ
             Epos.z += Spawn_delta;
-            Epos.y -= Spawn_delta;
-            if (Epos.z - firstEpos.z >= Edelta.z || firstEpos.y - Epos.y <= Edelta.y)
-            {
+            //.SetActive(true);
+            if (Epos.z - firstEpos.z >= 0)
+            {//元の位置に戻ったら
                 Spawn_delta = 0;
                 Manbou();
             }
@@ -203,5 +213,14 @@ public class EnemyManager_scr_K : MonoBehaviour
     public void AjiAttack()
     {
         Debug.Log("アジの攻撃！！！");
+        AjiTimer++;
+        if (AjiTimer >= AjiAttackTime * 60)
+        {
+            bullet.Shot();
+            bullet.Shot();
+            bullet.Shot();
+            AjiTimer = 0;
+        }
+
     }
 }

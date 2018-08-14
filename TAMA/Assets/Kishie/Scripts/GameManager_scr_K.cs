@@ -6,7 +6,7 @@ public class GameManager_scr_K : MonoBehaviour
 {
 
     public GameObject swing, player;
-    public GameObject cam;
+    public GameObject cam , ajiMuzzle;
 
     public float TAMASpeed = 6.0F;
     public Vector3 TAMAJumpSpeed;
@@ -23,6 +23,7 @@ public class GameManager_scr_K : MonoBehaviour
 
     public float AjiActiveDis = 20f;
     public float ajiAttackDis = 5f;
+    public float AjiAttackTime = 1f;
 
     public float ManbouActiveDis = 20f;
     public float manbouAttackDis = 5f;
@@ -56,8 +57,8 @@ public class GameManager_scr_K : MonoBehaviour
         offset = swingPos - Ppos;
         //カメラを２Dにしておく
         cam.GetComponent<Camera>().orthographic = true;
-        //ずらす
-        // enemys.GetComponent<Transform>().position = Edelta;
+
+
     }
 
     void Update()

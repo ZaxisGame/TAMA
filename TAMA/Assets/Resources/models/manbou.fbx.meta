@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: e6c279536397f4b3aa03d925b35e0113
+guid: f65b7adcd41364cc69f2ca61f3a6c515
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -26,10 +26,10 @@ ModelImporter:
     3300002: polySurface1
     3300004: polySurface2
     3300006: pSphere1
-    4300000: polySurface1
+    4300000: pSphere1
     4300002: polySurface2
-    4300004: pSphere1
-    4300006: pCylinder1
+    4300004: pCylinder1
+    4300006: polySurface1
   externalObjects: {}
   materials:
     importMaterials: 1

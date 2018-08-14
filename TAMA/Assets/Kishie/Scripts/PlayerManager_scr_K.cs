@@ -14,7 +14,7 @@ public class PlayerManager_scr_K : MonoBehaviour {
     private GameObject tama;
     PlayerMove_scr_K playerMove;
 
-    EnemyController_scr_K enemyController;
+    EnemyManager_scr_K enemyManager;
 
 	void Start () 
     {
@@ -41,9 +41,9 @@ public class PlayerManager_scr_K : MonoBehaviour {
         if (col.CompareTag("EnemyTop") && PlayerMove_scr_K.isJump)
         {
             //当たった敵のスクリプトを取得
-            enemyController = col.gameObject.transform.parent.gameObject.GetComponent<EnemyController_scr_K>();
+            enemyManager = col.gameObject.transform.parent.gameObject.GetComponent<EnemyManager_scr_K>();
             //プレイヤーにダメージが入らないようにする
-            enemyController.isAlive = false;
+            enemyManager.isAlive = false;
                            
            
             playerMove.Kill();
@@ -53,16 +53,21 @@ public class PlayerManager_scr_K : MonoBehaviour {
 
 
             //敵を消去
-            Destroy(col.gameObject.transform.parent.gameObject);
+            Destroy(col.gameObject.transform.parent.gameObject,0.1f);
         }
 
         //敵に当たると
-        else if (col.CompareTag("Enemy") && col.gameObject.GetComponent<EnemyController_scr_K>().isAlive )
+        else if (col.CompareTag("Enemy") && col.gameObject.GetComponent<EnemyManager_scr_K>().isAlive )
         {
            
             Life_M.Damage();
             Destroy(col.gameObject);   
            
+        }
+        else if(col.CompareTag("Finish")){
+            Life_M.Damage();
+            Destroy(col.gameObject);  
+            
         }
 
 
@@ -84,4 +89,5 @@ public class PlayerManager_scr_K : MonoBehaviour {
             playerMove.force_z = true;
         }
     }
+  
 }
