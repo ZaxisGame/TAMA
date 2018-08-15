@@ -7,19 +7,19 @@ public class EnemyManager_scr_K : MonoBehaviour
     private GameObject gamemanager;
     GameManager_scr_K Game_M;
 
-    private GameObject AjiMuzzle;
+    public GameObject AjiMuzzle;
     Bullet_scr_K bullet;
 
     public int state;
     public bool isAlive = true;
 
-    private GameObject player;
+    public GameObject player;
     private Vector3 Epos, firstEpos, Ppos;
     private float dis, AbsDis, AjiSpeed, ManbouSpeed, enemySpeed, IwashiActiveDis, AjiActiveDis, ManbouActiveDis, enemyDespawnDis, manbouAttackDis, ajiAttackDis ,AjiAttackTime;
     float cosx, angle, r = 0.4f;
     float Spawn_delta = 10f;
     private Vector3 Edelta;
-    private int AjiTimer;
+    private float AjiTimer;
 
 
     void Start()
@@ -28,7 +28,6 @@ public class EnemyManager_scr_K : MonoBehaviour
         gamemanager = GameObject.Find("GameManager");
         Game_M = gamemanager.GetComponent<GameManager_scr_K>();
 
-        AjiMuzzle = Game_M.ajiMuzzle;
         bullet = AjiMuzzle.GetComponent<Bullet_scr_K>();
 
         Edelta = Game_M.Edelta;
@@ -51,13 +50,14 @@ public class EnemyManager_scr_K : MonoBehaviour
         ManbouSpeed = enemySpeed * 15;
 
         //プレイヤー取得
-        player = Game_M.player;
+        //player = Game_M.player;
 
         //初期座標を取得                   
         Epos = this.transform.position;
         firstEpos = Epos;
         Epos += Edelta;
         this.transform.position = Epos;
+        AjiTimer = AjiAttackTime * 60 - 30;
     }
 
 
@@ -212,9 +212,9 @@ public class EnemyManager_scr_K : MonoBehaviour
     }
     public void AjiAttack()
     {
-        Debug.Log("アジの攻撃！！！");
+        //Debug.Log("アジの攻撃！！！");
         AjiTimer++;
-        if (AjiTimer >= AjiAttackTime * 60)
+        if (AjiTimer >= AjiAttackTime * 60 )
         {
             bullet.Shot_3();
 

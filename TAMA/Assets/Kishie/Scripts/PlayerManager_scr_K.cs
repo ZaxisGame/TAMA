@@ -44,8 +44,8 @@ public class PlayerManager_scr_K : MonoBehaviour {
             enemyManager = col.gameObject.transform.parent.gameObject.GetComponent<EnemyManager_scr_K>();
             //プレイヤーにダメージが入らないようにする
             enemyManager.isAlive = false;
-                           
-           
+
+            Debug.Log("et");
             playerMove.Kill();
 
             //ジャンプする

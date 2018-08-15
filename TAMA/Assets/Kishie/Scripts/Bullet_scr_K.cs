@@ -6,7 +6,7 @@ public class Bullet_scr_K : MonoBehaviour {
     //　弾のゲームオブジェクト
     [SerializeField]
     public GameObject bulletPrefab;
-    public GameObject muzzle;
+    public GameObject gun;
     public float shotSpeed = 3000f;
     public GameObject Target;
     Rigidbody rb;
@@ -25,10 +25,10 @@ public class Bullet_scr_K : MonoBehaviour {
     {
        
        
-        this.transform.forward =  Target.transform.position - muzzle.transform.position;
+        this.transform.forward =  Target.transform.position - gun.transform.position;
         if (this.transform.forward.x <= -0.4f)
         {
-            GameObject bulletInstance = Instantiate(bulletPrefab, muzzle.transform.position, Quaternion.identity);
+            GameObject bulletInstance = Instantiate(bulletPrefab, gun.transform.position, Quaternion.identity);
             rb = bulletInstance.GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * shotSpeed);
             Destroy(bulletInstance, 2f);

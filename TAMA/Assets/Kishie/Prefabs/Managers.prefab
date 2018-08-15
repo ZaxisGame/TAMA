@@ -99,7 +99,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1161729934672818}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 6.6900024, y: 0, z: -3.35}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4950314340797510}
@@ -136,13 +136,12 @@ MonoBehaviour:
   player: {fileID: 0}
   player_mesh: {fileID: 0}
   cam: {fileID: 0}
-  ajiMuzzle: {fileID: 0}
   camvas: {fileID: 1408973851255012}
   TAMASpeed: 6
-  TAMAJumpSpeed: {x: 1, y: 8, z: 1}
-  TAMA_HP: 3
+  TAMAJumpSpeed: {x: 1, y: 9, z: 1}
+  TAMA_HP: 5
   TAMAGravity: 20
-  camSpeed: 2.5
+  camSpeed: 3
   mutekiTime: 1
   Edelta: {x: 0, y: 0, z: -50}
   enemyDefaultSpeed: 3

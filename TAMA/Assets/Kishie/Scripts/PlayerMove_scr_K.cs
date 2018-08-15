@@ -263,6 +263,7 @@ public class PlayerMove_scr_K : MonoBehaviour
     public void Jump()
     {
         isGround = false;
+        isJump = true;
      
 
         if(isZensin == false && isBack == false){
@@ -349,7 +350,6 @@ public class PlayerMove_scr_K : MonoBehaviour
         isStop = true;
         Invoke("Life_M_Damage",1.5f);
         this.transform.position = new Vector3(this.transform.position.x - 2.0f, 30.0f , 0.0f);
-        gravity = Game_M.TAMAGravity * 0.1f ;
     }
     public void Life_M_Damage(){
         isStop = false;

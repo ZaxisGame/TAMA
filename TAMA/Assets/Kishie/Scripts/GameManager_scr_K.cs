@@ -6,7 +6,7 @@ public class GameManager_scr_K : MonoBehaviour
 {
 
     public GameObject swing, player, player_mesh;
-    public GameObject cam , ajiMuzzle;
+    public GameObject cam ;
     public GameObject camvas;
 
 
