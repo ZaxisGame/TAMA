@@ -5,14 +5,29 @@ using UnityEngine;
 public class BossPerfotmance_M : MonoBehaviour
 {
     public GameObject player;
+    public GameObject Boss;
     public GameObject missile;
     public GameObject bridge;
     public Camera BBcam;
+    public GameObject BossCamera;
+    public GameObject Performancecam1;
+    public GameObject Performancecam2R;
+    public GameObject Performancecam2L;
+    public GameObject Performancecam3;
+    public GameObject LensL;
+    public GameObject LensR;
+    public Material Lens;
+    public GameObject SearchLights;
+    public GameObject SearchLightL;
+    public GameObject SearchLightR;
+    public Light SpotLightL;
+    public Light SpotLightR;
     public float camSpeed = 40;
     public float camSize = 10;
     GameObject[] missiles;
     GameObject PerformanceCam;
     MissileManager_M MissileManager;
+    Camera Bcam;
     int performState;
     // Use this for initialization
     void Start()
@@ -22,15 +37,20 @@ public class BossPerfotmance_M : MonoBehaviour
         MissileManager = GetComponent<MissileManager_M>();
         PerformanceCam = transform.GetChild(0).gameObject;
         PerformanceCam.GetComponent<Camera>().enabled = false;
-        bridge.AddComponent<BridgeBP_M>();
+        Performancecam1.GetComponent<Camera>().enabled = false;
+        Performancecam2R.GetComponent<Camera>().enabled = false;
+        Performancecam2L.GetComponent<Camera>().enabled = false;
+        Performancecam3.GetComponent<Camera>().enabled = false;
+        BossCamera.GetComponent<Camera>().enabled = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.x > 106 && performState==0)
+        if (player.transform.position.x > 106 && performState == 0)
         {
             StartCoroutine("ShotMissiles");
+            bridge.AddComponent<BridgeBP_M>();
             BBcam.enabled = false;
             PerformanceCam.GetComponent<Camera>().enabled = true;
             for (int i = 0; i < 8; i++)
@@ -47,38 +67,139 @@ public class BossPerfotmance_M : MonoBehaviour
         //        MissileManager.TargetLockOn(bridge.transform.position, missiles[i]);
         //    }
         //}
-        else if(performState==3){
+        else if (performState == 3)
+        {
             camSize++;
             PerformanceCam.GetComponent<Camera>().orthographicSize = camSize;
-            if(camSize>20){
+            if (camSize > 20)
+            {
                 performState = 4;
             }
         }
-        else if(performState==5){
-            camSize--;
-            PerformanceCam.GetComponent<Camera>().orthographicSize = camSize;
-            if (camSize <10)
+        else if (performState == 4)
+        {
+            if (PerformanceCam.transform.position.x > 83)
             {
-                performState = 6;
+                PerformanceCam.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+                PerformanceCam.GetComponent<Camera>().enabled = false;
+                BossCamera.GetComponent<Camera>().enabled = true;
+                performState = 5;
             }
         }
+        //else if(performState==5){
+        //    camSize--;
+        //    PerformanceCam.GetComponent<Camera>().orthographicSize = camSize;
+        //    if (camSize <10)
+        //    {
+        //        performState = 6;
+        //    }
+        //}
+        else if (performState == 5)
+        {
+            SearchLights.GetComponent<Rigidbody>().velocity = Vector3.up * 10;
+            if (SearchLights.transform.position.y > 20)
+            {
+                SearchLights.GetComponent<Rigidbody>().velocity = Vector3.zero;
+            }
+        }
+        else if (performState == 6 || performState == 7)
+        {
+            Vector3 targetA = new Vector3(83, SearchLightR.transform.position.y, 45) - SearchLightR.transform.position;
+            SearchLightR.transform.rotation = Quaternion.Slerp(SearchLightR.transform.rotation, Quaternion.LookRotation(targetA), Time.deltaTime * 1f);
+            if (performState == 7)
+            {
+                GameObject Light = SearchLightR.transform.GetChild(0).gameObject;
+                Vector3 targetB = new Vector3(83, -10, 45) - Light.transform.position;
+                //Debug.Log(Light.transform.forward);
+                Light.transform.rotation = Quaternion.Slerp(Light.transform.rotation, Quaternion.LookRotation(targetB), Time.deltaTime * 1f);
+            }
+        }
+        else if (performState == 8 || performState == 9)
+        {
+            Vector3 targetA = new Vector3(83, SearchLightL.transform.position.y, 45) - SearchLightL.transform.position;
+            SearchLightL.transform.rotation = Quaternion.Slerp(SearchLightL.transform.rotation, Quaternion.LookRotation(targetA), Time.deltaTime * 1f);
+            if (performState == 9)
+            {
+                GameObject Light = SearchLightL.transform.GetChild(0).gameObject;
+                Vector3 targetB = new Vector3(83, -10, 45) - Light.transform.position;
+                //Debug.Log(Light.transform.forward);
+                Light.transform.rotation = Quaternion.Slerp(Light.transform.rotation, Quaternion.LookRotation(targetB), Time.deltaTime * 1f);
+            }
+        }
+        else if (performState == 10){
+            Vector3 targetVector = new Vector3(Boss.transform.position.x,Boss.transform.position.y+17,Boss.transform.position.z) - Performancecam3.transform.position;
+            Quaternion targetAngle = Quaternion.LookRotation(targetVector);
+            Debug.Log(targetAngle.eulerAngles.x);
+            if(targetAngle.eulerAngles.x<30||(targetAngle.eulerAngles.x < 360&&targetAngle.eulerAngles.x > 50)){
+                Performancecam3.transform.LookAt(new Vector3(Boss.transform.position.x,Boss.transform.position.y+17,Boss.transform.position.z));
+                Debug.Log("Look");
+            }
+            Debug.Log(Boss.transform.position);
+            if(Boss.transform.position.y>-10.5){
+                Boss.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+            }
+            GameObject LightL = SearchLightL.transform.GetChild(0).gameObject;
+            LightL.transform.LookAt(new Vector3(Boss.transform.position.x, Boss.transform.position.y + 17, Boss.transform.position.z));
+            GameObject LightR = SearchLightL.transform.GetChild(0).gameObject;
+            LightR.transform.LookAt(new Vector3(Boss.transform.position.x, Boss.transform.position.y + 17, Boss.transform.position.z));
+        }
+
     }
 
     IEnumerator ShotMissiles()
     {
         yield return new WaitForSeconds(6f);
         //PerformanceCam.GetComponent<Rigidbody>().velocity = -PerformanceCam.transform.right * camSpeed;
-        PerformanceCam.GetComponent<Rigidbody>().velocity = new Vector3(-1*camSpeed,0.07f*camSpeed,0);
+
+        PerformanceCam.GetComponent<Rigidbody>().velocity = new Vector3(-1*camSpeed,0.14f*camSpeed,0);
         performState++;
         yield return new WaitForSeconds(1.3f);
         PerformanceCam.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
         performState++;
         yield return new WaitForSeconds(2f);
         performState = 4;
+        //yield return new WaitForSeconds(5f);
+        //Vector3 ToBossCam = BossCamera.transform.position - PerformanceCam.transform.position;
+        //PerformanceCam.GetComponent<Rigidbody>().velocity = ToBossCam;
+        //yield return new WaitForSeconds(1.3f);
         yield return new WaitForSeconds(5f);
-        PerformanceCam.GetComponent<Rigidbody>().velocity = new Vector3(1 * camSpeed, -0.07f * camSpeed, 0);
-        yield return new WaitForSeconds(1.3f);
-        PerformanceCam.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        PerformanceCam.GetComponent<Camera>().enabled = false;
+        Performancecam1.GetComponent<Camera>().enabled = true;
+        yield return new WaitForSeconds(1f);
         performState = 5;
+        yield return new WaitForSeconds(4f);
+        Performancecam1.GetComponent<Camera>().enabled = false;
+        Performancecam2R.GetComponent<Camera>().enabled = true;
+        yield return new WaitForSeconds(0.5f);
+        performState = 6;
+        yield return new WaitForSeconds(0.5f);
+        performState = 7;
+        yield return new WaitForSeconds(3f);
+        LensR.GetComponent<Renderer>().material = Lens;
+        SpotLightR.enabled = true;
+        yield return new WaitForSeconds(0.5f);
+        Performancecam2R.GetComponent<Camera>().enabled = false;
+        Performancecam2L.GetComponent<Camera>().enabled = true;
+        yield return new WaitForSeconds(0.5f);
+        performState = 8;
+        yield return new WaitForSeconds(0.5f);
+        performState = 9;
+        yield return new WaitForSeconds(3f);
+        LensL.GetComponent<Renderer>().material = Lens;
+        SpotLightL.enabled = true;
+
+        yield return new WaitForSeconds(0.5f);
+        Performancecam2L.GetComponent<Camera>().enabled = false;
+        Performancecam3.GetComponent<Camera>().enabled = true;
+        yield return new WaitForSeconds(1f);
+        performState = 10;
+        Boss.GetComponent<Rigidbody>().velocity = new Vector3(0, 3, 0);
+        //yield return new WaitForSeconds(15f);
+        //Boss.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+        yield return new WaitForSeconds(14.5f);
+        Performancecam3.GetComponent<Camera>().enabled = false;
+        BossCamera.GetComponent<Camera>().enabled = true;
+
     }
+
 }

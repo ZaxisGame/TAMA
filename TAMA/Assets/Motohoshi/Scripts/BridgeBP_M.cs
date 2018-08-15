@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BridgeBP_M : MonoBehaviour {
-    GameObject[] boards;
     int count;
     // Use this for initialization
     void Start()

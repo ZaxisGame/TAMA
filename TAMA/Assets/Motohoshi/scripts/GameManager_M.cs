@@ -12,6 +12,7 @@ public class GameManager_M: MonoBehaviour {
     public int TAMA_HP = 3;
     public float camSpeed = 2.5f;
     public float enemyDefaultSpeed = 3f;
+    int isBoss;
 
     float y_angle, t;
     private Vector3 offset, swingPos;
@@ -32,6 +33,7 @@ public class GameManager_M: MonoBehaviour {
     void Start()
     {
         //カメラの位置
+        isBoss = 0;
         swingPos = swing.GetComponent<Transform>().position;
         //カメラとプレイヤーの距離を取得
         offset = swingPos - player.GetComponent<Transform>().position;
@@ -41,7 +43,14 @@ public class GameManager_M: MonoBehaviour {
 
     void Update()
     {
-        CameraManager();
+        if (isBoss != 1)
+        {
+            CameraManager();
+        }
+        if(isBoss==0&&player.transform.position.x>106){
+            isBoss = 1;
+            camState = 0;
+        }
     }
 
     void CameraManager(){
