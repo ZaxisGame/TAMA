@@ -216,9 +216,8 @@ public class EnemyManager_scr_K : MonoBehaviour
         AjiTimer++;
         if (AjiTimer >= AjiAttackTime * 60)
         {
-            bullet.Shot();
-            bullet.Shot();
-            bullet.Shot();
+            bullet.Shot_3();
+
             AjiTimer = 0;
         }
 

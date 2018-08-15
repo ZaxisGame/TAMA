@@ -23,10 +23,22 @@ public class Bullet_scr_K : MonoBehaviour {
     //　敵を撃つ
     public  void Shot()
     {
-        GameObject bulletInstance =  Instantiate(bulletPrefab, muzzle.transform.position, Quaternion.identity);
-        rb = bulletInstance.GetComponent<Rigidbody>();
+       
+       
         this.transform.forward =  Target.transform.position - muzzle.transform.position;
-        rb.AddForce(transform.forward * shotSpeed);
-        Destroy(bulletInstance, 2f);
+        if (this.transform.forward.x <= -0.4f)
+        {
+            GameObject bulletInstance = Instantiate(bulletPrefab, muzzle.transform.position, Quaternion.identity);
+            rb = bulletInstance.GetComponent<Rigidbody>();
+            rb.AddForce(transform.forward * shotSpeed);
+            Destroy(bulletInstance, 2f);
+            //Debug.Log(this.transform.forward);
+        }
+    }
+
+    public void Shot_3(){
+        Invoke("Shot", 0.1f);
+        Invoke("Shot", 0.4f);
+        Invoke("Shot", 0.7f);
     }
 }

@@ -7,6 +7,7 @@ public class GameManager_scr_K : MonoBehaviour
 
     public GameObject swing, player;
     public GameObject cam , ajiMuzzle;
+    public GameObject camvas;
 
     public float TAMASpeed = 6.0F;
     public Vector3 TAMAJumpSpeed;

@@ -7,6 +7,9 @@ public class PlayerMove_scr_K : MonoBehaviour
     
     private GameObject gamemanager;
     GameManager_scr_K Game_M;
+    //ライフマネージャー取得
+    private GameObject canbas;
+    LifeManager_scr_K Life_M;
 
     private float speed , gravity , dz;
     public static bool is2D = true;
@@ -33,6 +36,11 @@ public class PlayerMove_scr_K : MonoBehaviour
         gravity = Game_M.TAMAGravity;
         //初期座標の取得
         pos = this.transform.position;
+
+        //ライフマネージャー取得
+        canbas = GameObject.Find("Canvas");
+        Life_M = canbas.GetComponent<LifeManager_scr_K>();
+
         //キャラコンの取得
         controller = GetComponent<CharacterController>();
         //アニメーター宣言２
@@ -257,7 +265,10 @@ public class PlayerMove_scr_K : MonoBehaviour
 
     public IEnumerator Damage()
     {
+        
         isStop = true;
+        Life_M.isMuteki = true;
+
         Debug.Log("ダメージ");
         animator.SetBool("is_Damage", true);
 
@@ -266,6 +277,7 @@ public class PlayerMove_scr_K : MonoBehaviour
         animator.SetBool("is_Damage", false);
         yield return new WaitForSeconds(0.5f);
         isStop = false;
+        Life_M.isMuteki = false;
     }
 
     public void Back()
