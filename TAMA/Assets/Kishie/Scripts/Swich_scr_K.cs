@@ -15,7 +15,7 @@ public class Swich_scr_K : MonoBehaviour {
 		
 	}
 
-    private void OnTriggerEnter(Collider col)
+    private void OnTriggerExit(Collider col)
     {
         if (col.CompareTag("Player"))
         {

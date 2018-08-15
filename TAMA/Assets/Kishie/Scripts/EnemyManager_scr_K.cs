@@ -13,7 +13,7 @@ public class EnemyManager_scr_K : MonoBehaviour
     public int state;
     public bool isAlive = true;
 
-    public GameObject player;
+    private GameObject player;
     private Vector3 Epos, firstEpos, Ppos;
     private float dis, AbsDis, AjiSpeed, ManbouSpeed, enemySpeed, IwashiActiveDis, AjiActiveDis, ManbouActiveDis, enemyDespawnDis, manbouAttackDis, ajiAttackDis ,AjiAttackTime;
     float cosx, angle, r = 0.4f;
@@ -50,7 +50,7 @@ public class EnemyManager_scr_K : MonoBehaviour
         ManbouSpeed = enemySpeed * 15;
 
         //プレイヤー取得
-        //player = Game_M.player;
+        player = Game_M.player;
 
         //初期座標を取得                   
         Epos = this.transform.position;
@@ -98,6 +98,7 @@ public class EnemyManager_scr_K : MonoBehaviour
         //プレイヤーとの距離が縮まれば動き出す
         else if (state == 1 && dis <= IwashiActiveDis && dis >= enemyDespawnDis && isAlive)//イワシ
         {
+            
             Epos.z += Spawn_delta;
             //.SetActive(true);
             if (Epos.z - firstEpos.z >= 0)
