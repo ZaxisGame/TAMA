@@ -1734,7 +1734,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1779610699000114}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114128743181976990
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1778,7 +1777,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1127147185540090}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114311215363761336
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1794,7 +1792,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1686979396013562}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114561818352280478
 MonoBehaviour:
   m_ObjectHideFlags: 1
