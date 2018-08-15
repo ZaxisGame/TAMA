@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7c0b0d8acdd3047bcbbe2341740ea577
+guid: 5e5070d61d723412fb5279838e5d1c66
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -22,99 +22,99 @@ ModelImporter:
     100032: group3
     100034: gun_2
     100036: Head
-    100038: //RootNode
-    100040: pCube1
-    100042: pCube10
-    100044: pCube10 1
-    100046: pCube10 2
-    100048: pCube10 3
-    100050: pCube10 4
-    100052: pCube10 5
-    100054: pCube10 6
-    100056: pCube10 7
-    100058: pCube12
-    100060: pCube2
-    100062: pCube4
-    100064: pCube4 1
-    100066: pCube4 2
-    100068: pCube4 3
-    100070: pCube4 4
-    100072: pCube4 5
-    100074: pCube4 6
-    100076: pCube4 7
-    100078: pCube5
-    100080: pCube5 1
-    100082: pCube5 2
-    100084: pCube5 3
-    100086: pCube5 4
-    100088: pCube5 5
-    100090: pCube5 6
-    100092: pCube5 7
-    100094: pCube6
-    100096: pCube6 1
-    100098: pCube6 2
-    100100: pCube6 3
-    100102: pCube6 4
-    100104: pCube6 5
-    100106: pCube6 6
-    100108: pCube6 7
-    100110: pCube7
-    100112: pCube7 1
-    100114: pCube7 2
-    100116: pCube7 3
-    100118: pCube7 4
-    100120: pCube7 5
-    100122: pCube7 6
-    100124: pCube7 7
-    100126: pCube8
-    100128: pCube8 1
-    100130: pCube8 2
-    100132: pCube8 3
-    100134: pCube8 4
-    100136: pCube8 5
-    100138: pCube8 6
-    100140: pCube8 7
-    100142: pCube9
-    100144: pCube9 1
-    100146: pCube9 2
-    100148: pCube9 3
-    100150: pCube9 4
-    100152: pCube9 5
-    100154: pCube9 6
-    100156: pCube9 7
-    100158: pCylinder10
-    100160: pCylinder10 1
-    100162: pCylinder10 2
-    100164: pCylinder10 3
-    100166: pCylinder10 4
-    100168: pCylinder10 5
-    100170: pCylinder10 6
-    100172: pCylinder10 7
-    100174: pCylinder11
-    100176: pCylinder11 1
-    100178: pCylinder11 2
-    100180: pCylinder11 3
-    100182: pCylinder11 4
-    100184: pCylinder11 5
-    100186: pCylinder11 6
-    100188: pCylinder11 7
-    100190: pCylinder12
-    100192: pCylinder7
-    100194: pCylinder8
-    100196: pCylinder9
-    100198: polySurface1
-    100200: polySurface2
-    100202: polySurface3
-    100204: pPlane1
-    100206: pPlane10
-    100208: pPlane11
-    100210: pPlane12
-    100212: pPlane13
-    100214: pSphere1
-    100216: pSphere2
-    100218: Rigroot
-    100220: root
-    100222: TAKO
+    100038: pCube1
+    100040: pCube10
+    100042: pCube10 1
+    100044: pCube10 2
+    100046: pCube10 3
+    100048: pCube10 4
+    100050: pCube10 5
+    100052: pCube10 6
+    100054: pCube10 7
+    100056: pCube12
+    100058: pCube2
+    100060: pCube4
+    100062: pCube4 1
+    100064: pCube4 2
+    100066: pCube4 3
+    100068: pCube4 4
+    100070: pCube4 5
+    100072: pCube4 6
+    100074: pCube4 7
+    100076: pCube5
+    100078: pCube5 1
+    100080: pCube5 2
+    100082: pCube5 3
+    100084: pCube5 4
+    100086: pCube5 5
+    100088: pCube5 6
+    100090: pCube5 7
+    100092: pCube6
+    100094: pCube6 1
+    100096: pCube6 2
+    100098: pCube6 3
+    100100: pCube6 4
+    100102: pCube6 5
+    100104: pCube6 6
+    100106: pCube6 7
+    100108: pCube7
+    100110: pCube7 1
+    100112: pCube7 2
+    100114: pCube7 3
+    100116: pCube7 4
+    100118: pCube7 5
+    100120: pCube7 6
+    100122: pCube7 7
+    100124: pCube8
+    100126: pCube8 1
+    100128: pCube8 2
+    100130: pCube8 3
+    100132: pCube8 4
+    100134: pCube8 5
+    100136: pCube8 6
+    100138: pCube8 7
+    100140: pCube9
+    100142: pCube9 1
+    100144: pCube9 2
+    100146: pCube9 3
+    100148: pCube9 4
+    100150: pCube9 5
+    100152: pCube9 6
+    100154: pCube9 7
+    100156: pCylinder10
+    100158: pCylinder10 1
+    100160: pCylinder10 2
+    100162: pCylinder10 3
+    100164: pCylinder10 4
+    100166: pCylinder10 5
+    100168: pCylinder10 6
+    100170: pCylinder10 7
+    100172: pCylinder11
+    100174: pCylinder11 1
+    100176: pCylinder11 2
+    100178: pCylinder11 3
+    100180: pCylinder11 4
+    100182: pCylinder11 5
+    100184: pCylinder11 6
+    100186: pCylinder11 7
+    100188: pCylinder12
+    100190: pCylinder7
+    100192: pCylinder8
+    100194: pCylinder9
+    100196: polySurface1
+    100198: polySurface2
+    100200: polySurface3
+    100202: pPlane1
+    100204: pPlane10
+    100206: pPlane11
+    100208: pPlane12
+    100210: pPlane13
+    100212: pSphere1
+    100214: pSphere2
+    100216: Rigroot
+    100218: root
+    100220: TAKO
+    100222: //RootNode
     400000: Arm
     400002: Binder
     400004: body
@@ -134,99 +134,99 @@ ModelImporter:
     400032: group3
     400034: gun_2
     400036: Head
-    400038: //RootNode
-    400040: pCube1
-    400042: pCube10
-    400044: pCube10 1
-    400046: pCube10 2
-    400048: pCube10 3
-    400050: pCube10 4
-    400052: pCube10 5
-    400054: pCube10 6
-    400056: pCube10 7
-    400058: pCube12
-    400060: pCube2
-    400062: pCube4
-    400064: pCube4 1
-    400066: pCube4 2
-    400068: pCube4 3
-    400070: pCube4 4
-    400072: pCube4 5
-    400074: pCube4 6
-    400076: pCube4 7
-    400078: pCube5
-    400080: pCube5 1
-    400082: pCube5 2
-    400084: pCube5 3
-    400086: pCube5 4
-    400088: pCube5 5
-    400090: pCube5 6
-    400092: pCube5 7
-    400094: pCube6
-    400096: pCube6 1
-    400098: pCube6 2
-    400100: pCube6 3
-    400102: pCube6 4
-    400104: pCube6 5
-    400106: pCube6 6
-    400108: pCube6 7
-    400110: pCube7
-    400112: pCube7 1
-    400114: pCube7 2
-    400116: pCube7 3
-    400118: pCube7 4
-    400120: pCube7 5
-    400122: pCube7 6
-    400124: pCube7 7
-    400126: pCube8
-    400128: pCube8 1
-    400130: pCube8 2
-    400132: pCube8 3
-    400134: pCube8 4
-    400136: pCube8 5
-    400138: pCube8 6
-    400140: pCube8 7
-    400142: pCube9
-    400144: pCube9 1
-    400146: pCube9 2
-    400148: pCube9 3
-    400150: pCube9 4
-    400152: pCube9 5
-    400154: pCube9 6
-    400156: pCube9 7
-    400158: pCylinder10
-    400160: pCylinder10 1
-    400162: pCylinder10 2
-    400164: pCylinder10 3
-    400166: pCylinder10 4
-    400168: pCylinder10 5
-    400170: pCylinder10 6
-    400172: pCylinder10 7
-    400174: pCylinder11
-    400176: pCylinder11 1
-    400178: pCylinder11 2
-    400180: pCylinder11 3
-    400182: pCylinder11 4
-    400184: pCylinder11 5
-    400186: pCylinder11 6
-    400188: pCylinder11 7
-    400190: pCylinder12
-    400192: pCylinder7
-    400194: pCylinder8
-    400196: pCylinder9
-    400198: polySurface1
-    400200: polySurface2
-    400202: polySurface3
-    400204: pPlane1
-    400206: pPlane10
-    400208: pPlane11
-    400210: pPlane12
-    400212: pPlane13
-    400214: pSphere1
-    400216: pSphere2
-    400218: Rigroot
-    400220: root
-    400222: TAKO
+    400038: pCube1
+    400040: pCube10
+    400042: pCube10 1
+    400044: pCube10 2
+    400046: pCube10 3
+    400048: pCube10 4
+    400050: pCube10 5
+    400052: pCube10 6
+    400054: pCube10 7
+    400056: pCube12
+    400058: pCube2
+    400060: pCube4
+    400062: pCube4 1
+    400064: pCube4 2
+    400066: pCube4 3
+    400068: pCube4 4
+    400070: pCube4 5
+    400072: pCube4 6
+    400074: pCube4 7
+    400076: pCube5
+    400078: pCube5 1
+    400080: pCube5 2
+    400082: pCube5 3
+    400084: pCube5 4
+    400086: pCube5 5
+    400088: pCube5 6
+    400090: pCube5 7
+    400092: pCube6
+    400094: pCube6 1
+    400096: pCube6 2
+    400098: pCube6 3
+    400100: pCube6 4
+    400102: pCube6 5
+    400104: pCube6 6
+    400106: pCube6 7
+    400108: pCube7
+    400110: pCube7 1
+    400112: pCube7 2
+    400114: pCube7 3
+    400116: pCube7 4
+    400118: pCube7 5
+    400120: pCube7 6
+    400122: pCube7 7
+    400124: pCube8
+    400126: pCube8 1
+    400128: pCube8 2
+    400130: pCube8 3
+    400132: pCube8 4
+    400134: pCube8 5
+    400136: pCube8 6
+    400138: pCube8 7
+    400140: pCube9
+    400142: pCube9 1
+    400144: pCube9 2
+    400146: pCube9 3
+    400148: pCube9 4
+    400150: pCube9 5
+    400152: pCube9 6
+    400154: pCube9 7
+    400156: pCylinder10
+    400158: pCylinder10 1
+    400160: pCylinder10 2
+    400162: pCylinder10 3
+    400164: pCylinder10 4
+    400166: pCylinder10 5
+    400168: pCylinder10 6
+    400170: pCylinder10 7
+    400172: pCylinder11
+    400174: pCylinder11 1
+    400176: pCylinder11 2
+    400178: pCylinder11 3
+    400180: pCylinder11 4
+    400182: pCylinder11 5
+    400184: pCylinder11 6
+    400186: pCylinder11 7
+    400188: pCylinder12
+    400190: pCylinder7
+    400192: pCylinder8
+    400194: pCylinder9
+    400196: polySurface1
+    400198: polySurface2
+    400200: polySurface3
+    400202: pPlane1
+    400204: pPlane10
+    400206: pPlane11
+    400208: pPlane12
+    400210: pPlane13
+    400212: pSphere1
+    400214: pSphere2
+    400216: Rigroot
+    400218: root
+    400220: TAKO
+    400222: //RootNode
     2100000: aiStandardSurface3
     2100002: aiStandardSurface4
     2300000: pCube1
@@ -493,7 +493,7 @@ ModelImporter:
     4300170: polySurface2
     4300172: polySurface3
     4300174: pPlane10
-    7400000: Idle
+    7400000: Move
     9500000: //RootNode
   externalObjects: {}
   materials:
@@ -524,9 +524,9 @@ ModelImporter:
     extraUserProperties: []
     clipAnimations:
     - serializedVersion: 16
-      name: Idle
+      name: Move
       takeName: Take 001
-      firstFrame: 1
+      firstFrame: 105
       lastFrame: 204
       wrapMode: 0
       orientationOffsetY: 0
@@ -534,7 +534,7 @@ ModelImporter:
       cycleOffset: 0
       loop: 0
       hasAdditiveReferencePose: 0
-      loopTime: 1
+      loopTime: 0
       loopBlend: 0
       loopBlendOrientation: 0
       loopBlendPositionY: 0
@@ -550,7 +550,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 1
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
