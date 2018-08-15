@@ -64,7 +64,7 @@ public class PlayerManager_scr_K : MonoBehaviour {
             Destroy(col.gameObject);   
            
         }
-        else if(col.CompareTag("Finish")){
+        else if(col.CompareTag("Beam")){
             Life_M.Damage();
             Destroy(col.gameObject);  
             

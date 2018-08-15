@@ -11,7 +11,7 @@ public class PlayerMove_scr_K : MonoBehaviour
     private GameObject canbas;
     LifeManager_scr_K Life_M;
 
-    private float speed , gravity , dz;
+    private float speed , gravity , dz ;
     public static bool is2D = true;
     public static bool isJump = false;
     public static bool isBack = false;
@@ -27,7 +27,7 @@ public class PlayerMove_scr_K : MonoBehaviour
     CharacterController controller;
     //アニメーター宣言１
     Animator animator;
-    int t;
+    int t ;
 
 
     void Start()
@@ -60,7 +60,13 @@ public class PlayerMove_scr_K : MonoBehaviour
 
     void Update()
     {
-            pos = this.transform.position;
+        pos = this.transform.position;
+
+        if (this.transform.position.y <= -5)
+        {
+            DropOut();
+        }
+
 
             if (Game_M.CamState == 0)//camstate=0に
             {
@@ -73,6 +79,7 @@ public class PlayerMove_scr_K : MonoBehaviour
             {
                 Walk_3D();
             }
+
 
     }
 
@@ -109,6 +116,7 @@ public class PlayerMove_scr_K : MonoBehaviour
 
         if (controller.isGrounded)
         {
+            gravity = Game_M.TAMAGravity;
                 //ジャンプしていない
                 isJump = false;
 
@@ -175,6 +183,7 @@ public class PlayerMove_scr_K : MonoBehaviour
        
         if (controller.isGrounded)//地面についている時
         {
+            gravity = Game_M.TAMAGravity;
             //ジャンプしていない
             isJump = false;
             animator.SetBool("is_Jump", false);
@@ -231,7 +240,7 @@ public class PlayerMove_scr_K : MonoBehaviour
         }
 
         //重力換算
-        moveDirection3D.y -= gravity * Time.deltaTime;
+        moveDirection3D.y -= gravity * Time.deltaTime ;
         controller.Move(moveDirection3D * Time.deltaTime);
     }
 
@@ -319,6 +328,14 @@ public class PlayerMove_scr_K : MonoBehaviour
         animator.Play("TAMA_jump", 0, 0.0f);
     }
 
+    public void DropOut(){
+        Invoke("Life_M_Damage",2.0f);
+        this.transform.position = new Vector3(this.transform.position.x - 2.0f, 30.0f , 0.0f);
+        gravity = Game_M.TAMAGravity * 0.1f ;
+    }
+    public void Life_M_Damage(){
+        Life_M.Damage();
+    }
 
 
 }
