@@ -64,10 +64,9 @@ public class PlayerMove_scr_K : MonoBehaviour
 
     void Update()
     {
-
-        Debug.Log("isStop"+isStop);
-        Debug.Log("InputKey"+InputKey);
-        Debug.Log("controller.isGrounded"+ controller.isGrounded);
+        if(Input.anyKeyDown){
+            animator.SetBool("is_Sleeping", false);
+        }
 
         if (isDead == false)
         {
