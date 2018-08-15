@@ -16,6 +16,8 @@ public class PlayerMove_scr_K : MonoBehaviour
     public static bool isJump = false;
     public static bool isBack = false;
     public static bool isStop = false;
+    public static bool isZensin = false;
+    public static bool isGround;
     public bool force_z = true;
     private Vector3 jumpSpeed;
     private bool InputKey = true;
@@ -28,7 +30,7 @@ public class PlayerMove_scr_K : MonoBehaviour
     //アニメーター宣言１
     Animator animator;
     int t ;
-
+   
 
     void Start()
     {
@@ -117,32 +119,37 @@ public class PlayerMove_scr_K : MonoBehaviour
         if (controller.isGrounded)
         {
             gravity = Game_M.TAMAGravity;
-                //ジャンプしていない
-                isJump = false;
+            //ジャンプしていない
+            isJump = false;
+            isGround = true;
 
-                animator.SetBool("is_Jump", false);
-                animator.SetBool("is_BackJump", false);
-                animator.SetBool("is_UpJump", false);
-                //animator.SetBool("is_Idle", true);
-                moveDirection2D = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
-                moveDirection2D *= speed;
+            animator.SetBool("is_Jump", false);
+            animator.SetBool("is_BackJump", false);
+            animator.SetBool("is_UpJump", false);
 
-                if (Input.GetKeyDown(KeyCode.Space) && InputKey)
-                {
-                    Jump();
-                    InputKey = false;
-                    Invoke("JumpInterval", 1.0f);
-              
-                }
+
+            moveDirection2D = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
+            moveDirection2D *= speed;
+
+            if (Input.GetKeyDown(KeyCode.Space) && InputKey)
+            {
+                Jump();
+                InputKey = false;
+                Invoke("JumpInterval", 1.0f);
+
+            }
 
 
 
         }
         else
-        {     //空中でもx軸移動可能にする
-                moveDirection2D.x = Input.GetAxis("Horizontal");
-                moveDirection2D.z = 0;
-                moveDirection2D.x = moveDirection2D.x * speed * jumpSpeed.x;
+        {
+
+            isGround = false;
+            //空中でもx軸移動可能にする
+            moveDirection2D.x = Input.GetAxis("Horizontal");
+            moveDirection2D.z = 0;
+            moveDirection2D.x = moveDirection2D.x * speed * jumpSpeed.x;
         }
       
         //アニメーション
@@ -153,6 +160,7 @@ public class PlayerMove_scr_K : MonoBehaviour
             animator.SetBool("is_Back", false);
             animator.SetBool("is_Idle", true);
             isBack = false;
+            isZensin = false;
         }
         else if (moveDirection2D.x < 0 )
         {   //後退
@@ -161,7 +169,7 @@ public class PlayerMove_scr_K : MonoBehaviour
         }
         else if(moveDirection2D.x > 0)
         {   //前進
-            
+            isZensin = true;////
             isBack = false;
             animator.SetBool("is_Back", false);
             animator.SetBool("is_Walk", true);
@@ -181,15 +189,18 @@ public class PlayerMove_scr_K : MonoBehaviour
 
     public void Walk_3D(){
        
-        if (controller.isGrounded)//地面についている時
+        if (controller.isGrounded)
         {
+            //地面についている時
+            isGround = true;
             gravity = Game_M.TAMAGravity;
+
             //ジャンプしていない
             isJump = false;
             animator.SetBool("is_Jump", false);
             animator.SetBool("is_BackJump", false);
             animator.SetBool("is_UpJump", false);
-            animator.SetBool("is_Idle", true);
+       
 
             moveDirection3D = new Vector3(Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal") * -1);
             moveDirection3D *= speed;
@@ -204,6 +215,7 @@ public class PlayerMove_scr_K : MonoBehaviour
         }
         else//空中にいる時
         {
+            isGround = false;
             //空中でもx、z軸移動可能にする
             moveDirection3D.x = Input.GetAxis("Vertical");
             moveDirection3D.z = Input.GetAxis("Horizontal") * -1;
@@ -216,6 +228,7 @@ public class PlayerMove_scr_K : MonoBehaviour
         {
             //止まっている時
             isBack = false;
+            isZensin = false;
             animator.SetBool("is_Walk", false);
             animator.SetBool("is_Back", false);
            
@@ -229,12 +242,14 @@ public class PlayerMove_scr_K : MonoBehaviour
         else if(moveDirection3D.x > 0 || moveDirection3D.z > 0 || moveDirection3D.z < 0)
         {
             //前進
+            isZensin = true;////
             isBack = false;
             animator.SetBool("is_Back", false);
             animator.SetBool("is_Walk", true);
         }
         if (isStop)
         {
+            isZensin = false;
             moveDirection3D.x = 0;
             moveDirection3D.z = 0;
         }
@@ -247,27 +262,28 @@ public class PlayerMove_scr_K : MonoBehaviour
 
     public void Jump()
     {
-        Debug.Log("ジャンプ");
-        isJump = true;
+        isGround = false;
+     
 
-        if(isJump && ((is2D && moveDirection2D.x == 0) || (is2D == false &&(moveDirection3D.x == 0 || moveDirection3D.z == 0)))){
+        if(isZensin == false && isBack == false){
             animator.SetBool("is_UpJump", true);
             jumpSpeed.x = 0.5f;
             jumpSpeed.z = 0.5f;
-
+            Debug.Log("|||ジャンプ|||");
         }
-        else if (isJump && isBack == false )
+        else if (isZensin && isBack == false )
         {
             animator.SetBool("is_Jump", true);
             jumpSpeed.x = 1f;
             jumpSpeed.z = 1f;
-
+            Debug.Log("ジャンプ>>>>>");
         }
-        else if(isJump && isBack )
+        else if( isZensin == false && isBack )
         {
             animator.SetBool("is_BackJump", true);
             jumpSpeed.x = 1f;
             jumpSpeed.z = 1f;
+            Debug.Log("<<<<<ジャンプ");
         }
        
         moveDirection2D.y = jumpSpeed.y;
@@ -304,6 +320,7 @@ public class PlayerMove_scr_K : MonoBehaviour
 
     public void Back()
     {
+        isZensin = false;
         isBack = true;
     
         Debug.Log("後退");
@@ -329,11 +346,13 @@ public class PlayerMove_scr_K : MonoBehaviour
     }
 
     public void DropOut(){
-        Invoke("Life_M_Damage",2.0f);
+        isStop = true;
+        Invoke("Life_M_Damage",1.5f);
         this.transform.position = new Vector3(this.transform.position.x - 2.0f, 30.0f , 0.0f);
         gravity = Game_M.TAMAGravity * 0.1f ;
     }
     public void Life_M_Damage(){
+        isStop = false;
         Life_M.Damage();
     }
 

@@ -9,6 +9,7 @@ public class GameManager_scr_K : MonoBehaviour
     public GameObject cam , ajiMuzzle;
     public GameObject camvas;
 
+
     public float TAMASpeed = 6.0F;
     public Vector3 TAMAJumpSpeed;
     public int TAMA_HP = 3;
@@ -29,8 +30,6 @@ public class GameManager_scr_K : MonoBehaviour
 
     public float ManbouActiveDis = 20f;
     public float manbouAttackDis = 5f;
-
-
 
     float y_angle, t;
     private Vector3 offset, Ppos, swingPos;
@@ -61,6 +60,7 @@ public class GameManager_scr_K : MonoBehaviour
         cam.GetComponent<Camera>().orthographic = true;
 
 
+
     }
 
     void Update()
@@ -71,7 +71,7 @@ public class GameManager_scr_K : MonoBehaviour
     void CameraManager()
     {
         //ジャンプ中でない時にスペースキーを押すと
-        if (PlayerMove_scr_K.isJump == false && Input.GetKeyDown(KeyCode.Return))
+        if ( PlayerMove_scr_K.isGround && PlayerMove_scr_K.isJump == false && Input.GetKeyDown(KeyCode.Return))
         {
             camState = -1;//回転中
 
