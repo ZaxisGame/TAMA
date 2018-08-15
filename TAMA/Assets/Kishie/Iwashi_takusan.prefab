@@ -4529,7 +4529,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1110703757161386}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 143.61, y: -0.08, z: 0}
+  m_LocalPosition: {x: 150, y: -0.08, z: 0}
   m_LocalScale: {x: 18, y: 18, z: 18}
   m_Children:
   - {fileID: 4697512830369244}
@@ -13860,7 +13860,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1730246183265492}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114064629294688320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13904,7 +13903,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1161662154010776}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114132507280650726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13920,7 +13918,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1145854374208456}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114152002955380968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13936,7 +13933,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1608147908027314}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114155003514139906
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13952,7 +13948,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1798493710933042}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114184010105254228
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -13982,7 +13977,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1961945721234442}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114203095073292380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14012,7 +14006,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1833745546348826}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114217411327032214
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14028,7 +14021,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1594363150205264}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114226281931551988
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14058,7 +14050,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1305658711118124}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114279040852410254
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14074,7 +14065,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1281246843079152}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114315100058701540
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14118,7 +14108,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1627698301428348}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114418072867916100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14134,7 +14123,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1048302273893616}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114431696049109860
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14164,7 +14152,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1416521870749444}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114469550337280146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14180,7 +14167,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1998005290233422}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114474596220608960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14196,7 +14182,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1526325070087904}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114490381544501972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14226,7 +14211,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1428772205107928}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114536380779754662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14270,7 +14254,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1931227080108306}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114612883041732548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14300,7 +14283,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1640021105249922}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114644198124355576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14330,7 +14312,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1889583724664482}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114711274962455648
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14458,7 +14439,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1348575363973148}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114862841142435488
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14474,7 +14454,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1298120447116364}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114875613840265652
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14490,7 +14469,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1451169057148146}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114889428719087206
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14506,7 +14484,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1946921480446898}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114901115938457626
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14536,7 +14513,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1863941027815086}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114953468641358068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14580,7 +14556,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1125843366633710}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114970389038753886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -14596,7 +14571,6 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1944450969848612}
   shotSpeed: 500
-  Target: {fileID: 0}
 --- !u!114 &114976929213776106
 MonoBehaviour:
   m_ObjectHideFlags: 1

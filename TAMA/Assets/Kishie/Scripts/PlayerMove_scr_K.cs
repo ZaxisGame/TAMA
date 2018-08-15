@@ -361,7 +361,7 @@ public class PlayerMove_scr_K : MonoBehaviour
     public void DropOut(){
         isStop = true;
         Invoke("Life_M_Damage",1.5f);
-        this.transform.position = new Vector3(this.transform.position.x - 2.0f, 30.0f , 0.0f);
+        this.transform.position = new Vector3(this.transform.position.x - 10f, 30.0f , 0.0f);
     }
     public void Life_M_Damage(){
         isStop = false;
