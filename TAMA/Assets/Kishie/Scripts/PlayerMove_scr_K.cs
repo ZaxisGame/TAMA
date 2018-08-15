@@ -20,12 +20,16 @@ public class PlayerMove_scr_K : MonoBehaviour
     private Vector3 jumpSpeed;
     private bool InputKey = true;
 
+    private float mutekiTime;
+
     //public static bool isDrive = false;
     private Vector3 moveDirection2D , moveDirection3D , pos , mousePos;
     CharacterController controller;
     //アニメーター宣言１
     Animator animator;
     int t;
+
+
     void Start()
     {
         //ゲームマネージャー取得
@@ -34,6 +38,8 @@ public class PlayerMove_scr_K : MonoBehaviour
         speed = Game_M.TAMASpeed;
         jumpSpeed = Game_M.TAMAJumpSpeed;
         gravity = Game_M.TAMAGravity;
+
+        mutekiTime = Game_M.mutekiTime;
         //初期座標の取得
         pos = this.transform.position;
 
@@ -47,6 +53,8 @@ public class PlayerMove_scr_K : MonoBehaviour
         animator = GetComponent<Animator>();
 
         isStop = false;
+
+
 
     }
 
@@ -267,6 +275,7 @@ public class PlayerMove_scr_K : MonoBehaviour
     {
         
         isStop = true;
+
         Life_M.isMuteki = true;
 
         Debug.Log("ダメージ");
@@ -275,9 +284,13 @@ public class PlayerMove_scr_K : MonoBehaviour
         yield return new WaitForSeconds(0.25f);
         //animator.SetBool("is_Idle", true);
         animator.SetBool("is_Damage", false);
+
         yield return new WaitForSeconds(0.5f);
         isStop = false;
+
+        yield return new WaitForSeconds(mutekiTime - 0.75f);
         Life_M.isMuteki = false;
+
     }
 
     public void Back()

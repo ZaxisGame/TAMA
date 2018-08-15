@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager_scr_K : MonoBehaviour
 {
 
-    public GameObject swing, player;
+    public GameObject swing, player, player_mesh;
     public GameObject cam , ajiMuzzle;
     public GameObject camvas;
 
@@ -14,6 +14,7 @@ public class GameManager_scr_K : MonoBehaviour
     public int TAMA_HP = 3;
     public float TAMAGravity = 20.0F;
     public float camSpeed = 2.5f;
+    public float mutekiTime = 2.0f;
 
     public Vector3 Edelta;
     public float enemyDefaultSpeed = 3f;
