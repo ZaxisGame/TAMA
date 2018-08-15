@@ -95,6 +95,8 @@ public class LifeManager_scr_K : MonoBehaviour {
 
         if (currentLife == 0)
             {
+
+              
                 pMove.Die();
                 //SceneManager.LoadScene("GameOver");
             }

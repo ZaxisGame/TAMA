@@ -18,6 +18,7 @@ public class PlayerMove_scr_K : MonoBehaviour
     public static bool isStop = false;
     public static bool isZensin = false;
     public static bool isGround;
+    public static bool isDead = false;
     public bool force_z = true;
     private Vector3 jumpSpeed;
     private bool InputKey = true;
@@ -54,6 +55,7 @@ public class PlayerMove_scr_K : MonoBehaviour
         //アニメーター宣言２
         animator = GetComponent<Animator>();
 
+        isDead = false;
         isStop = false;
 
 
@@ -62,18 +64,20 @@ public class PlayerMove_scr_K : MonoBehaviour
 
     void Update()
     {
-        pos = this.transform.position;
-
-        if (this.transform.position.y <= -5)
+        if (isDead == false)
         {
-            DropOut();
-        }
+            pos = this.transform.position;
+
+            if (this.transform.position.y <= -5)
+            {
+                DropOut();
+            }
 
 
             if (Game_M.CamState == 0)//camstate=0に
             {
-            
-           
+
+
                 Walk_2D();
             }
 
@@ -82,7 +86,7 @@ public class PlayerMove_scr_K : MonoBehaviour
                 Walk_3D();
             }
 
-
+        }
     }
 
 
@@ -137,6 +141,10 @@ public class PlayerMove_scr_K : MonoBehaviour
                 InputKey = false;
                 Invoke("JumpInterval", 1.0f);
 
+                if(isStop){
+                    Stop();
+                }
+
             }
 
 
@@ -176,7 +184,7 @@ public class PlayerMove_scr_K : MonoBehaviour
         }
 
         if(isStop){
-            
+            isZensin = false;
             moveDirection2D.x = 0;
             moveDirection2D.z = 0;
         }
@@ -337,7 +345,7 @@ public class PlayerMove_scr_K : MonoBehaviour
     {
         Debug.Log("ゲームオーバー");
         animator.SetBool("is_Die", true);
-        isStop = true;
+        Invoke("Stop", 1f);
     }
 
 
@@ -354,6 +362,12 @@ public class PlayerMove_scr_K : MonoBehaviour
     public void Life_M_Damage(){
         isStop = false;
         Life_M.Damage();
+    }
+    public void Stop(){
+        isStop = true;
+        InputKey = false;
+        isDead = true;
+
     }
 
 

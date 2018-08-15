@@ -76,11 +76,14 @@ public class EnemyManager_scr_K : MonoBehaviour
             Destroy(this.gameObject);
 
         }
+        if (PlayerMove_scr_K.isDead == false)
+        {
 
-        Move();
+            Move();
 
-        //Eposの値をいじって ここで動かす
-        this.transform.position = Epos;
+            //Eposの値をいじって ここで動かす
+            this.transform.position = Epos;
+        }
     }
 
 
