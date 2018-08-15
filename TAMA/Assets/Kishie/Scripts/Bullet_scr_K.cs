@@ -8,16 +8,24 @@ public class Bullet_scr_K : MonoBehaviour {
     public GameObject bulletPrefab;
     public GameObject gun;
     public float shotSpeed = 3000f;
-    public GameObject Target;
+    private GameObject Target;
     Rigidbody rb;
+
+    //ゲームマネージャー取得
+    private GameObject gamemanager;
+    GameManager_scr_K Game_M;
 
     void Start()
     {
+        //ゲームマネージャー取得
+        gamemanager = GameObject.Find("GameManager");
+        Game_M = gamemanager.GetComponent<GameManager_scr_K>();
+        Target = Game_M.player;
     }
 
     void Update()
     {
-       
+        
     }
 
     //　敵を撃つ

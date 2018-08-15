@@ -71,8 +71,8 @@ public class GameManager_scr_K : MonoBehaviour
     void CameraManager()
     {
         //ジャンプ中でない時にスペースキーを押すと
-        //if ( PlayerMove_scr_K.isGround && PlayerMove_scr_K.isJump == false && Input.GetKeyDown(KeyCode.Return))
-        if (PlayerMove_scr_K.isGround && PlayerMove_scr_K.isJump == false && Input.GetButtonDown("Submit"))
+        if ( PlayerMove_scr_K.isGround && PlayerMove_scr_K.isJump == false && Input.GetKeyDown(KeyCode.Return))
+       // if (PlayerMove_scr_K.isGround && PlayerMove_scr_K.isJump == false && Input.GetButtonDown("Submit"))
         {
             camState = -1;//回転中
 

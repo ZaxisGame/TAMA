@@ -64,6 +64,11 @@ public class PlayerMove_scr_K : MonoBehaviour
 
     void Update()
     {
+
+        Debug.Log("isStop"+isStop);
+        Debug.Log("InputKey"+InputKey);
+        Debug.Log("controller.isGrounded"+ controller.isGrounded);
+
         if (isDead == false)
         {
             pos = this.transform.position;
@@ -140,11 +145,6 @@ public class PlayerMove_scr_K : MonoBehaviour
                 Jump();
                 InputKey = false;
                 Invoke("JumpInterval", 1.0f);
-
-                if(isStop){
-                    Stop();
-                }
-
             }
 
 
@@ -270,38 +270,42 @@ public class PlayerMove_scr_K : MonoBehaviour
 
     public void Jump()
     {
-        isGround = false;
-        isJump = true;
-     
-
-        if(isZensin == false && isBack == false){
-            animator.SetBool("is_UpJump", true);
-            jumpSpeed.x = 0.5f;
-            jumpSpeed.z = 0.5f;
-            Debug.Log("|||ジャンプ|||");
-        }
-        else if (isZensin && isBack == false )
+        if (isStop == false)
         {
-            animator.SetBool("is_Jump", true);
-            jumpSpeed.x = 1f;
-            jumpSpeed.z = 1f;
-            Debug.Log("ジャンプ>>>>>");
-        }
-        else if( isZensin == false && isBack )
-        {
-            animator.SetBool("is_BackJump", true);
-            jumpSpeed.x = 1f;
-            jumpSpeed.z = 1f;
-            Debug.Log("<<<<<ジャンプ");
-        }
-       
-        moveDirection2D.y = jumpSpeed.y;
-        moveDirection3D.y = jumpSpeed.y;
+            isGround = false;
+            isJump = true;
 
+
+            if (isZensin == false && isBack == false)
+            {
+                animator.SetBool("is_UpJump", true);
+                jumpSpeed.x = 0.5f;
+                jumpSpeed.z = 0.5f;
+                Debug.Log("|||ジャンプ|||");
+            }
+            else if (isZensin && isBack == false)
+            {
+                animator.SetBool("is_Jump", true);
+                jumpSpeed.x = 1f;
+                jumpSpeed.z = 1f;
+                Debug.Log("ジャンプ>>>>>");
+            }
+            else if (isZensin == false && isBack)
+            {
+                animator.SetBool("is_BackJump", true);
+                jumpSpeed.x = 1f;
+                jumpSpeed.z = 1f;
+                Debug.Log("<<<<<ジャンプ");
+            }
+
+            moveDirection2D.y = jumpSpeed.y;
+            moveDirection3D.y = jumpSpeed.y;
+        }
     }
 
     public void JumpInterval(){
         InputKey = true;
+        Debug.Log("jumpIntervalCalled");
     }
 
 
@@ -345,7 +349,7 @@ public class PlayerMove_scr_K : MonoBehaviour
     {
         Debug.Log("ゲームオーバー");
         animator.SetBool("is_Die", true);
-        Invoke("Stop", 1f);
+        Invoke("GameOver", 1f);
     }
 
 
@@ -363,7 +367,7 @@ public class PlayerMove_scr_K : MonoBehaviour
         isStop = false;
         Life_M.Damage();
     }
-    public void Stop(){
+    public void GameOver(){
         isStop = true;
         InputKey = false;
         isDead = true;
