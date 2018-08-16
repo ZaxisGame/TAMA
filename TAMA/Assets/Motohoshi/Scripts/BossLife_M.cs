@@ -5,16 +5,18 @@ using UnityEngine;
 public class BossLife_M : MonoBehaviour
 {
     public GameObject Boss;
+    public GameObject OctPivot;
+    public GameObject Ending;
     public Light light;
     public Camera BossCam;
     public Camera EndingCam;
     public Material oct;
-    int life;
+    public int life;
     int state;
     AnimationBS_M AnimationBS;
 	private void Start()
 	{
-        life = 3;
+        life = 1;
         state = 0;
         AnimationBS = Boss.GetComponent<AnimationBS_M>();
         EndingCam.enabled = false;
@@ -26,11 +28,19 @@ public class BossLife_M : MonoBehaviour
         {
             state = 0;
         }
-        if(life==0){
+        if (Input.GetKey(KeyCode.H))
+        {
+            life = 0;
+            state = 2;
+        }
+        if(life==0&&state==2){
+            state = 3;
             BossCam.enabled = false;
             EndingCam.enabled = true;
-            Destroy(Boss.GetComponent<AnimationBP_M>());
-            Boss.AddComponent<Ending_M>();
+            Destroy(Boss.GetComponent<AnimationBS_M>());
+            OctPivot.transform.position = new Vector3(83, 3.8f, 40);
+            OctPivot.transform.rotation = Quaternion.Euler(0, 0, 0);
+            Boss.transform.rotation = Quaternion.Euler(0, 180, 0);
         }
 	}
 
@@ -39,9 +49,15 @@ public class BossLife_M : MonoBehaviour
         if(other.CompareTag("Player")&&state==0){
             life--;
             state = 1;
-            StartCoroutine("Tenmetsu");
-            if (life == 0)
-                life = 3;
+            if (life != 0)
+            {
+                StartCoroutine("Tenmetsu");
+            }
+            //if (life == 0)
+                //life = 3;
+            if(life==0){
+                state = 2;
+            }
         }
         switch(life){
             case 3: light.color = new Color(255, 0, 0);light.intensity = 0.09f; break;

@@ -28,7 +28,7 @@ public class MissileBS2_M : MonoBehaviour {
         }
         else if (ShotState == 2)
         {
-            MissileManager.TargetLockOn(new Vector3(player.transform.position.x, player.transform.position.y, -4.5f), gameObject);
+            MissileManager.TargetLockOn(new Vector3(player.transform.position.x, player.transform.position.y, -1.5f), gameObject);
         }
     }
 
@@ -40,17 +40,17 @@ public class MissileBS2_M : MonoBehaviour {
         yield return new WaitForSeconds(2f);
         if (i < 2)
         {
-            transform.position = new Vector3(40, 5 + (i * 10), -4.5f);
+            transform.position = new Vector3(40, 5 + (i * 10), -1.5f);
             transform.rotation = Quaternion.Euler(0, 90, 0);
         }
         else if (i >= 2 && i < 6)
         {
-            transform.position = new Vector3(transform.position.x, 40, -4.5f);
+            transform.position = new Vector3(transform.position.x, 40, -1.5f);
             transform.rotation = Quaternion.Euler(90, 0, 0);
         }
         else
         {
-            transform.position = new Vector3(126, 5 + ((i - 6) * 10), -4.5f);
+            transform.position = new Vector3(126, 5 + ((i - 6) * 10), -1.5f);
             transform.rotation = Quaternion.Euler(0, -90, 0);
         }
         MissileManager.shotSpeed = 20;

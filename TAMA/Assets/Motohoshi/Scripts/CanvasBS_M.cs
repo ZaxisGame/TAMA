@@ -7,6 +7,7 @@ public class CanvasBS_M : MonoBehaviour {
     int state;
     CanvasGroup CanvasGroup;
     public Camera BossCam;
+    public GameObject core;
 	// Use this for initialization
 	void Start () {
         state = 0;
@@ -22,6 +23,10 @@ public class CanvasBS_M : MonoBehaviour {
             state++;
         }else if(BossCam.enabled&&state==1){
             CanvasGroup.alpha = 1f;
+            Debug.Log(CanvasGroup.alpha);
+            state++;
+        }else if(state==2&&core.GetComponent<BossLife_M>().life==0){
+            CanvasGroup.alpha = 0f;
             Debug.Log(CanvasGroup.alpha);
             state++;
         }
