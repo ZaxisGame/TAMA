@@ -15,13 +15,18 @@ public class AnimationBS_M : MonoBehaviour {
     int Lqqp;
     int Life;
     // Use this for initialization
+    Vector3 pos;
     private int BossState;
     float time = 0;
-
+    AudioSource audioSource;
+    public List<AudioClip> audioClip = new List<AudioClip>();
     public int getBossState(){
         return BossState;
     }
+    bool isPlayed;
 	void Start () {
+        pos = transform.position;
+        audioSource = GetComponent<AudioSource>();
         Beam.GetComponent<ParticleSystem>().Stop();
         missiles = new GameObject[8];
         TakoAnime = GetComponent<Animator>();
@@ -29,13 +34,20 @@ public class AnimationBS_M : MonoBehaviour {
         tako = GetComponent<Rigidbody>();
         Lqqp = 0;
         MissileManager = GetComponent<MissileManager_M>();
+        isPlayed = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if(transform.position.y>pos.y&&!isPlayed){
+            audioSource.PlayOneShot(audioClip[0]);
+            isPlayed = true;
+        }
         if(BossCam.GetComponent<Camera>().enabled&&BossState==0){
             //OctPivot.transform.position = new Vector3(transform.position.x,transform.position.y+17,transform.position.z);
+
             StartCoroutine("BossMove");
+
             //Debug.Log("call");
         }
         else if(BossState==2){
@@ -69,7 +81,7 @@ public class AnimationBS_M : MonoBehaviour {
             }
         }
         else if(BossState==6){
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 270, 0), Time.deltaTime * 2f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 270, 0), Time.deltaTime * 3f);
         }
         else if (BossState == 7)
         {

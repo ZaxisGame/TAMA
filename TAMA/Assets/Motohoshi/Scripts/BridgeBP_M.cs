@@ -12,7 +12,8 @@ public class BridgeBP_M : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(count==8){
+        if(count>=8){
+            //Destroy(GetComponent<BoxCollider>());
             gameObject.AddComponent<Rigidbody>();
         }
         if(transform.position.y<-30){

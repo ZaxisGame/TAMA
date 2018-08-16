@@ -33,6 +33,8 @@ public class BossPerfotmance_M : MonoBehaviour
     Vector3 wavePos;
     int performState;
     // Use this for initialization
+    AudioSource audioSource;
+    public List<AudioClip> audioClip = new List<AudioClip>();
     void Start()
     {
         performState = 0;
@@ -47,6 +49,7 @@ public class BossPerfotmance_M : MonoBehaviour
         BossCamera.GetComponent<Camera>().enabled = false;
         LightR = SearchLightR.transform.GetChild(0).gameObject;
         LightL = SearchLightL.transform.GetChild(0).gameObject;
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -112,6 +115,7 @@ public class BossPerfotmance_M : MonoBehaviour
         else if (performState == 6 || performState == 7)
         {
             Vector3 targetA = new Vector3(83, SearchLightR.transform.position.y, 45) - SearchLightR.transform.position;
+            audioSource.PlayOneShot(audioClip[0]);
             SearchLightR.transform.rotation = Quaternion.Slerp(SearchLightR.transform.rotation, Quaternion.LookRotation(targetA), Time.deltaTime * 1f);
             if (performState == 7)
             {
@@ -119,11 +123,17 @@ public class BossPerfotmance_M : MonoBehaviour
                 Vector3 targetB = new Vector3(83, -10, 45) - LightR.transform.position;
                 //Debug.Log(Light.transform.forward);
                 LightR.transform.rotation = Quaternion.Slerp(LightR.transform.rotation, Quaternion.LookRotation(targetB), Time.deltaTime * 1f);
+                //audioSource.Stop();
+                //audioSource.Play();
+                //audioSource.PlayOneShot(audioClip[0]);
             }
         }
         else if (performState == 8 || performState == 9)
         {
             Vector3 targetA = new Vector3(83, SearchLightL.transform.position.y, 45) - SearchLightL.transform.position;
+            //audioSource.Stop();
+            //audioSource.Play();
+            audioSource.PlayOneShot(audioClip[0]);
             SearchLightL.transform.rotation = Quaternion.Slerp(SearchLightL.transform.rotation, Quaternion.LookRotation(targetA), Time.deltaTime * 1f);
             if (performState == 9)
             {
@@ -131,9 +141,15 @@ public class BossPerfotmance_M : MonoBehaviour
                 Vector3 targetB = new Vector3(83, -10, 45) - LightL.transform.position;
                 //Debug.Log(Light.transform.forward);
                 LightL.transform.rotation = Quaternion.Slerp(LightL.transform.rotation, Quaternion.LookRotation(targetB), Time.deltaTime * 1f);
+                //audioSource.Stop();
+                //audioSource.Play();
+                //audioSource.PlayOneShot(audioClip[0]);
             }
         }
         else if (performState == 10){
+            //audioSource.Stop();
+            //audioSource.Play();
+            //audioSource.PlayOneShot(audioClip[2]);
             Vector3 targetVector = new Vector3(Boss.transform.position.x,Boss.transform.position.y+17,Boss.transform.position.z) - Performancecam3.transform.position;
             Quaternion targetAngle = Quaternion.LookRotation(targetVector);
             //Debug.Log(targetAngle.eulerAngles.x);
@@ -172,6 +188,7 @@ public class BossPerfotmance_M : MonoBehaviour
         yield return new WaitForSeconds(5f);
         PerformanceCam.GetComponent<Camera>().enabled = false;
         Performancecam1.GetComponent<Camera>().enabled = true;
+        player.transform.position = new Vector3(83, -2.8f, 0);
         yield return new WaitForSeconds(1f);
         performState = 5;
         yield return new WaitForSeconds(4f);
@@ -184,6 +201,10 @@ public class BossPerfotmance_M : MonoBehaviour
         yield return new WaitForSeconds(3f);
         LensR.GetComponent<Renderer>().material = Lens;
         SpotLightR.enabled = true;
+        //audioSource.Stop();
+
+        //audioSource.PlayOneShot(audioClip[1]);
+        //audioSource.Play();
         yield return new WaitForSeconds(0.5f);
         Performancecam2R.GetComponent<Camera>().enabled = false;
         Performancecam2L.GetComponent<Camera>().enabled = true;
@@ -194,7 +215,10 @@ public class BossPerfotmance_M : MonoBehaviour
         yield return new WaitForSeconds(3f);
         LensL.GetComponent<Renderer>().material = Lens;
         SpotLightL.enabled = true;
+        //audioSource.Stop();
 
+        //audioSource.PlayOneShot(audioClip[1]);
+        //audioSource.Play();
         yield return new WaitForSeconds(0.5f);
         Performancecam2L.GetComponent<Camera>().enabled = false;
         Performancecam3.GetComponent<Camera>().enabled = true;
@@ -206,6 +230,7 @@ public class BossPerfotmance_M : MonoBehaviour
         yield return new WaitForSeconds(14.5f);
         Performancecam3.GetComponent<Camera>().enabled = false;
         BossCamera.GetComponent<Camera>().enabled = true;
+
 
     }
 

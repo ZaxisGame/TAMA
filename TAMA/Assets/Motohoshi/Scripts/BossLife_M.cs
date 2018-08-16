@@ -14,12 +14,16 @@ public class BossLife_M : MonoBehaviour
     public int life;
     int state;
     AnimationBS_M AnimationBS;
-	private void Start()
+	
+    AudioSource audioSource;
+    public List<AudioClip> audioClip = new List<AudioClip>();
+    private void Start()
 	{
-        life = 1;
+        life = 3;
         state = 0;
         AnimationBS = Boss.GetComponent<AnimationBS_M>();
         EndingCam.enabled = false;
+        audioSource = GetComponent<AudioSource>();
 	}
 
 	private void Update()
@@ -47,6 +51,7 @@ public class BossLife_M : MonoBehaviour
 	// Use this for initialization
 	private void OnTriggerEnter(Collider other){
         if(other.CompareTag("Player")&&state==0){
+            audioSource.PlayOneShot(audioClip[0]);
             life--;
             state = 1;
             if (life != 0)

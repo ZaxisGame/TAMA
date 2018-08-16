@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Ending_M : MonoBehaviour {
     [SerializeField]
@@ -18,6 +19,8 @@ public class Ending_M : MonoBehaviour {
     GameObject EndingCam;
     GameObject[] Bombs;
     int state;
+    AudioSource audioSource;
+    public List<AudioClip> audioClip = new List<AudioClip>();
 	// Use this for initialization
 	void Start () {
         Bombs = new GameObject[8];
@@ -37,7 +40,7 @@ public class Ending_M : MonoBehaviour {
         BigBang.transform.localScale = new Vector3(3,3,3);
         BigBang.GetComponent<ParticleSystem>().Stop();
         state = 0;
-
+        audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -79,41 +82,44 @@ public class Ending_M : MonoBehaviour {
 
     IEnumerator Bomber(){
         Bombs[0].GetComponent<ParticleSystem>().Play();
+        audioSource.PlayOneShot(audioClip[0]);
         yield return new WaitForSeconds(0.5f);
         Bombs[1].GetComponent<ParticleSystem>().Play();
+        audioSource.PlayOneShot(audioClip[0]);
         yield return new WaitForSeconds(0.5f);
         Bombs[2].GetComponent<ParticleSystem>().Play();
+        audioSource.PlayOneShot(audioClip[0]);
         yield return new WaitForSeconds(0.5f);
         Bombs[3].GetComponent<ParticleSystem>().Play();
+        audioSource.PlayOneShot(audioClip[0]);
         yield return new WaitForSeconds(0.5f);
         Bombs[4].GetComponent<ParticleSystem>().Play();
+        audioSource.PlayOneShot(audioClip[0]);
         yield return new WaitForSeconds(0.5f);
         Bombs[5].GetComponent<ParticleSystem>().Play();
+        audioSource.PlayOneShot(audioClip[0]);
         yield return new WaitForSeconds(0.5f);
         Bombs[6].GetComponent<ParticleSystem>().Play();
+        audioSource.PlayOneShot(audioClip[0]);
         yield return new WaitForSeconds(0.5f);
         Bombs[7].GetComponent<ParticleSystem>().Play();
+        audioSource.PlayOneShot(audioClip[0]);
         yield return new WaitForSeconds(0.5f);
         Bombs[5].GetComponent<ParticleSystem>().Play();
+        audioSource.PlayOneShot(audioClip[0]);
         yield return new WaitForSeconds(0.5f);
         Bombs[2].GetComponent<ParticleSystem>().Play();
+        audioSource.PlayOneShot(audioClip[0]);
         yield return new WaitForSeconds(0.5f);
         Bombs[4].GetComponent<ParticleSystem>().Play();
+        audioSource.PlayOneShot(audioClip[0]);
         yield return new WaitForSeconds(1.5f);
         BigBang.GetComponent<ParticleSystem>().Play();
+        audioSource.PlayOneShot(audioClip[0]);
         yield return new WaitForSeconds(0.3f);
         BossPerformance.SetActive(false);
         core.SetActive(false);
         OctPivot.SetActive(false);
         wave.SetActive(false);
-        //yield return new WaitForSeconds(2f);
-        //EndingCam.GetComponent<Camera>().enabled = false;
-        //EndingCam2.GetComponent<Camera>().enabled = true;
-        //state = 2;
-
-        //wave.SetActive(false);
-        //Destroy(BossPerformance);
-        //Destroy(OctPivot);
-        //Destroy(wave);
     }
 }

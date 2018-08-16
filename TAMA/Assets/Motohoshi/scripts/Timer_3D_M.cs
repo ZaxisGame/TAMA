@@ -47,7 +47,8 @@ public class Timer_3D_M : MonoBehaviour
             Timer3D[i].AddComponent<RectTransform>().anchoredPosition = new Vector2(-300 +27.5f*i, 177.5f);
             Timer3D[i].GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
             Timer3D[i].AddComponent<Image>().sprite = Resources.Load<Sprite>("UI_rogo/TAMA_UI_TimerW");
-            Timer3D[i].GetComponent<Image>().color = new Color(191 - (22f * i), 0 + (22f * i), 0);
+            float xi = i;
+            Timer3D[i].GetComponent<Image>().color = new Color(1-xi/(FullTimer-1), xi/(FullTimer-1), 0.4f);
             Timer3D[i].GetComponent<Image>().enabled = false;
             Timer3D[i].GetComponent<Image>().preserveAspect = true;
             Timer3D[i].GetComponent<Image>().SetNativeSize();
