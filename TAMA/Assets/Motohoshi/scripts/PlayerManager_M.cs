@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class PlayerManager_M: MonoBehaviour {
     
@@ -28,6 +31,8 @@ public class PlayerManager_M: MonoBehaviour {
         tama = GameObject.Find("TAMA");
         playerMove = tama.GetComponent<PlayerMove_M>();
 
+
+
     }
 
 	void Update () {
@@ -45,7 +50,6 @@ public class PlayerManager_M: MonoBehaviour {
             //プレイヤーにダメージが入らないようにする
             enemyController.isAlive = false;
                            
-           
             playerMove.Kill();
 
             //ジャンプする
@@ -67,15 +71,6 @@ public class PlayerManager_M: MonoBehaviour {
         else if(col.CompareTag("Missile")){
             Life_M.Damage();
         }
-
-
-
-        if (col.CompareTag("Wall"))
-        {
-            Debug.Log("enter");
-            playerMove.force_z = false;
-        }
-
 
     }
 

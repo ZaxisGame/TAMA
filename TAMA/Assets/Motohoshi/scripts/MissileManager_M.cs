@@ -15,10 +15,13 @@ public class MissileManager_M : MonoBehaviour {
     public float rotateSpeed = 10f;
     public float shotSpeed = 10f;
     //float step;
+    AudioSource audioSource;
+    public List<AudioClip> audioClip = new List<AudioClip>();
 
 	// Use this for initialization
 	void Start () {
         missiles = new GameObject[8];
+        audioSource = GetComponent<AudioSource>();
 	}
 
     // Update is called once per frame
@@ -52,6 +55,7 @@ public class MissileManager_M : MonoBehaviour {
 
     public void Shot(GameObject bullet){
         bullet.GetComponent<Rigidbody>().velocity = bullet.transform.forward * shotSpeed;
+        audioSource.PlayOneShot(audioClip[0]);
     }
 
     public void ShotStop(GameObject bullet){
