@@ -79,7 +79,7 @@ public class PlayerMove_scr_K : MonoBehaviour
 
        
         
-        if(Input.anyKey){
+        if(Input.GetKeyDown(KeyCode.C)){
            
             animator.SetBool("is_Sleeping", false);
             
@@ -164,7 +164,7 @@ public class PlayerMove_scr_K : MonoBehaviour
             moveDirection2D = new Vector3(Input.GetAxis("Horizontal"), 0, 0);
             moveDirection2D *= speed;
 
-            if (Input.GetButtonDown("Jump") && InputKey)//Input.GetButtonDown("Jump")
+            if((Input.GetKeyDown(KeyCode.JoystickButton14) || Input.GetKeyDown(KeyCode.Space)) && InputKey)
             {
                 Jump();
                 InputKey = false;
@@ -258,7 +258,7 @@ public class PlayerMove_scr_K : MonoBehaviour
             moveDirection3D = new Vector3(Input.GetAxis("Vertical"), 0, Input.GetAxis("Horizontal") * -1);
             moveDirection3D *= speed;
 
-            if (Input.GetButtonDown("Jump") && InputKey)
+            if ((Input.GetKeyDown(KeyCode.JoystickButton14) || Input.GetKeyDown(KeyCode.Space)) && InputKey)
             {
                 Jump();
                 InputKey = false;
