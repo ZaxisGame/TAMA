@@ -648,8 +648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd6b00cbcf80b4d118cf8704930c7a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1472807490749636, guid: 1f81aa556de2b4f53abc41053c9ff48f,
-    type: 2}
+  bulletPrefab: {fileID: 0}
   gun: {fileID: 1890102604408954}
   shotSpeed: 500
   audioClip: []
@@ -665,7 +664,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AjiMuzzle: {fileID: 1890102604408954}
+  particle: {fileID: 1890102604408954}
   state: 1
   isAlive: 1
-  audioClip:
-  - {fileID: 0}
+  audioClip: []

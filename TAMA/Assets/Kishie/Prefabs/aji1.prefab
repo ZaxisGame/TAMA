@@ -774,6 +774,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AjiMuzzle: {fileID: 1712827825197612}
+  particle: {fileID: 1460467933998646}
   state: 2
   isAlive: 1
   audioClip: []
