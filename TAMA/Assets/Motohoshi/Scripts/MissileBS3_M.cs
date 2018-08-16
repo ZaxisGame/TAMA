@@ -26,10 +26,10 @@ public class MissileBS3_M : MonoBehaviour {
             StartCoroutine("Missile");
             ShotState = 1;
         }
-        else if (ShotState == 2)
-        {
-            MissileManager.TargetLockOn(new Vector3(player.transform.position.x, player.transform.position.y, -4.5f), gameObject);
-        }
+        //else if (ShotState == 2)
+        //{
+        //    MissileManager.TargetLockOn(new Vector3(player.transform.position.x, player.transform.position.y, -4.5f), gameObject);
+        //}
     }
 
     IEnumerator Missile()
@@ -45,11 +45,11 @@ public class MissileBS3_M : MonoBehaviour {
         }
         else if (i >= 1 && i < 4)
         {
-            transform.position = new Vector3(transform.position.x, 40, 4.5f);
+            transform.position = new Vector3(transform.position.x, 40, 3.5f);
             transform.rotation = Quaternion.Euler(90, 0, 0);
         }
         else if(i>=4&&i<7){
-            transform.position = new Vector3(transform.position.x, 40, -4.5f);
+            transform.position = new Vector3(transform.position.x, 40, -3.5f);
             transform.rotation = Quaternion.Euler(90, 0, 0);
         }
         else

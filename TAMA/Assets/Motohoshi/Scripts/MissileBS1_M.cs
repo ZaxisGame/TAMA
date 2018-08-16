@@ -27,7 +27,7 @@ public class MissileBS1_M : MonoBehaviour {
         MissileManager.Shot(gameObject);
         yield return new WaitForSeconds(2f);
         transform.rotation = Quaternion.Euler(90, 0, 0);
-        transform.position = new Vector3(transform.position.x, transform.position.y, 3);
+        transform.position = new Vector3(transform.position.x, transform.position.y, 1f);
         MissileManager.shotSpeed = 20;
         MissileManager.Shot(gameObject);
         yield return new WaitForSeconds(3f);

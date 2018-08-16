@@ -9,8 +9,8 @@ TagManager:
   - Enemy
   - EnemyTop
   - Wall
-  - Beam
   - Trap
+  - Beam
   layers:
   - Default
   - TransparentFX
