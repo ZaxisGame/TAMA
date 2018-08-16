@@ -34,6 +34,14 @@ public class GameManager_scr_K : MonoBehaviour
     float y_angle, t;
     private Vector3 offset, Ppos, swingPos;
     private int state;
+
+
+    ///////////////////////////////////////////////////////
+    AudioSource audioSource;
+    public List<AudioClip> audioClip = new List<AudioClip>();
+    ///////////////////////////////////////////////////////
+   
+   
     private int camState;//(0 : 2D , 1 : 3D , -1 : 回転中)
     public int CamState
     {
@@ -59,7 +67,9 @@ public class GameManager_scr_K : MonoBehaviour
         //カメラを２Dにしておく
         cam.GetComponent<Camera>().orthographic = true;
 
-
+        ///////////////////////////////////////////
+        audioSource = GetComponent<AudioSource>();
+        //////////////////////////////////////////
 
     }
 
@@ -102,6 +112,9 @@ public class GameManager_scr_K : MonoBehaviour
                 swing.transform.rotation = Quaternion.Euler(0, 90, 0);
                 camState = 1;//3D
                 state = 0;
+                //////////////////////////////////////////////
+                audioSource.PlayOneShot(audioClip[0]);
+                //////////////////////////////////////////////
             }
         }
 
@@ -120,6 +133,9 @@ public class GameManager_scr_K : MonoBehaviour
                 cam.GetComponent<Camera>().orthographic = true;
                 camState = 0;//2D
                 state = 0;
+                //////////////////////////////////////////////
+                audioSource.PlayOneShot(audioClip[0]);
+                //////////////////////////////////////////////
             }
         }
 

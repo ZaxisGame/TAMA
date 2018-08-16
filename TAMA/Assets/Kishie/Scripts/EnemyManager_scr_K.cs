@@ -21,6 +21,11 @@ public class EnemyManager_scr_K : MonoBehaviour
     private Vector3 Edelta;
     private float AjiTimer;
 
+    ///////////////////////////////////////////////////////
+    AudioSource audioSource;
+    public List<AudioClip> audioClip = new List<AudioClip>();
+    ///////////////////////////////////////////////////////
+
 
     void Start()
     {
@@ -58,6 +63,11 @@ public class EnemyManager_scr_K : MonoBehaviour
         Epos += Edelta;
         this.transform.position = Epos;
         AjiTimer = AjiAttackTime * 60 - 30;
+
+        ///////////////////////////////////////////
+        audioSource = GetComponent<AudioSource>();
+        //////////////////////////////////////////
+
     }
 
 
@@ -139,6 +149,7 @@ public class EnemyManager_scr_K : MonoBehaviour
     {
 
         Epos.x += -enemySpeed;
+
     }
 
 

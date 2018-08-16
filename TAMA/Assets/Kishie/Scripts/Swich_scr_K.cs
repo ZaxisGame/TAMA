@@ -19,7 +19,7 @@ public class Swich_scr_K : MonoBehaviour {
     {
         if (col.CompareTag("Player"))
         {
-            GameObject EnemysInstance = Instantiate(enemys,enemys.transform.position, Quaternion.identity);
+            GameObject EnemysInstance = Instantiate(enemys,enemys.transform.position, enemys.transform.rotation);
         }
 
 		
