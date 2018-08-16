@@ -2036,6 +2036,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AjiMuzzle: {fileID: 1690720237385466}
+  particle: {fileID: 1659253022955964, guid: 9f36e4e495edb4526b9cfc0574d64e18, type: 2}
   state: 2
   isAlive: 1
   audioClip: []
@@ -2051,6 +2052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AjiMuzzle: {fileID: 1904497797135240}
+  particle: {fileID: 1659253022955964, guid: 9f36e4e495edb4526b9cfc0574d64e18, type: 2}
   state: 2
   isAlive: 1
   audioClip: []
@@ -2100,6 +2102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AjiMuzzle: {fileID: 1056927446889812}
+  particle: {fileID: 1659253022955964, guid: 9f36e4e495edb4526b9cfc0574d64e18, type: 2}
   state: 2
   isAlive: 1
   audioClip: []

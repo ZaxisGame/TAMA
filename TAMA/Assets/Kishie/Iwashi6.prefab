@@ -3237,8 +3237,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AjiMuzzle: {fileID: 1738580271042908}
+  particle: {fileID: 1659253022955964, guid: 9f36e4e495edb4526b9cfc0574d64e18, type: 2}
   state: 1
   isAlive: 1
+  audioClip: []
 --- !u!114 &114113754912555142
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3254,7 +3256,7 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1764014115156816}
   shotSpeed: 500
-  Target: {fileID: 0}
+  audioClip: []
 --- !u!114 &114152645910872770
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3270,7 +3272,7 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1011296581850878}
   shotSpeed: 500
-  Target: {fileID: 0}
+  audioClip: []
 --- !u!114 &114231783284327204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3283,8 +3285,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AjiMuzzle: {fileID: 1011296581850878}
+  particle: {fileID: 1659253022955964, guid: 9f36e4e495edb4526b9cfc0574d64e18, type: 2}
   state: 1
   isAlive: 1
+  audioClip: []
 --- !u!114 &114311580815590196
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3300,7 +3304,7 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1819054150272892}
   shotSpeed: 500
-  Target: {fileID: 0}
+  audioClip: []
 --- !u!114 &114506337021160562
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3316,7 +3320,7 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1738580271042908}
   shotSpeed: 500
-  Target: {fileID: 0}
+  audioClip: []
 --- !u!114 &114513759486206314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3332,7 +3336,7 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1387724530543968}
   shotSpeed: 500
-  Target: {fileID: 0}
+  audioClip: []
 --- !u!114 &114553158663060868
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3345,8 +3349,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AjiMuzzle: {fileID: 1819054150272892}
+  particle: {fileID: 1659253022955964, guid: 9f36e4e495edb4526b9cfc0574d64e18, type: 2}
   state: 1
   isAlive: 1
+  audioClip: []
 --- !u!114 &114611275432493886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3359,8 +3365,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AjiMuzzle: {fileID: 1764014115156816}
+  particle: {fileID: 1659253022955964, guid: 9f36e4e495edb4526b9cfc0574d64e18, type: 2}
   state: 1
   isAlive: 1
+  audioClip: []
 --- !u!114 &114622478365111734
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3373,8 +3381,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AjiMuzzle: {fileID: 1387724530543968}
+  particle: {fileID: 1659253022955964, guid: 9f36e4e495edb4526b9cfc0574d64e18, type: 2}
   state: 1
   isAlive: 1
+  audioClip: []
 --- !u!114 &114658117023483702
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3390,7 +3400,7 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1590864205222534}
   shotSpeed: 500
-  Target: {fileID: 0}
+  audioClip: []
 --- !u!114 &114799169251242526
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3403,5 +3413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AjiMuzzle: {fileID: 1590864205222534}
+  particle: {fileID: 1659253022955964, guid: 9f36e4e495edb4526b9cfc0574d64e18, type: 2}
   state: 1
   isAlive: 1
+  audioClip: []

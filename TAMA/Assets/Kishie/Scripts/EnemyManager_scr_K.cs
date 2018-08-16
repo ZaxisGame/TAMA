@@ -223,7 +223,8 @@ public class EnemyManager_scr_K : MonoBehaviour
 
     public void ManbouAttack()
     {
-        Debug.Log("マンボウの攻撃！！！");
+
+       
     }
     public void AjiAttack()
     {

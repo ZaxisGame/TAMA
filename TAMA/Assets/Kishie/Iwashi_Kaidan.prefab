@@ -3269,6 +3269,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AjiMuzzle: {fileID: 1238204072583078}
+  particle: {fileID: 1659253022955964, guid: 9f36e4e495edb4526b9cfc0574d64e18, type: 2}
   state: 1
   isAlive: 1
   audioClip: []
@@ -3300,6 +3301,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AjiMuzzle: {fileID: 1913274258896338}
+  particle: {fileID: 1659253022955964, guid: 9f36e4e495edb4526b9cfc0574d64e18, type: 2}
   state: 1
   isAlive: 1
   audioClip: []
@@ -3347,6 +3349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AjiMuzzle: {fileID: 1772790232932736}
+  particle: {fileID: 1659253022955964, guid: 9f36e4e495edb4526b9cfc0574d64e18, type: 2}
   state: 1
   isAlive: 1
   audioClip: []
@@ -3378,6 +3381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AjiMuzzle: {fileID: 1569980072176340}
+  particle: {fileID: 1659253022955964, guid: 9f36e4e495edb4526b9cfc0574d64e18, type: 2}
   state: 1
   isAlive: 1
   audioClip: []
@@ -3393,6 +3397,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AjiMuzzle: {fileID: 1899327871409326}
+  particle: {fileID: 1659253022955964, guid: 9f36e4e495edb4526b9cfc0574d64e18, type: 2}
   state: 1
   isAlive: 1
   audioClip: []
@@ -3408,6 +3413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   AjiMuzzle: {fileID: 1977372450678778}
+  particle: {fileID: 1659253022955964, guid: 9f36e4e495edb4526b9cfc0574d64e18, type: 2}
   state: 1
   isAlive: 1
   audioClip: []
