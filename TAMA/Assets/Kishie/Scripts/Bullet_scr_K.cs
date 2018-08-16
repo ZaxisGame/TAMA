@@ -15,12 +15,21 @@ public class Bullet_scr_K : MonoBehaviour {
     private GameObject gamemanager;
     GameManager_scr_K Game_M;
 
+    ///////////////////////////////////////////////////////
+    AudioSource audioSource;
+    public List<AudioClip> audioClip = new List<AudioClip>();
+    ///////////////////////////////////////////////////////
+
     void Start()
     {
         //ゲームマネージャー取得
         gamemanager = GameObject.Find("GameManager");
         Game_M = gamemanager.GetComponent<GameManager_scr_K>();
         Target = Game_M.player;
+
+        ///////////////////////////////////////////
+        audioSource = GetComponent<AudioSource>();
+        //////////////////////////////////////////
     }
 
     void Update()
@@ -37,6 +46,12 @@ public class Bullet_scr_K : MonoBehaviour {
         if (this.transform.forward.x <= -0.4f)
         {
             GameObject bulletInstance = Instantiate(bulletPrefab, gun.transform.position, Quaternion.identity);
+
+
+            //////////////////////////////////////////////
+            audioSource.PlayOneShot(audioClip[0]);
+            //////////////////////////////////////////////
+          
             rb = bulletInstance.GetComponent<Rigidbody>();
             rb.AddForce(transform.forward * shotSpeed);
             Destroy(bulletInstance, 2f);

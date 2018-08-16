@@ -1,0 +1,237 @@
+fileFormatVersion: 2
+guid: 7d4be553189994232bd0d075e7099464
+ModelImporter:
+  serializedVersion: 22
+  fileIDToRecycleName:
+    100000: Cat
+    100002: cat
+    100004: Chest
+    100006: Eye
+    100008: eye
+    100010: hanatyoutinn
+    100012: Head
+    100014: Hip
+    100016: IKGP
+    100018: ikHandle3
+    100020: ikHandle4
+    100022: ikHandle5
+    100024: ikHandle6
+    100026: ikHandle7
+    100028: joint10
+    100030: joint7
+    100032: joint8
+    100034: joint9
+    100036: Left_Front_foot
+    100038: Left_Front_foot 1
+    100040: Left_Front_leg
+    100042: Left_Front_leg 1
+    100044: Left_Front_toebase
+    100046: Left_Front_toebase 1
+    100048: Left_Front_up_leg
+    100050: Left_Front_up_leg 1
+    100052: Left_Leg
+    100054: Left_Shoulder
+    100056: pSphere1
+    100058: pSphere2
+    100060: RigChest
+    100062: RigHead
+    100064: RigHips
+    100066: Right_Front_foot
+    100068: Right_Front_foot 1
+    100070: Right_Front_leg
+    100072: Right_Front_leg 1
+    100074: Right_Front_toebase
+    100076: Right_Front_toebase 1
+    100078: Right_Front_up_leg
+    100080: Right_Front_up_leg 1
+    100082: Right_Leg
+    100084: Right_Shoulder
+    100086: RigLeft_Front_Foot
+    100088: RigLeft_Lear_Foot
+    100090: RigRight_Front_Foot
+    100092: RigRight_Lear_Foot
+    100094: Rigroot
+    100096: RigStomach
+    100098: RigTale1
+    100100: RigTale2
+    100102: Root
+    100104: Stomach
+    100106: Tale
+    100108: //RootNode
+    400000: Cat
+    400002: cat
+    400004: Chest
+    400006: Eye
+    400008: eye
+    400010: hanatyoutinn
+    400012: Head
+    400014: Hip
+    400016: IKGP
+    400018: ikHandle3
+    400020: ikHandle4
+    400022: ikHandle5
+    400024: ikHandle6
+    400026: ikHandle7
+    400028: joint10
+    400030: joint7
+    400032: joint8
+    400034: joint9
+    400036: Left_Front_foot
+    400038: Left_Front_foot 1
+    400040: Left_Front_leg
+    400042: Left_Front_leg 1
+    400044: Left_Front_toebase
+    400046: Left_Front_toebase 1
+    400048: Left_Front_up_leg
+    400050: Left_Front_up_leg 1
+    400052: Left_Leg
+    400054: Left_Shoulder
+    400056: pSphere1
+    400058: pSphere2
+    400060: RigChest
+    400062: RigHead
+    400064: RigHips
+    400066: Right_Front_foot
+    400068: Right_Front_foot 1
+    400070: Right_Front_leg
+    400072: Right_Front_leg 1
+    400074: Right_Front_toebase
+    400076: Right_Front_toebase 1
+    400078: Right_Front_up_leg
+    400080: Right_Front_up_leg 1
+    400082: Right_Leg
+    400084: Right_Shoulder
+    400086: RigLeft_Front_Foot
+    400088: RigLeft_Lear_Foot
+    400090: RigRight_Front_Foot
+    400092: RigRight_Lear_Foot
+    400094: Rigroot
+    400096: RigStomach
+    400098: RigTale1
+    400100: RigTale2
+    400102: Root
+    400104: Stomach
+    400106: Tale
+    400108: //RootNode
+    2100000: aiStandardSurface14
+    2100002: aiStandardSurface10
+    2300000: hanatyoutinn
+    3300000: hanatyoutinn
+    4300000: cat
+    4300002: pSphere1
+    4300004: pSphere2
+    4300006: hanatyoutinn
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: cat
+    13700002: pSphere1
+    13700004: pSphere2
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 130
+      lastFrame: 199
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

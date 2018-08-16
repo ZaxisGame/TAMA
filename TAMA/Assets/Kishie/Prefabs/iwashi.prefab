@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4943967472721038}
   - component: {fileID: 65657681885120096}
   - component: {fileID: 114728894919218576}
+  - component: {fileID: 82132178656685568}
   m_Layer: 0
   m_Name: iwashi
   m_TagString: Enemy
@@ -290,7 +291,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1012676544351720}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 15, y: 1, z: 0}
+  m_LocalPosition: {x: 31.3, y: 0.6, z: 0}
   m_LocalScale: {x: 18, y: 18, z: 18}
   m_Children:
   - {fileID: 4401769651179924}
@@ -505,6 +506,101 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.14720242, y: 0.04194492, z: 0.047457643}
   m_Center: {x: 0.0046235854, y: 0.01782688, z: 0.0004053298}
+--- !u!82 &82132178656685568
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1012676544351720}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!108 &108334300250164228
 Light:
   m_ObjectHideFlags: 1
@@ -556,7 +652,7 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1890102604408954}
   shotSpeed: 500
-  Target: {fileID: 0}
+  audioClip: []
 --- !u!114 &114728894919218576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -571,4 +667,5 @@ MonoBehaviour:
   AjiMuzzle: {fileID: 1890102604408954}
   state: 1
   isAlive: 1
-  player: {fileID: 0}
+  audioClip:
+  - {fileID: 0}

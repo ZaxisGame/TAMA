@@ -28,6 +28,8 @@ public class PlayerManager_scr_K : MonoBehaviour {
         tama = GameObject.Find("TAMA");
         playerMove = tama.GetComponent<PlayerMove_scr_K>();
 
+
+
     }
 
 	void Update () {
@@ -45,7 +47,6 @@ public class PlayerManager_scr_K : MonoBehaviour {
             //プレイヤーにダメージが入らないようにする
             enemyManager.isAlive = false;
 
-            Debug.Log("et");
             playerMove.Kill();
 
             //ジャンプする

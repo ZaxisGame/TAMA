@@ -284,7 +284,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1360757018827962}
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 274.1, y: 4.3, z: 0}
   m_LocalScale: {x: 50, y: 50, z: 50}
   m_Children:
   - {fileID: 4880501410686234}
@@ -702,7 +702,7 @@ MonoBehaviour:
   AjiMuzzle: {fileID: 1560708926839162}
   state: 3
   isAlive: 1
-  player: {fileID: 0}
+  audioClip: []
 --- !u!114 &114747163206773548
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -718,7 +718,7 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1907596778321570}
   shotSpeed: 500
-  Target: {fileID: 0}
+  audioClip: []
 --- !u!136 &136747392373906666
 CapsuleCollider:
   m_ObjectHideFlags: 1

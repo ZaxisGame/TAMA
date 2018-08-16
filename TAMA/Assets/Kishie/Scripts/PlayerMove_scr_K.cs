@@ -19,21 +19,31 @@ public class PlayerMove_scr_K : MonoBehaviour
     public static bool isZensin = false;
     public static bool isGround;
     public static bool isDead = false;
+    public bool isKill = false;
     public bool force_z = true;
     private Vector3 jumpSpeed;
     private bool InputKey = true;
 
     private float mutekiTime;
 
-    //public static bool isDrive = false;
     private Vector3 moveDirection2D , moveDirection3D , pos , mousePos;
     CharacterController controller;
     //アニメーター宣言１
     Animator animator;
     int t ;
-   
+    float timer;
+
+
+    ///////////////////////////////////////////////////////
+    AudioSource audioSource;
+    public List<AudioClip> audioClip = new List<AudioClip>();
+    ///////////////////////////////////////////////////////
+
 
     void Start()
+
+
+
     {
         //ゲームマネージャー取得
         gamemanager = GameObject.Find("GameManager");
@@ -58,36 +68,49 @@ public class PlayerMove_scr_K : MonoBehaviour
         isDead = false;
         isStop = false;
 
-
+        ///////////////////////////////////////////
+        audioSource = GetComponent<AudioSource>();
+        //////////////////////////////////////////
 
     }
 
     void Update()
     {
 
-        Debug.Log("isStop"+isStop);
-        Debug.Log("InputKey"+InputKey);
-        Debug.Log("controller.isGrounded"+ controller.isGrounded);
+       
+        
+        if(Input.anyKey){
+           
+            animator.SetBool("is_Sleeping", false);
+            
+        }
 
         if (isDead == false)
         {
             pos = this.transform.position;
 
-            if (this.transform.position.y <= -5)
+            if (this.transform.position.y <= -5 && Mathf.Abs(this.transform.position.z)<= 5)
             {
-                DropOut();
+                DropOut(50);
+            }
+            else if (this.transform.position.y <= -5)
+            {
+                DropOut(10);
             }
 
 
             if (Game_M.CamState == 0)//camstate=0に
             {
-
+               
 
                 Walk_2D();
+
             }
 
             else if (Game_M.CamState == 1)
             {
+              
+              
                 Walk_3D();
             }
 
@@ -127,6 +150,7 @@ public class PlayerMove_scr_K : MonoBehaviour
 
         if (controller.isGrounded)
         {
+            isKill = false;
             gravity = Game_M.TAMAGravity;
             //ジャンプしていない
             isJump = false;
@@ -169,11 +193,24 @@ public class PlayerMove_scr_K : MonoBehaviour
             animator.SetBool("is_Idle", true);
             isBack = false;
             isZensin = false;
+
+            //////////
+            timer = 0;
+            ///////////
+
+
+
         }
         else if (moveDirection2D.x < 0 )
         {   //後退
             Back();
-        
+            if (isGround)
+            {
+                //////////////////////////////////////////////
+                // StartCoroutine("SE", 0);
+                PlaySE(0);
+                //////////////////////////////////////////////
+            }
         }
         else if(moveDirection2D.x > 0)
         {   //前進
@@ -181,6 +218,13 @@ public class PlayerMove_scr_K : MonoBehaviour
             isBack = false;
             animator.SetBool("is_Back", false);
             animator.SetBool("is_Walk", true);
+            if (isGround)
+            {
+                //////////////////////////////////////////////
+                // StartCoroutine("SE", 0);
+                PlaySE(0);
+                //////////////////////////////////////////////
+            }
         }
 
         if(isStop){
@@ -201,6 +245,7 @@ public class PlayerMove_scr_K : MonoBehaviour
         {
             //地面についている時
             isGround = true;
+            isKill = false;
             gravity = Game_M.TAMAGravity;
 
             //ジャンプしていない
@@ -239,12 +284,21 @@ public class PlayerMove_scr_K : MonoBehaviour
             isZensin = false;
             animator.SetBool("is_Walk", false);
             animator.SetBool("is_Back", false);
-           
+            //////////
+            timer = 0;
+           ///////////
         }
 
         else if (moveDirection3D.x < 0 )
         {
             Back();
+            if (isGround)
+            {
+                //////////////////////////////////////////////
+                // StartCoroutine("SE", 0);
+                PlaySE(0);
+                //////////////////////////////////////////////
+            }
         }
 
         else if(moveDirection3D.x > 0 || moveDirection3D.z > 0 || moveDirection3D.z < 0)
@@ -254,6 +308,13 @@ public class PlayerMove_scr_K : MonoBehaviour
             isBack = false;
             animator.SetBool("is_Back", false);
             animator.SetBool("is_Walk", true);
+            if (isGround)
+            {
+                //////////////////////////////////////////////
+                // StartCoroutine("SE", 0);
+                PlaySE(0);
+                //////////////////////////////////////////////
+            }
         }
         if (isStop)
         {
@@ -279,6 +340,14 @@ public class PlayerMove_scr_K : MonoBehaviour
             if (isZensin == false && isBack == false)
             {
                 animator.SetBool("is_UpJump", true);
+
+                if(isKill == false)
+                {
+                //////////////////////////////////////////////
+                audioSource.PlayOneShot(audioClip[1]);
+                //////////////////////////////////////////////
+                }
+
                 jumpSpeed.x = 0.5f;
                 jumpSpeed.z = 0.5f;
                 Debug.Log("|||ジャンプ|||");
@@ -286,6 +355,14 @@ public class PlayerMove_scr_K : MonoBehaviour
             else if (isZensin && isBack == false)
             {
                 animator.SetBool("is_Jump", true);
+
+                if (isKill == false)
+                {
+                    //////////////////////////////////////////////
+                    audioSource.PlayOneShot(audioClip[1]);
+                    //////////////////////////////////////////////
+                }
+
                 jumpSpeed.x = 1f;
                 jumpSpeed.z = 1f;
                 Debug.Log("ジャンプ>>>>>");
@@ -293,6 +370,14 @@ public class PlayerMove_scr_K : MonoBehaviour
             else if (isZensin == false && isBack)
             {
                 animator.SetBool("is_BackJump", true);
+
+                if (isKill == false)
+                {
+                    //////////////////////////////////////////////
+                    audioSource.PlayOneShot(audioClip[1]);
+                    //////////////////////////////////////////////
+                }
+
                 jumpSpeed.x = 1f;
                 jumpSpeed.z = 1f;
                 Debug.Log("<<<<<ジャンプ");
@@ -318,6 +403,10 @@ public class PlayerMove_scr_K : MonoBehaviour
 
         Debug.Log("ダメージ");
         animator.SetBool("is_Damage", true);
+        //////////////////////////////////////////////
+        audioSource.PlayOneShot(audioClip[2]);
+        //////////////////////////////////////////////
+       
 
         yield return new WaitForSeconds(0.25f);
         //animator.SetBool("is_Idle", true);
@@ -356,12 +445,17 @@ public class PlayerMove_scr_K : MonoBehaviour
     public void Kill(){
         Debug.Log("敵を倒した！");
         animator.Play("TAMA_jump", 0, 0.0f);
+        isKill = true;
+        //////////////////////////////////////////////
+        audioSource.PlayOneShot(audioClip[3]);
+        //////////////////////////////////////////////
+
     }
 
-    public void DropOut(){
+    public void DropOut(int n){
         isStop = true;
         Invoke("Life_M_Damage",1.5f);
-        this.transform.position = new Vector3(this.transform.position.x - 2.0f, 30.0f , 0.0f);
+        this.transform.position = new Vector3(this.transform.position.x - n, 30.0f , 0.0f);
     }
     public void Life_M_Damage(){
         isStop = false;
@@ -371,8 +465,35 @@ public class PlayerMove_scr_K : MonoBehaviour
         isStop = true;
         InputKey = false;
         isDead = true;
+        Destroy(Life_M);
 
     }
 
+    //public IEnumerator SE(int audio_num)
+    //{
+    //    float audioLengs = audioClip[audio_num].length;
+    //    //audioSource.PlayOneShot(audioClip[audio_num]);
+    //    yield return new WaitForSeconds(audioLengs);
+    //    PlaySE(audio_num);
+
+    //}
+    //public void PlaySE(int audio_num){
+    //    audioSource.PlayOneShot(audioClip[audio_num]);
+    //}
+
+    public void PlaySE(int audio_num){
+        float audioLengs = audioClip[audio_num].length;
+
+        if(timer == 0){
+            timer = 60 * audioLengs - 1;
+        }
+
+        timer++;
+        if(timer >= 60*audioLengs){
+            timer = 1;
+            audioSource.PlayOneShot(audioClip[audio_num]);
+        }
+
+    }
 
 }
