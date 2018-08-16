@@ -6,6 +6,7 @@ public class CanvasBS_M : MonoBehaviour {
     public GameObject player;
     int state;
     CanvasGroup CanvasGroup;
+    public Camera BossCam;
 	// Use this for initialization
 	void Start () {
         state = 0;
@@ -17,6 +18,10 @@ public class CanvasBS_M : MonoBehaviour {
 	void Update () {
         if(player.transform.position.x>106&&state==0){
             CanvasGroup.alpha = 0f;
+            Debug.Log(CanvasGroup.alpha);
+            state++;
+        }else if(BossCam.enabled&&state==1){
+            CanvasGroup.alpha = 1f;
             Debug.Log(CanvasGroup.alpha);
             state++;
         }
