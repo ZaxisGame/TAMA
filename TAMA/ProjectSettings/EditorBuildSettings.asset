@@ -8,10 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
-  - enabled: 1
+  - enabled: 0
     path: Assets/Motohoshi/Scenes/sakanatest_M.unity
     guid: b7288d591dc56432498baaf938bde00c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Motohoshi/Scenes/GameOver.unity
     guid: 60cadb17444f541e4beb05fb9331595f
   - enabled: 1
