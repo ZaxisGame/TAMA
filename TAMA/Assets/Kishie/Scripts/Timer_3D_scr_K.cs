@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class Timer_3D_scr_K : MonoBehaviour
 {
 
+
     private GameObject gamemanager;
     GameManager_scr_K Game_M;
 
@@ -16,6 +17,7 @@ public class Timer_3D_scr_K : MonoBehaviour
     float time1, time0;
 
     private GameObject[] Timer3D;
+    private GameObject Timer3DBG;
     private GameObject MainCamera;
     bool is3D;
 
@@ -29,14 +31,25 @@ public class Timer_3D_scr_K : MonoBehaviour
         MainCamera = GameObject.Find("Main Camera");
         Life_M = GetComponent<LifeManager_scr_K>();
         //is3D = Maincamera.GetComponent<Camera>().orthographic;
+        Timer3DBG = new GameObject("TimerBG");
+        Timer3DBG.transform.parent = gameObject.transform;
+        Timer3DBG.AddComponent<RectTransform>().anchoredPosition = new Vector2(-210, 200);
+        Timer3DBG.GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
+        Timer3DBG.AddComponent<Image>().sprite = Resources.Load<Sprite>("UI_rogo/TAMA_UI_TimerBG");
+        Timer3DBG.GetComponent<Image>().enabled = false;
+        Timer3DBG.GetComponent<Image>().preserveAspect = true;
+        Timer3DBG.GetComponent<Image>().SetNativeSize();
+
         Timer3D = new GameObject[FullTimer];
         for (int i = 0; i < FullTimer; i++)
         {
-            Timer3D[i] = new GameObject("cat" + i);
+            Timer3D[i] = new GameObject("Timer" + i);
             Timer3D[i].transform.parent = gameObject.transform;
-            Timer3D[i].AddComponent<RectTransform>().anchoredPosition = new Vector2(-300 + 50 * i, 180);
-            Timer3D[i].GetComponent<RectTransform>().localScale = new Vector3(0.03f, 0.03f, 0.03f);
-            Timer3D[i].AddComponent<Image>().sprite = Resources.Load<Sprite>("Images_M/cat_icon");
+            Timer3D[i].AddComponent<RectTransform>().anchoredPosition = new Vector2(-300 + 27.5f * i, 177.5f);
+            Timer3D[i].GetComponent<RectTransform>().localScale = new Vector3(1f, 1f, 1f);
+            Timer3D[i].AddComponent<Image>().sprite = Resources.Load<Sprite>("UI_rogo/TAMA_UI_TimerW");
+            float xi = i;
+            Timer3D[i].GetComponent<Image>().color = new Color(1-xi/(FullTimer-1), xi/(FullTimer-1), 0.4f);
             Timer3D[i].GetComponent<Image>().enabled = false;
             Timer3D[i].GetComponent<Image>().preserveAspect = true;
             Timer3D[i].GetComponent<Image>().SetNativeSize();
@@ -56,7 +69,8 @@ public class Timer_3D_scr_K : MonoBehaviour
 
     void Timer_on()
     {
-        if(currentTimer==11){
+        if (currentTimer == 11)
+        {
             currentTimer = 10;
         }
         time1 += Time.deltaTime;
@@ -84,8 +98,12 @@ public class Timer_3D_scr_K : MonoBehaviour
                 time0 = 0;
             }
             DrawTime();
-        }else{
-            for (int i = 0; i < FullTimer;i++){
+        }
+        else
+        {
+            for (int i = 0; i < FullTimer; i++)
+            {
+                Timer3DBG.GetComponent<Image>().enabled = false;
                 Timer3D[i].GetComponent<Image>().enabled = false;
             }
         }
@@ -95,6 +113,7 @@ public class Timer_3D_scr_K : MonoBehaviour
     {
         for (int i = 0; i < FullTimer; i++)
         {
+            Timer3DBG.GetComponent<Image>().enabled = true;
             if (i < currentTimer)
                 Timer3D[i].GetComponent<Image>().enabled = true;
             else
