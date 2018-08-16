@@ -64,6 +64,7 @@ public class PlayerMove_scr_K : MonoBehaviour
         controller = GetComponent<CharacterController>();
         //アニメーター宣言２
         animator = GetComponent<Animator>();
+        animator.SetBool("is_Sleeping", true);
 
         isDead = false;
         isStop = false;
@@ -79,7 +80,7 @@ public class PlayerMove_scr_K : MonoBehaviour
 
        
         
-        if(Input.GetKeyDown(KeyCode.C)){
+        if(Input.anyKeyDown){
            
             animator.SetBool("is_Sleeping", false);
             

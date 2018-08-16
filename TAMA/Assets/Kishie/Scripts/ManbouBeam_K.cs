@@ -4,13 +4,21 @@ using UnityEngine;
 
 public class ManbouBeam_K : MonoBehaviour 
 {
-    public GameObject canvas;
-    LifeManager_scr_K lifeManager;
+   
+    private GameObject gamemanager;
+    GameManager_scr_K Game_M;
+    //ライフマネージャー取得
+    private GameObject canbas;
+    LifeManager_scr_K Life_M;
 
     int timer;
     private void Start()
-    {
-        lifeManager = canvas.GetComponent<LifeManager_scr_K>();
+    {//ゲームマネージャー取得
+        gamemanager = GameObject.Find("GameManager");
+        Game_M = gamemanager.GetComponent<GameManager_scr_K>();
+        //ライフマネージャー取得
+        canbas = GameObject.Find("Canvas");
+        Life_M = canbas.GetComponent<LifeManager_scr_K>();
         GetComponent<ParticleSystem>().Stop();
     }
 
@@ -29,7 +37,7 @@ public class ManbouBeam_K : MonoBehaviour
         //Debug.Log(other);
         if (other.CompareTag("Player"))
         {
-            lifeManager.Damage();
+            Life_M.Damage();
         }
     }
 }
