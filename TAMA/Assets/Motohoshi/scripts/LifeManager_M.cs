@@ -12,24 +12,36 @@ public class LifeManager_M : MonoBehaviour {
 
     private int HP;
     private GameObject[] lifesObj;
-    private GameObject player;
+    private GameObject player, player_mesh;
     PlayerMove_M pMove;
 
 
     private int currentLife;
+    public bool isMuteki = false;
+    private float mutekiTime;
+
+
   
+
     void Start()
     {
         //ゲームマネージャー取得
+
+
         gamemanager = GameObject.Find("GameManager");
         Game_M = gamemanager.GetComponent<GameManager_M>();
         player = Game_M.player;
+        player_mesh = Game_M.player_mesh;
         HP = Game_M.TAMA_HP;
         currentLife = HP;//最初の体力はmax
+
+        mutekiTime = 2.0f;
 
         pMove = player.GetComponent<PlayerMove_M>();
 
         lifesObj = new GameObject[HP];
+
+
 
         for (int i = 0; i < HP; i++)
         {
@@ -50,16 +62,27 @@ public class LifeManager_M : MonoBehaviour {
         {
             Damage();
         }
+
+        if (isMuteki)
+        {
+
+            StartCoroutine("Flashing");
+        }
     }
 
     public void Damage()
     {
-        //現在の体力を減らす
-        currentLife--;
-        //今の体力を引数にする
-        DrawLife(currentLife);
-        ///////////プレイヤーにダメージ////////////
-        StartCoroutine(pMove.Damage());
+
+        if (isMuteki == false)
+        {
+
+            //現在の体力を減らす
+            currentLife--;
+            //今の体力を引数にする
+            DrawLife(currentLife);
+            ///////////プレイヤーにダメージ////////////
+            StartCoroutine(pMove.Damage());
+        }
 
         if (currentLife == 0)
         {
@@ -79,5 +102,15 @@ public class LifeManager_M : MonoBehaviour {
             else
                 lifesObj[i].GetComponent<Image>().enabled = false;
         }
+    }
+
+    IEnumerator Flashing()
+    {
+
+        yield return new WaitForSeconds(0.1f);
+        player_mesh.SetActive(false);
+        yield return new WaitForSeconds(0.1f);
+        player_mesh.SetActive(true);
+
     }
 }

@@ -10,7 +10,7 @@ public class GameManager_M: MonoBehaviour {
     Quaternion Rotation2D = Quaternion.Euler(1.75f, 0, 0);
     Quaternion Rotation3D = Quaternion.Euler(20, 0, 0);
 
-    public GameObject swing, player;
+    public GameObject swing, player,player_mesh;
     public GameObject cam;
     public float TAMAspeed = 6.0F;
     public Vector3 TAMAJumpSpeed = new Vector3(1, 8, 1);

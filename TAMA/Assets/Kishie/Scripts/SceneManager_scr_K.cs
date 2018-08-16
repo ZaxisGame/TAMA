@@ -6,17 +6,21 @@ using UnityEngine.UI;
 
 public class SceneManager_scr_K : MonoBehaviour {
 
-	// Use this for initialization
+    //アニメーター宣言１
+    Animator animator;
+    private GameObject tama;
+
 	void Start () {
-		
+        //アニメーター宣言２
+        animator = GetComponent<Animator>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetKey(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            
+            animator.SetBool("is_Sleeping", true);
             StartCoroutine("ToMainScene");
         }
 		
@@ -26,10 +30,12 @@ public class SceneManager_scr_K : MonoBehaviour {
 
     IEnumerator ToMainScene()
     {
+        //寝る
+        animator.SetBool("is_Sleeping", true);
+        //ui
 
-        yield return new WaitForSeconds(0.1f);
-        SceneManager.LoadScene("GameScene_K");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
      
+        SceneManager.LoadScene("GameScene_K");
     }
 }

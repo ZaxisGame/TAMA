@@ -16,6 +16,8 @@ public class MissileCol_M : MonoBehaviour {
             return this.bombed;
         }
     } 
+    AudioSource audioSource;
+    public List<AudioClip> audioClip = new List<AudioClip>();
 	// Use this for initialization
 	void Start () {
         bomb = transform.FindChild("Fireball").GetComponent<ParticleSystem>();
@@ -25,6 +27,7 @@ public class MissileCol_M : MonoBehaviour {
         afterbruner.Play();
         bomb.Stop();
         bombed = false;
+        audioSource = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -53,6 +56,7 @@ public class MissileCol_M : MonoBehaviour {
         Destroy(GetComponent<Rigidbody>());
         Destroy(ab);
         bomb.Play();
+        audioSource.PlayOneShot(audioClip[0]);
         bombed = true;
 	}
 }
