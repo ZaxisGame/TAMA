@@ -652,6 +652,7 @@ MonoBehaviour:
     type: 2}
   gun: {fileID: 1890102604408954}
   shotSpeed: 500
+  audioClip: []
 --- !u!114 &114728894919218576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -666,4 +667,5 @@ MonoBehaviour:
   AjiMuzzle: {fileID: 1890102604408954}
   state: 1
   isAlive: 1
-  audioClip: []
+  audioClip:
+  - {fileID: 0}
