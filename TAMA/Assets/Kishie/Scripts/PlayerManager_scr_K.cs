@@ -1,6 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
+
 
 public class PlayerManager_scr_K : MonoBehaviour {
     
@@ -78,6 +81,12 @@ public class PlayerManager_scr_K : MonoBehaviour {
             playerMove.force_z = false;
         }
 
+        if (col.CompareTag("Trap"))
+        {
+            //Debug.Log("Scene");
+            SceneManager.LoadScene("BossStage");
+        }
+
 
     }
 
@@ -90,5 +99,5 @@ public class PlayerManager_scr_K : MonoBehaviour {
             playerMove.force_z = true;
         }
     }
-  
+
 }
