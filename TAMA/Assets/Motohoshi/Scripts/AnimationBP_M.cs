@@ -9,6 +9,7 @@ public class AnimationBP_M : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         TakoAnime = GetComponent<Animator>();
+        Floated = false;
 	}
 	
 	// Update is called once per frame
@@ -17,8 +18,9 @@ public class AnimationBP_M : MonoBehaviour {
 	}
 
     void toIdling(){
-        if(transform.position.y>-11){
-            TakoAnime.SetBool("stop", true);
+        if(transform.position.y>-11&&!Floated){
+            TakoAnime.SetBool("Idle",true);
+            Floated = true;
         }
     }
 }

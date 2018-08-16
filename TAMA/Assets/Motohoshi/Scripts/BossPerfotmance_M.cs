@@ -6,6 +6,7 @@ public class BossPerfotmance_M : MonoBehaviour
 {
     public GameObject player;
     public GameObject Boss;
+    public GameObject OctPivot;
     public GameObject missile;
     public GameObject bridge;
     public Camera BBcam;
@@ -20,14 +21,16 @@ public class BossPerfotmance_M : MonoBehaviour
     public GameObject SearchLights;
     public GameObject SearchLightL;
     public GameObject SearchLightR;
+    public GameObject Wave;
     public Light SpotLightL;
     public Light SpotLightR;
     public float camSpeed = 40;
     public float camSize = 10;
     GameObject[] missiles;
-    GameObject PerformanceCam;
+    GameObject PerformanceCam, LightL,LightR;
     MissileManager_M MissileManager;
     Camera Bcam;
+    Vector3 wavePos;
     int performState;
     // Use this for initialization
     void Start()
@@ -42,11 +45,15 @@ public class BossPerfotmance_M : MonoBehaviour
         Performancecam2L.GetComponent<Camera>().enabled = false;
         Performancecam3.GetComponent<Camera>().enabled = false;
         BossCamera.GetComponent<Camera>().enabled = false;
+        LightR = SearchLightR.transform.GetChild(0).gameObject;
+        LightL = SearchLightL.transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
     void Update()
     {
+        wavePos = new Vector3(OctPivot.transform.position.x, Wave.transform.position.y, OctPivot.transform.position.z);
+        Wave.transform.position = wavePos;
         if (player.transform.position.x > 106 && performState == 0)
         {
             StartCoroutine("ShotMissiles");
@@ -108,10 +115,10 @@ public class BossPerfotmance_M : MonoBehaviour
             SearchLightR.transform.rotation = Quaternion.Slerp(SearchLightR.transform.rotation, Quaternion.LookRotation(targetA), Time.deltaTime * 1f);
             if (performState == 7)
             {
-                GameObject Light = SearchLightR.transform.GetChild(0).gameObject;
-                Vector3 targetB = new Vector3(83, -10, 45) - Light.transform.position;
+                //GameObject Light = SearchLightR.transform.GetChild(0).gameObject;
+                Vector3 targetB = new Vector3(83, -10, 45) - LightR.transform.position;
                 //Debug.Log(Light.transform.forward);
-                Light.transform.rotation = Quaternion.Slerp(Light.transform.rotation, Quaternion.LookRotation(targetB), Time.deltaTime * 1f);
+                LightR.transform.rotation = Quaternion.Slerp(LightR.transform.rotation, Quaternion.LookRotation(targetB), Time.deltaTime * 1f);
             }
         }
         else if (performState == 8 || performState == 9)
@@ -120,27 +127,27 @@ public class BossPerfotmance_M : MonoBehaviour
             SearchLightL.transform.rotation = Quaternion.Slerp(SearchLightL.transform.rotation, Quaternion.LookRotation(targetA), Time.deltaTime * 1f);
             if (performState == 9)
             {
-                GameObject Light = SearchLightL.transform.GetChild(0).gameObject;
-                Vector3 targetB = new Vector3(83, -10, 45) - Light.transform.position;
+                //GameObject Light = SearchLightL.transform.GetChild(0).gameObject;
+                Vector3 targetB = new Vector3(83, -10, 45) - LightL.transform.position;
                 //Debug.Log(Light.transform.forward);
-                Light.transform.rotation = Quaternion.Slerp(Light.transform.rotation, Quaternion.LookRotation(targetB), Time.deltaTime * 1f);
+                LightL.transform.rotation = Quaternion.Slerp(LightL.transform.rotation, Quaternion.LookRotation(targetB), Time.deltaTime * 1f);
             }
         }
         else if (performState == 10){
             Vector3 targetVector = new Vector3(Boss.transform.position.x,Boss.transform.position.y+17,Boss.transform.position.z) - Performancecam3.transform.position;
             Quaternion targetAngle = Quaternion.LookRotation(targetVector);
-            Debug.Log(targetAngle.eulerAngles.x);
+            //Debug.Log(targetAngle.eulerAngles.x);
             if(targetAngle.eulerAngles.x<30||(targetAngle.eulerAngles.x < 360&&targetAngle.eulerAngles.x > 50)){
                 Performancecam3.transform.LookAt(new Vector3(Boss.transform.position.x,Boss.transform.position.y+17,Boss.transform.position.z));
-                Debug.Log("Look");
+                //Debug.Log("Look");
             }
-            Debug.Log(Boss.transform.position);
+            //Debug.Log(Boss.transform.position);
             if(Boss.transform.position.y>-10.5){
-                Boss.GetComponent<Rigidbody>().velocity = new Vector3(0, 0, 0);
+                Boss.GetComponent<Rigidbody>().velocity = Vector3.zero;
             }
-            GameObject LightL = SearchLightL.transform.GetChild(0).gameObject;
+            SearchLightL.transform.LookAt(new Vector3(Boss.transform.position.x, SearchLightL.transform.position.y, Boss.transform.position.z));
+            SearchLightR.transform.LookAt(new Vector3(Boss.transform.position.x, SearchLightR.transform.position.y, Boss.transform.position.z));
             LightL.transform.LookAt(new Vector3(Boss.transform.position.x, Boss.transform.position.y + 17, Boss.transform.position.z));
-            GameObject LightR = SearchLightL.transform.GetChild(0).gameObject;
             LightR.transform.LookAt(new Vector3(Boss.transform.position.x, Boss.transform.position.y + 17, Boss.transform.position.z));
         }
 
