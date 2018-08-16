@@ -16,10 +16,6 @@ public class Ending_M : MonoBehaviour {
     GameObject core;
     [SerializeField]
     GameObject EndingCam;
-    [SerializeField]
-    GameObject EndingCam2;
-    [SerializeField]
-    GameObject Daiza;
     GameObject[] Bombs;
     int state;
 	// Use this for initialization
@@ -41,7 +37,7 @@ public class Ending_M : MonoBehaviour {
         BigBang.transform.localScale = new Vector3(3,3,3);
         BigBang.GetComponent<ParticleSystem>().Stop();
         state = 0;
-        EndingCam2.GetComponent<Camera>().enabled = false;
+
 	}
 	
 	// Update is called once per frame
@@ -105,7 +101,7 @@ public class Ending_M : MonoBehaviour {
         Bombs[4].GetComponent<ParticleSystem>().Play();
         yield return new WaitForSeconds(1.5f);
         BigBang.GetComponent<ParticleSystem>().Play();
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.3f);
         BossPerformance.SetActive(false);
         core.SetActive(false);
         OctPivot.SetActive(false);
