@@ -11484,7 +11484,8 @@ MonoBehaviour:
   missile: {fileID: 1348245922439718, guid: 0bf3d0aa73fcc4e43bd73e8daef22ac1, type: 2}
   rotateSpeed: 10
   shotSpeed: 10
-  audioClip: []
+  audioClip:
+  - {fileID: 8300000, guid: 337832f8c9e0b474a8b77a024cefab77, type: 3}
 --- !u!1 &1425627466
 GameObject:
   m_ObjectHideFlags: 0
