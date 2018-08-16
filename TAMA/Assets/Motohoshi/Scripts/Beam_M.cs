@@ -2,32 +2,19 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Beam_M : MonoBehaviour {
-    RaycastHit hit;
-    ParticleSystem beam;
-
-    [SerializeField]
-    bool isEnable = false;
-    int count = 0;
-    bool isHits;
-    float radius;
+public class Beam_M : MonoBehaviour
+{
+    public GameObject canvas;
+    LifeManager_M lifeManager;
 	private void Start()
 	{
-        beam = GetComponent<ParticleSystem>();
-        radius = transform.lossyScale.x * 0.5f;
+        lifeManager = canvas.GetComponent<LifeManager_M>();
 	}
-
-	private void Update()
+	private void OnParticleCollision(GameObject other)
 	{
-        count++;
-            if (count > 200)
-        {
-            Vector3 rol = transform.rotation.eulerAngles;
-            rol.x++;
-            transform.rotation = Quaternion.Euler(rol);
-        }
-        if(Physics.SphereCast(transform.position, radius, transform.forward * 10, out hit)){
-            //beam.startLifetime = hit.distance;
+        Debug.Log(other);
+        if(other.CompareTag("Player")){
+            lifeManager.Damage();
         }
 	}
 }

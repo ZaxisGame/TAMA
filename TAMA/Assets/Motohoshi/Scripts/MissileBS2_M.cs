@@ -37,7 +37,7 @@ public class MissileBS2_M : MonoBehaviour {
         yield return new WaitForSeconds(2f);
         MissileManager.shotSpeed = 50;
         MissileManager.Shot(gameObject);
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(2f);
         if (i < 2)
         {
             transform.position = new Vector3(40, 5 + (i * 10), -4.5f);

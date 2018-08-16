@@ -7,14 +7,22 @@ public class AnimationBS_M : MonoBehaviour {
     public GameObject BossCam;
     public GameObject OctPivot;
     public GameObject missile;
+    public GameObject Beam;
+    public GameObject Ashiba;
     MissileManager_M MissileManager;
     GameObject[] missiles;
     Rigidbody tako;
     int Lqqp;
+    int Life;
     // Use this for initialization
-    int BossState;
+    private int BossState;
     float time = 0;
+
+    public int getBossState(){
+        return BossState;
+    }
 	void Start () {
+        Beam.GetComponent<ParticleSystem>().Stop();
         missiles = new GameObject[8];
         TakoAnime = GetComponent<Animator>();
         BossState = 0;
@@ -82,11 +90,12 @@ public class AnimationBS_M : MonoBehaviour {
         else if (BossState == 9)
         {
             OctPivot.transform.rotation = Quaternion.Slerp(OctPivot.transform.rotation, Quaternion.Euler(0, 0, -140), Time.deltaTime * 0.5f);
-            Debug.Log(OctPivot.transform.rotation.eulerAngles.z);
+            //Debug.Log(OctPivot.transform.rotation.eulerAngles.z);
             if (OctPivot.transform.rotation.eulerAngles.z < 240&&OctPivot.transform.rotation.eulerAngles.z > 30)
             {
-                Debug.Log("a");
+                //Debug.Log("a");
                 OctPivot.transform.rotation = Quaternion.Euler(0, 0, -120);
+                Beam.GetComponent<ParticleSystem>().Stop();
                 BossState = 10;
             }
         }
@@ -100,6 +109,9 @@ public class AnimationBS_M : MonoBehaviour {
                 BossState = 11;
             }
         }
+        else if(BossState==11){
+            Ashiba.GetComponent<BoxCollider>().isTrigger = false;
+        }
         else if(BossState==12){
             if (OctPivot.transform.position.y < 16.5)
             {
@@ -108,16 +120,16 @@ public class AnimationBS_M : MonoBehaviour {
             }
             OctPivot.transform.rotation = Quaternion.Slerp(OctPivot.transform.rotation, Quaternion.Euler(0, 0, 0), Time.deltaTime * 2f);
             //float z = OctPivot.transform.eulerAngles.z;
-            Debug.Log(OctPivot.transform.rotation.eulerAngles.z);
+            //Debug.Log(OctPivot.transform.rotation.eulerAngles.z);
             if(OctPivot.transform.position.y>=16.5&&OctPivot.transform.rotation.eulerAngles.z<=0){
                 OctPivot.transform.rotation = Quaternion.Euler(0, 0, 0);
                 Vector3 go = new Vector3(OctPivot.transform.position.x, OctPivot.transform.position.y + 1f, OctPivot.transform.position.z);
                 OctPivot.transform.position = go;
-                Debug.Log(OctPivot.transform.position);
+                //Debug.Log(OctPivot.transform.position);
             }
             if(OctPivot.transform.position.y>60){
                 BossState = 13;
-                Debug.Log(BossState);
+                //Debug.Log(BossState);
             }
         }
         else if(BossState==13){
@@ -127,12 +139,16 @@ public class AnimationBS_M : MonoBehaviour {
                 OctPivot.transform.position = a;
             }
             else{
+                //transform.position = new Vector3(83, transform.position.y, 45);
+                //Debug.Log(transform.position.z);
                 OctPivot.transform.position = new Vector3(83, OctPivot.transform.position.y, 45);
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                OctPivot.transform.rotation = Quaternion.Euler(0, 0, 0);
                 BossState = 14;
                 TakoAnime.SetBool("Idle", true);
                 TakoAnime.SetBool("Move", false);
                 TakoAnime.SetBool("Stop", false);
-                Debug.Log(BossState);
+                //Debug.Log(BossState);
             }
         }
         else if(BossState==14){
@@ -148,7 +164,7 @@ public class AnimationBS_M : MonoBehaviour {
         if (BossState >= 7 && BossState < 11)
         {
             time += Time.deltaTime;
-            Debug.Log(time);
+            //Debug.Log(time);
         }
 
 	}
@@ -179,21 +195,23 @@ public class AnimationBS_M : MonoBehaviour {
         TakoAnime.SetBool("Attack", false);
         yield return new WaitForSeconds(3f);
         BossState = 2;//左向く
-        Debug.Log("call" + BossState);
+        //Debug.Log("call" + BossState);
         yield return new WaitForSeconds(2f);
         TakoAnime.SetBool("Idle", false);
         TakoAnime.SetBool("Move", true);
         TakoAnime.SetBool("Stop", true);
         yield return new WaitForSeconds(3f);
         BossState = 3;//移動
-        Debug.Log("call" + BossState);
+        //Debug.Log("call" + BossState);
         yield return new WaitForSeconds(4f);
         BossState = 5;
         yield return new WaitForSeconds(4f);
         BossState = 7;
+        Beam.GetComponent<ParticleSystem>().Play();
         yield return new WaitForSeconds(10.3f);
         yield return new WaitForSeconds(6f);
         BossState = 12;
+        Ashiba.GetComponent<BoxCollider>().isTrigger = true;
 
 
         //yield return new WaitForSeconds(5f);
