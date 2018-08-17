@@ -80,7 +80,7 @@ public class PlayerMove_scr_K : MonoBehaviour
 
        
         
-        if(Input.anyKeyDown){
+        if(Input.anyKeyDown || this.transform.position.x < -10 ){
            
             animator.SetBool("is_Sleeping", false);
             
