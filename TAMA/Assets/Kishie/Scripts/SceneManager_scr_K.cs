@@ -23,7 +23,7 @@ public class SceneManager_scr_K : MonoBehaviour {
 
 	void Update () {
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.JoystickButton13))
         {
             fadeout = true;
             StartCoroutine("ToMainScene");
@@ -45,10 +45,6 @@ public class SceneManager_scr_K : MonoBehaviour {
         SceneManager.LoadScene("GameScene_K");
     }
 
-    IEnumerator ToOpeningScene()
-    {
-        yield return new WaitForSeconds(0f);
 
-        SceneManager.LoadScene("OpeningScene_K");
-    }
+
 }
