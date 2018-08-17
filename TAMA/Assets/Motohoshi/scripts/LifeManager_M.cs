@@ -41,7 +41,7 @@ public class LifeManager_M : MonoBehaviour {
 
         lifesObj = new GameObject[HP];
 
-        //currentLife = LifeManager_scr_K.curren
+        currentLife = LifeManager_scr_K.currentLife;
 
         for (int i = 0; i < HP; i++)
         {
