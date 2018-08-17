@@ -18,7 +18,7 @@ public class LifeManager_scr_K : MonoBehaviour {
     public PlayerMove_scr_K pMove;
 
 
-    private int currentLife;
+    public static int currentLife = 3;
     public bool isMuteki = false;
     private float mutekiTime;
 
@@ -101,10 +101,8 @@ public class LifeManager_scr_K : MonoBehaviour {
 
         if (currentLife == 0)
             {
-
-              
                 pMove.Die();
-                //SceneManager.LoadScene("GameOver");
+                SceneManager.LoadScene("OpeningScene_K");
             }
         
     }

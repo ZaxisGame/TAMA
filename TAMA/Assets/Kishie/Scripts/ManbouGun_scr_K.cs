@@ -6,20 +6,11 @@ public class ManbouGun_scr_K : MonoBehaviour {
     public GameObject gun;
     // Use this for initialization
     int state;
-    private GameObject gamemanager;
-    GameManager_scr_K Game_M;
-    //ライフマネージャー取得
-    private GameObject canbas;
-    LifeManager_scr_K Life_M;
+
 
     void Start()
     {
-        //ゲームマネージャー取得
-        gamemanager = GameObject.Find("GameManager");
-        Game_M = gamemanager.GetComponent<GameManager_scr_K>();
-        //ライフマネージャー取得
-        canbas = GameObject.Find("Canvas");
-        Life_M = canbas.GetComponent<LifeManager_scr_K>();
+        
         state = 0;
     }
 
