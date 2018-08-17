@@ -4,15 +4,16 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class LifeManager_scr_K : MonoBehaviour {
-    
+public class LifeManager_scr_K : MonoBehaviour
+{
+
     //ゲームマネージャー取得
     private GameObject gamemanager;
     GameManager_scr_K Game_M;
 
     private int HP;
     private GameObject[] lifesObj;
-    private GameObject  player_mesh;
+    private GameObject player_mesh;
     public GameObject player;
 
     public PlayerMove_scr_K pMove;
@@ -22,9 +23,14 @@ public class LifeManager_scr_K : MonoBehaviour {
     public bool isMuteki = false;
     private float mutekiTime;
 
-   
+    bool fadeout = false;
 
-  
+    public Image panel_black;
+    float alfa;
+
+
+
+
     void Start()
     {
         //ゲームマネージャー取得
@@ -62,14 +68,15 @@ public class LifeManager_scr_K : MonoBehaviour {
     void Update()
     {
         Debug.Log(pMove);
-        
+
         if (Input.GetKeyDown(KeyCode.B))
         {
             Damage();
         }
 
-        if(isMuteki){
-            
+        if (isMuteki)
+        {
+
             StartCoroutine("Flashing");
         }
     }
@@ -80,12 +87,12 @@ public class LifeManager_scr_K : MonoBehaviour {
 
     public void Damage()
     {
-      
-        
-       
+
+
+
         if (isMuteki == false)
         {
-            
+
 
             //現在の体力を減らす
             currentLife--;
@@ -100,18 +107,19 @@ public class LifeManager_scr_K : MonoBehaviour {
         }
 
         if (currentLife == 0)
-            {
-                pMove.Die();
-                SceneManager.LoadScene("OpeningScene_K");
-            }
-        
+        {
+            pMove.Die();
+
+            Invoke("SM", 1.0f);
+        }
+
     }
 
 
 
     void DrawLife(int n)//nは今の体力
     {
-        
+
         for (int i = 0; i < HP; i++)
         {
             if (i < n)
@@ -123,12 +131,16 @@ public class LifeManager_scr_K : MonoBehaviour {
 
     IEnumerator Flashing()
     {
-       
+
         yield return new WaitForSeconds(0.1f);
         player_mesh.SetActive(false);
         yield return new WaitForSeconds(0.1f);
         player_mesh.SetActive(true);
-       
+
+    }
+
+    void SM(){
+        SceneManager.LoadScene("OpeningScene_K");
     }
  
 }
