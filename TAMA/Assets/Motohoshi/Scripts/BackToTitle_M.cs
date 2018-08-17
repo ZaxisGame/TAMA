@@ -16,7 +16,7 @@ public class BackToTitle_M : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(GetComponent<Image>().enabled&&state==0){
+        if(GetComponent<SpriteRenderer>().enabled&&state==0){
             if(time<5){
                 time += Time.deltaTime;
             }else{

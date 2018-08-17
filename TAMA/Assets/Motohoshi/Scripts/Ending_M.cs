@@ -17,12 +17,19 @@ public class Ending_M : MonoBehaviour {
     GameObject core;
     [SerializeField]
     GameObject EndingCam;
+    [SerializeField]
+    Image panel;
+    [SerializeField]
+    SpriteRenderer thx;
     GameObject[] Bombs;
     int state;
     AudioSource audioSource;
     public List<AudioClip> audioClip = new List<AudioClip>();
+    bool fadeout;
+    float alpha;
 	// Use this for initialization
 	void Start () {
+        fadeout = false;
         Bombs = new GameObject[8];
         Debug.Log("unko");
         Bombs[0] = Instantiate(Bomb, new Vector3(80, 10, 37), Quaternion.identity);
@@ -50,6 +57,15 @@ public class Ending_M : MonoBehaviour {
             StartCoroutine("Bomber");
             Shake(5.6f, 1f, EndingCam);
             state = 1;
+        }
+
+        if (fadeout)
+        {
+            alpha += 0.1f;
+            panel.color = new Color(0, 0, 0, alpha);
+        }
+        if(alpha>=1){
+            thx.enabled = true;
         }
 	}
 
@@ -121,5 +137,6 @@ public class Ending_M : MonoBehaviour {
         core.SetActive(false);
         OctPivot.SetActive(false);
         wave.SetActive(false);
+        fadeout = true;
     }
 }
