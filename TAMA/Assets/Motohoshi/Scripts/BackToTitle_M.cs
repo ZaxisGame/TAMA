@@ -23,7 +23,7 @@ public class BackToTitle_M : MonoBehaviour {
                 state = 1;
             }
         }else if(state==1){
-            SceneManager.LoadScene("OpningScene");
+            SceneManager.LoadScene("OpeningScene_K");
         }
 	}
 }
