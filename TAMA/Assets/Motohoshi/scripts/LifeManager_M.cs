@@ -41,7 +41,7 @@ public class LifeManager_M : MonoBehaviour {
 
         lifesObj = new GameObject[HP];
 
-
+        //currentLife = LifeManager_scr_K.curren
 
         for (int i = 0; i < HP; i++)
         {
@@ -87,7 +87,7 @@ public class LifeManager_M : MonoBehaviour {
         if (currentLife == 0)
         {
             pMove.Die();
-            //SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("OpeningScene_K");
         }
     }
 
