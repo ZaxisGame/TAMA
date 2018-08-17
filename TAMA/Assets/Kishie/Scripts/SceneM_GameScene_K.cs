@@ -20,7 +20,7 @@ public class SceneM_GameScene_K : MonoBehaviour {
         {
             alfa -= 0.01f;
             panel_black.color = new Color(0, 0, 0, alfa);
-            fadein = false;
+
         }
 	}
 }

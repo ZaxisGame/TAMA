@@ -12724,7 +12724,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.3137255}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -30686,7 +30686,7 @@ MonoBehaviour:
   camvas: {fileID: 633020469}
   TAMASpeed: 6
   TAMAJumpSpeed: {x: 1, y: 9, z: 1}
-  TAMA_HP: 20
+  TAMA_HP: 10
   TAMAGravity: 20
   camSpeed: 3
   mutekiTime: 1
@@ -31060,7 +31060,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4915409609445102, guid: 3db006a92cbdb43538416091457a89e9, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -10
+      value: 369.6
       objectReference: {fileID: 0}
     - target: {fileID: 4915409609445102, guid: 3db006a92cbdb43538416091457a89e9, type: 2}
       propertyPath: m_LocalPosition.y
