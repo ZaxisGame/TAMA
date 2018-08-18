@@ -90,13 +90,13 @@ public class PlayerMove_M : MonoBehaviour
         {
             pos = this.transform.position;
 
-            if (this.transform.position.y <= -5 && Mathf.Abs(this.transform.position.z) <= 5)
+            if (this.transform.position.y <= -8 && Mathf.Abs(this.transform.position.z) <= 5)
             {
                 DropOut(50);
             }
-            else if (this.transform.position.y <= -5)
+            else if (this.transform.position.y <= -8)
             {
-                DropOut(10);
+                DropOut(0);
             }
 
 

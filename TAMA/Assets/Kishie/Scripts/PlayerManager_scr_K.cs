@@ -19,6 +19,10 @@ public class PlayerManager_scr_K : MonoBehaviour {
 
     EnemyManager_scr_K enemyManager;
 
+    public Image panel_fadeout;
+    bool fadeout = false;
+    float alfa;
+
 	void Start () 
     {
         //ゲームマネージャー取得
@@ -30,13 +34,18 @@ public class PlayerManager_scr_K : MonoBehaviour {
 
         tama = GameObject.Find("TAMA");
         playerMove = tama.GetComponent<PlayerMove_scr_K>();
-
+      
 
 
     }
 
 	void Update () {
-		
+        panel_fadeout.color = new Color(0, 0, 0, alfa);
+        if (fadeout)
+        {
+            alfa += 0.1f;
+            panel_fadeout.color = new Color(0, 0, 0, alfa);
+        }
 	}
 
     private void OnTriggerEnter(Collider col)
@@ -81,11 +90,21 @@ public class PlayerManager_scr_K : MonoBehaviour {
             playerMove.force_z = false;
         }
 
+        if (col.CompareTag("Finish"))
+        {
+           
+            fadeout = true;
+        }
+
         if (col.CompareTag("Trap"))
         {
             //Debug.Log("Scene");
             SceneManager.LoadScene("BossStage");
+
+           
         }
+
+
 
 
     }
