@@ -20,7 +20,7 @@ public class ManbouGun_scr_K : MonoBehaviour {
         if (state == 0)
         {
             gun.transform.rotation = Quaternion.Slerp(gun.transform.rotation, Quaternion.Euler(0, -180, -70), Time.deltaTime * 1f);
-            Debug.Log(gun.transform.eulerAngles.z);
+          //  Debug.Log(gun.transform.eulerAngles.z);
             if (gun.transform.eulerAngles.z < 300 && gun.transform.eulerAngles.z > 10)
             {
                 state = 1;
@@ -29,7 +29,7 @@ public class ManbouGun_scr_K : MonoBehaviour {
         else if (state == 1)
         {
             gun.transform.rotation = Quaternion.Slerp(gun.transform.rotation, Quaternion.Euler(0, -180, 10), Time.deltaTime * 1f);
-            Debug.Log(gun.transform.eulerAngles.z);
+//            Debug.Log(gun.transform.eulerAngles.z);
             if (gun.transform.eulerAngles.z > 359)
             {
                 state = 0;

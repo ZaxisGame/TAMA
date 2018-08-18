@@ -67,7 +67,7 @@ public class LifeManager_scr_K : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(pMove);
+//        Debug.Log(pMove);
 
         if (Input.GetKeyDown(KeyCode.B))
         {

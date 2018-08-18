@@ -10,9 +10,12 @@ public class SceneM_GameScene_K : MonoBehaviour {
     bool fadein = true;
     float alfa = 1;
 
-	void Start () {
-		
-	}
+    void Start()
+    {
+
+
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -21,6 +24,17 @@ public class SceneM_GameScene_K : MonoBehaviour {
             alfa -= 0.01f;
             panel_black.color = new Color(0, 0, 0, alfa);
 
+        }
+
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            SceneManager.LoadScene("OpeningScene_K");
+        }
+
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene("BossStage");
         }
 	}
 }
