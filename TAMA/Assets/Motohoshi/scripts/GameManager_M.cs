@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager_M: MonoBehaviour {
 
@@ -19,6 +20,7 @@ public class GameManager_M: MonoBehaviour {
     public float camSpeed = 2.5f;
     public float enemyDefaultSpeed = 3f;
     int isBoss;
+    float time;
 
     float y_angle, t;
     private Vector3 offset, swingPos;
@@ -38,6 +40,7 @@ public class GameManager_M: MonoBehaviour {
 
     void Start()
     {
+        time = 0;
         //カメラの位置
         isBoss = 0;
         swingPos = swing.GetComponent<Transform>().position;
@@ -62,12 +65,22 @@ public class GameManager_M: MonoBehaviour {
         if(BossCam.GetComponent<Camera>().enabled){
             isBoss = 2;
         }
+
+        time += Time.deltaTime;
+        if(time>60*5){
+            SceneManager.LoadScene("OpeningScene_K");
+        }
+        if (Input.GetKeyDown(KeyCode.JoystickButton13) || Input.GetKeyDown(KeyCode.JoystickButton14))
+        {
+            time = 0;
+        }
+
     }
 
     void BossCameraManager()
     {
         //ジャンプ中でない時にスペースキーを押すと
-        if (PlayerMove_M.isJump == false && (Input.GetKeyDown(KeyCode.Return)|| Input.GetKeyDown(KeyCode.JoystickButton13)))
+        if (PlayerMove_M.isJump == false && (Input.GetKeyDown(KeyCode.Return)|| Input.GetKeyDown(KeyCode.JoystickButton14)))
         {
             camState = -1;//回転中
 
@@ -126,7 +139,7 @@ public class GameManager_M: MonoBehaviour {
 
     void CameraManager(){
         //ジャンプ中でない時にスペースキーを押すと
-        if (PlayerMove_M.isJump == false && (Input.GetKeyDown(KeyCode.Return)||Input.GetKeyDown(KeyCode.JoystickButton13)))
+        if (PlayerMove_M.isJump == false && (Input.GetKeyDown(KeyCode.Return)||Input.GetKeyDown(KeyCode.JoystickButton14)))
         {
             camState = -1;//回転中
 
