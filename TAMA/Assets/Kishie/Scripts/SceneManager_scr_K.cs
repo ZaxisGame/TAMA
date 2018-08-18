@@ -9,9 +9,11 @@ public class SceneManager_scr_K : MonoBehaviour {
     //アニメーター宣言１
     Animator animator;
     public GameObject tama;
-    public Image panel_black;
+    public Image panel_fadeout;
+    public Image panel_fadein;
     bool fadeout = false;
     float alfa;
+    float alfa2;
 
 	void Start () {
         //アニメーター宣言２
@@ -22,6 +24,9 @@ public class SceneManager_scr_K : MonoBehaviour {
 	
 
 	void Update () {
+        alfa2 -= 0.01f;
+        panel_fadein.color = new Color(0, 0, 0, alfa2);
+        panel_fadeout.color = new Color(0, 0, 0, alfa);
 
         if (Input.GetKeyDown(KeyCode.Space)|| Input.GetKeyDown(KeyCode.JoystickButton13))
         {
@@ -31,8 +36,10 @@ public class SceneManager_scr_K : MonoBehaviour {
 
         if(fadeout){
             alfa += 0.01f;
-            panel_black.color = new Color(0,0,0,alfa);
+            panel_fadeout.color = new Color(0,0,0,alfa);
         }
+
+
 		
 	}
 

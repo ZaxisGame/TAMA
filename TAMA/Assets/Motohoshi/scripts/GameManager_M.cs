@@ -67,7 +67,7 @@ public class GameManager_M: MonoBehaviour {
     void BossCameraManager()
     {
         //ジャンプ中でない時にスペースキーを押すと
-        if (PlayerMove_M.isJump == false && Input.GetKeyDown(KeyCode.Return))
+        if (PlayerMove_M.isJump == false && (Input.GetKeyDown(KeyCode.Return)|| Input.GetKeyDown(KeyCode.JoystickButton13)))
         {
             camState = -1;//回転中
 
@@ -126,7 +126,7 @@ public class GameManager_M: MonoBehaviour {
 
     void CameraManager(){
         //ジャンプ中でない時にスペースキーを押すと
-        if (PlayerMove_M.isJump == false && Input.GetKeyDown(KeyCode.Return))
+        if (PlayerMove_M.isJump == false && (Input.GetKeyDown(KeyCode.Return)||Input.GetKeyDown(KeyCode.JoystickButton13)))
         {
             camState = -1;//回転中
 

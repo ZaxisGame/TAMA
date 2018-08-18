@@ -14,7 +14,7 @@ public class LifeManager_M : MonoBehaviour {
     private GameObject[] lifesObj;
     private GameObject player, player_mesh;
     PlayerMove_M pMove;
-
+    float time;
 
     private int currentLife;
     public bool isMuteki = false;
@@ -32,8 +32,8 @@ public class LifeManager_M : MonoBehaviour {
         Game_M = gamemanager.GetComponent<GameManager_M>();
         player = Game_M.player;
         player_mesh = Game_M.player_mesh;
-        HP = Game_M.TAMA_HP;
-        currentLife = HP;//最初の体力はmax
+        HP = 10;
+        //currentLife = HP;//最初の体力はmax
 
         mutekiTime = 2.0f;
 
@@ -47,12 +47,20 @@ public class LifeManager_M : MonoBehaviour {
         {
             lifesObj[i] = new GameObject("cat" + i);
             lifesObj[i].transform.parent = gameObject.transform;
-            lifesObj[i].AddComponent<RectTransform>().anchoredPosition = new Vector2(-300 + 100 * i, -180);
+            lifesObj[i].AddComponent<RectTransform>().anchoredPosition = new Vector2(-348 + (80.333f * i), -180);
             lifesObj[i].GetComponent<RectTransform>().localScale = new Vector3(0.05f, 0.05f, 0.05f);
             lifesObj[i].AddComponent<Image>().sprite = Resources.Load<Sprite>("Images_M/cat_icon");
             lifesObj[i].GetComponent<Image>().preserveAspect = true;
             lifesObj[i].GetComponent<Image>().SetNativeSize();
         }
+        for (int i = 0; i < HP; i++)
+        {
+            if (i < currentLife)
+                lifesObj[i].GetComponent<Image>().enabled = true;
+            else
+                lifesObj[i].GetComponent<Image>().enabled = false;
+        }
+        time = 0;
     }
 
 
@@ -63,6 +71,13 @@ public class LifeManager_M : MonoBehaviour {
             Damage();
         }
 
+        if(Input.GetKeyDown(KeyCode.JoystickButton13)||Input.GetKeyDown(KeyCode.JoystickButton14)){
+            time = 0;
+        }
+        if(time>60){
+            SceneManager.LoadScene("OpeningScene_K");
+        }
+        time += Time.deltaTime;
         if (isMuteki)
         {
 

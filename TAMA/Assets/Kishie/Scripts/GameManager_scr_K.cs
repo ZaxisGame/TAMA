@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager_scr_K : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GameManager_scr_K : MonoBehaviour
     public GameObject cam ;
     public GameObject camvas;
 
+    public int HoutiSaretaTokinoTaisakuJikan = 60;
 
     public float TAMASpeed = 6.0F;
     public Vector3 TAMAJumpSpeed;
@@ -34,7 +36,7 @@ public class GameManager_scr_K : MonoBehaviour
     float y_angle, t;
     private Vector3 offset, Ppos, swingPos;
     private int state;
-
+    float time;
 
     ///////////////////////////////////////////////////////
     AudioSource audioSource;
@@ -57,7 +59,7 @@ public class GameManager_scr_K : MonoBehaviour
 
     void Start()
     {
-
+        time = 0;
         Ppos = player.GetComponent<Transform>().position;
         //カメラの初期位置
         //swingPos = swing.GetComponent<Transform>().position;
@@ -75,13 +77,21 @@ public class GameManager_scr_K : MonoBehaviour
 
     void Update()
     {
+        time += Time.deltaTime;
         CameraManager();
+        if(time >= 60*5){
+            SceneManager.LoadScene("OpeningScene_K");
+        }
+        if(Input.GetKeyDown(KeyCode.JoystickButton13)||Input.GetKeyDown(KeyCode.JoystickButton14)){
+            time = 0;
+        }
+       
     }
 
     void CameraManager()
     {
         //ジャンプ中でない時にスペースキーを押すと
-        if ( PlayerMove_scr_K.isGround && PlayerMove_scr_K.isJump == false && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.JoystickButton13)))
+        if ( PlayerMove_scr_K.isGround && PlayerMove_scr_K.isJump == false && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.JoystickButton14)))
        
         {
             camState = -1;//回転中

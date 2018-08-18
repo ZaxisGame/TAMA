@@ -56,7 +56,7 @@ public class LifeManager_scr_K : MonoBehaviour
         {
             lifesObj[i] = new GameObject("cat" + i);
             lifesObj[i].transform.parent = gameObject.transform;
-            lifesObj[i].AddComponent<RectTransform>().anchoredPosition = new Vector2(-300 + 100 * i, -180);
+            lifesObj[i].AddComponent<RectTransform>().anchoredPosition = new Vector2(-348 + (80.333f * i), -180);
             lifesObj[i].GetComponent<RectTransform>().localScale = new Vector3(0.05f, 0.05f, 0.05f);
             lifesObj[i].AddComponent<Image>().sprite = Resources.Load<Sprite>("Images_M/cat_icon");
             lifesObj[i].GetComponent<Image>().preserveAspect = true;
@@ -67,7 +67,7 @@ public class LifeManager_scr_K : MonoBehaviour
 
     void Update()
     {
-        Debug.Log(pMove);
+//        Debug.Log(pMove);
 
         if (Input.GetKeyDown(KeyCode.B))
         {
