@@ -23,6 +23,7 @@ public class PlayerMove_M : MonoBehaviour
     public bool force_z = true;
     private Vector3 jumpSpeed;
     private bool InputKey = true;
+    public bool InputKey_M = true;
 
     private float mutekiTime;
 
@@ -78,7 +79,9 @@ public class PlayerMove_M : MonoBehaviour
     {
 
 
-
+        if(!InputKey_M){
+            InputKey = false;
+        }
         if (Input.GetKeyDown(KeyCode.C))
         {
 
@@ -123,7 +126,11 @@ public class PlayerMove_M : MonoBehaviour
 
     public void Walk_2D()
     {
-
+        if (!InputKey_M)
+        {
+            animator.SetBool("is_Walk", false);
+            return;
+        }
 
         //z軸修正
         if (force_z)
@@ -244,7 +251,11 @@ public class PlayerMove_M : MonoBehaviour
 
     public void Walk_3D()
     {
-
+        if (!InputKey_M)
+        {
+            animator.SetBool("is_Walk", false);
+            return;
+        }
         if (controller.isGrounded)
         {
             //地面についている時
@@ -394,6 +405,8 @@ public class PlayerMove_M : MonoBehaviour
 
     public void JumpInterval()
     {
+        if (!InputKey_M)
+            return;
         InputKey = true;
         Debug.Log("jumpIntervalCalled");
     }
@@ -506,6 +519,13 @@ public class PlayerMove_M : MonoBehaviour
             audioSource.PlayOneShot(audioClip[audio_num]);
         }
 
+    }
+    public void ChangeInputKey()
+    {
+        if (InputKey_M)
+        {
+            InputKey = true;
+        }
     }
 
 }
