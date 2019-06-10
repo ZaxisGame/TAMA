@@ -71,7 +71,7 @@ public class LifeManager_M : MonoBehaviour {
             Damage();
         }
 
-        if(Input.GetKeyDown(KeyCode.JoystickButton13)||Input.GetKeyDown(KeyCode.JoystickButton14)){
+        if(Input.GetKeyDown(KeyCode.JoystickButton13)||Input.GetKeyDown(KeyCode.JoystickButton14)||Input.anyKeyDown){
             time = 0;
         }
         if(time>60){
