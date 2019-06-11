@@ -79,12 +79,12 @@ public class GameManager_scr_K : MonoBehaviour
     {
         time += Time.deltaTime;
         CameraManager();
-        if(time >= 60*5){
+        /*if(time >= 60*5){
             SceneManager.LoadScene("OpeningScene_K");
         }
         if(Input.GetKeyDown(KeyCode.JoystickButton13)||Input.GetKeyDown(KeyCode.JoystickButton14)){
             time = 0;
-        }
+        }*/
        
     }
 

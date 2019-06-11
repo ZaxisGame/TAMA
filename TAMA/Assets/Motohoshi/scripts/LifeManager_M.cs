@@ -74,9 +74,9 @@ public class LifeManager_M : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.JoystickButton13)||Input.GetKeyDown(KeyCode.JoystickButton14)){
             time = 0;
         }
-        if(time>60){
+        /*if(time>60){
             SceneManager.LoadScene("OpeningScene_K");
-        }
+        }*/
         time += Time.deltaTime;
         if (isMuteki)
         {

@@ -23,7 +23,8 @@ public class PlayerMove_M : MonoBehaviour
     public bool force_z = true;
     private Vector3 jumpSpeed;
     private bool InputKey = true;
-
+	public bool BP;
+	public bool FinBP;
     private float mutekiTime;
 
     private Vector3 moveDirection2D, moveDirection3D, pos, mousePos;
@@ -99,21 +100,23 @@ public class PlayerMove_M : MonoBehaviour
                 DropOut(0);
             }
 
-
-            if (Game_M.CamState == 0)//camstate=0に
-            {
-
-
-                Walk_2D();
-
-            }
-
-            else if (Game_M.CamState == 1)
-            {
+			if (BP && !FinBP)
+				isStop = true;
+			else if (FinBP)
+				isStop = false;
+				
+			
+				if (Game_M.CamState == 0) {//camstate=0に
 
 
-                Walk_3D();
-            }
+					Walk_2D ();
+
+				} else if (Game_M.CamState == 1) {
+
+
+					Walk_3D ();
+				}
+
 
         }
     }
@@ -123,7 +126,6 @@ public class PlayerMove_M : MonoBehaviour
 
     public void Walk_2D()
     {
-
 
         //z軸修正
         if (force_z)
@@ -189,7 +191,6 @@ public class PlayerMove_M : MonoBehaviour
         //アニメーション
         if (moveDirection2D.x == 0)
         {   //止まっている時
-
             animator.SetBool("is_Walk", false);
             animator.SetBool("is_Back", false);
             animator.SetBool("is_Idle", true);

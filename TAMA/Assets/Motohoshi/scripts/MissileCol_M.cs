@@ -20,8 +20,8 @@ public class MissileCol_M : MonoBehaviour {
     public List<AudioClip> audioClip = new List<AudioClip>();
 	// Use this for initialization
 	void Start () {
-        bomb = transform.FindChild("Fireball").GetComponent<ParticleSystem>();
-        afterbruner = transform.FindChild("Afterburner").GetComponent<ParticleSystem>();
+        bomb = transform.Find("Fireball").GetComponent<ParticleSystem>();
+        afterbruner = transform.Find("Afterburner").GetComponent<ParticleSystem>();
         ab = transform.GetChild(2).gameObject;
         tentacle = transform.GetChild(0).gameObject;
         afterbruner.Play();
@@ -36,10 +36,10 @@ public class MissileCol_M : MonoBehaviour {
 	}
 
     public void MissileComponent(){
-        bomb = transform.FindChild("Fireball").GetComponent<ParticleSystem>();
-        afterbruner = transform.FindChild("Afterburner").GetComponent<ParticleSystem>();
-        ab = transform.FindChild("Afterburner").GetComponent<GameObject>();
-        tentacle = transform.FindChild("Tentacle").GetComponent<GameObject>();
+        bomb = transform.Find("Fireball").GetComponent<ParticleSystem>();
+        afterbruner = transform.Find("Afterburner").GetComponent<ParticleSystem>();
+        ab = transform.Find("Afterburner").GetComponent<GameObject>();
+        tentacle = transform.Find("Tentacle").GetComponent<GameObject>();
         afterbruner.Play();
         bomb.Stop();
         bombed = false;

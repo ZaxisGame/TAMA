@@ -66,14 +66,14 @@ public class GameManager_M: MonoBehaviour {
             isBoss = 2;
         }
 
-        time += Time.deltaTime;
+        /*time += Time.deltaTime;
         if(time>60*5){
             SceneManager.LoadScene("OpeningScene_K");
         }
         if (Input.GetKeyDown(KeyCode.JoystickButton13) || Input.GetKeyDown(KeyCode.JoystickButton14))
         {
             time = 0;
-        }
+        }*/
 
     }
 
