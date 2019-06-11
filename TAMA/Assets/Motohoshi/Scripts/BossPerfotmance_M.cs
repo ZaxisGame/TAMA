@@ -29,7 +29,6 @@ public class BossPerfotmance_M : MonoBehaviour
     GameObject[] missiles;
     GameObject PerformanceCam, LightL,LightR;
     MissileManager_M MissileManager;
-    PlayerMove_M PlayerMove;
     Camera Bcam;
     Vector3 wavePos;
     int performState;
@@ -41,7 +40,6 @@ public class BossPerfotmance_M : MonoBehaviour
         performState = 0;
         missiles = new GameObject[8];
         MissileManager = GetComponent<MissileManager_M>();
-        PlayerMove = player.GetComponent<PlayerMove_M>();
         PerformanceCam = transform.GetChild(0).gameObject;
         PerformanceCam.GetComponent<Camera>().enabled = false;
         Performancecam1.GetComponent<Camera>().enabled = false;
@@ -61,7 +59,6 @@ public class BossPerfotmance_M : MonoBehaviour
         Wave.transform.position = wavePos;
         if (player.transform.position.x > 106 && performState == 0)
         {
-            PlayerMove.InputKey_M = false;
             StartCoroutine("ShotMissiles");
             bridge.AddComponent<BridgeBP_M>();
             BBcam.enabled = false;
@@ -233,8 +230,8 @@ public class BossPerfotmance_M : MonoBehaviour
         yield return new WaitForSeconds(14.5f);
         Performancecam3.GetComponent<Camera>().enabled = false;
         BossCamera.GetComponent<Camera>().enabled = true;
-        PlayerMove.InputKey_M = true;
-        PlayerMove.ChangeInputKey();
+
+
     }
 
 }

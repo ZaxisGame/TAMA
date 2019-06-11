@@ -71,13 +71,13 @@ public class LifeManager_M : MonoBehaviour {
             Damage();
         }
 
-        //if(Input.GetKeyDown(KeyCode.JoystickButton13)||Input.GetKeyDown(KeyCode.JoystickButton14)){
-        //    time = 0;
-        //}
-        //if(time>60){
-        //    SceneManager.LoadScene("OpeningScene_K");
-        //}
-        //time += Time.deltaTime;
+        if(Input.GetKeyDown(KeyCode.JoystickButton13)||Input.GetKeyDown(KeyCode.JoystickButton14)){
+            time = 0;
+        }
+        if(time>60){
+            SceneManager.LoadScene("OpeningScene_K");
+        }
+        time += Time.deltaTime;
         if (isMuteki)
         {
 
